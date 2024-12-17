@@ -445,6 +445,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Add Connectors
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -454,6 +465,85 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#access-the-connectors-page" class="md-nav__link">
+    <span class="md-ellipsis">
+      Access the Connectors Page
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-a-new-connector" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add a New Connector
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#provide-connector-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Provide Connector Details
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connector-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connector Options
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Connector Options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sign-connectors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sign Connectors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#email-connectors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Email Connectors
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -781,6 +871,74 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#access-the-connectors-page" class="md-nav__link">
+    <span class="md-ellipsis">
+      Access the Connectors Page
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-a-new-connector" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add a New Connector
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#provide-connector-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Provide Connector Details
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connector-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connector Options
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Connector Options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sign-connectors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sign Connectors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#email-connectors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Email Connectors
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -795,31 +953,135 @@
 
 
 <h1 id="add-connectors">Add Connectors</h1>
-<p>As part of configuring the system for the first time, the next step is to add external connectors.  </p>
-<p>vScrawl can manage electronic signatures and advanced electronic signatures (AES) form of digital signatures—within the application. However, for <strong>qualified electronic signatures (QES)</strong>—remote digital signatures—vScrawl relies on an external <strong>Trusted Service Provider (TSP)</strong>. To facilitate this, a connector must be defined.  </p>
-<p>Additionally, a connector is required for email server configurations to manage email notifications.</p>
-<p><strong>Access the Connectors Page</strong><br />
-Click on <strong>Connectors</strong> in the left navigation pane to view the list of existing connectors.</p>
+<p>As part of configuring the system for the first time, the next step is to add external connectors.</p>
+<p>vScrawl can manage electronic signatures and advanced electronic signatures (AES) within the application. However, for <strong>qualified electronic signatures (QES)</strong>—remote digital signatures—vScrawl relies on an external <strong>Trusted Service Provider (TSP)</strong>. To enable this functionality, a connector must be defined.</p>
+<p>Additionally, connectors are required for email server configurations to manage email notifications.</p>
+<hr />
+<h2 id="access-the-connectors-page">Access the Connectors Page</h2>
+<p>To get started, navigate to the <strong>Connectors</strong> section in the left-hand navigation pane to view the list of existing connectors.</p>
 <p><img alt="Connectors List" src="../../images/connectors-list.png" /></p>
-<p><strong>Add a New Connector</strong><br />
-Click on the <strong>Add Connector</strong> button to open the connector creation screen.</p>
+<hr />
+<h2 id="add-a-new-connector">Add a New Connector</h2>
+<p>Click on the <strong>Add Connector</strong> button to open the connector creation screen.</p>
 <p><img alt="Add Connector Screen" src="../../images/add-connector.png" /></p>
-<p><strong>Provide Connector Details</strong><br />
-- Enter the <strong>Name</strong> and <strong>Description</strong> for the new connector.<br />
-- Set the <strong>Status</strong> to either <strong>Active</strong> or <strong>Inactive</strong>.<br />
-- Select the <strong>Purpose</strong> from the available options:<br />
-  - <strong>Email</strong><br />
-  - <strong>Sign</strong>  </p>
-<p><strong>Connector Options</strong>  </p>
-<p>For <strong>Email</strong> connectors:<br />
-- SMTP<br />
-- SendGrid<br />
-- Amazon SES  </p>
-<p>For <strong>Sign</strong> connectors:<br />
-- <strong>eTugra Middleware</strong> – For qualified remote signing<br />
-- <strong>eTugra Signer App</strong> – For local signing  </p>
+<hr />
+<h2 id="provide-connector-details">Provide Connector Details</h2>
+<ul>
+<li><strong>Name</strong>: Enter a unique name for the connector.  </li>
+<li><strong>Description</strong>: Provide a brief description to help identify the connector's purpose.  </li>
+<li><strong>Status</strong>: Set the status to either <strong>Active</strong> or <strong>Inactive</strong>.  </li>
+<li><strong>Purpose</strong>: Select the purpose from the following options:  </li>
+<li><strong>Email</strong>  </li>
+<li><strong>Sign</strong>  </li>
+</ul>
+<hr />
+<h2 id="connector-options">Connector Options</h2>
+<h3 id="sign-connectors"><strong>Sign Connectors</strong></h3>
+<p>These connectors facilitate digital signing. Choose the appropriate signing method and configure the settings:</p>
+<p><strong>eTugra Middleware</strong><br />
+   Use this connector for remote signing with eTugra Middleware as an external TSP.  </p>
+<ul>
+<li>
+<p><strong>Configuration</strong>:  </p>
+<ul>
+<li>Provide a name for the eTugra Middleware application.  </li>
+<li>Upload a logo for the application.  </li>
+<li>Enter the server URL for eTugra Middleware.  </li>
+<li>Select the signing options: <strong>AES</strong>, <strong>QES</strong>, or both.  </li>
+</ul>
+</li>
+<li>
+<p><strong>Example Configuration Screen</strong>:<br />
+<img alt="eTugra Middleware" src="../../images/sign-etugra-middleware-connector.png" /></p>
+</li>
+</ul>
+<p><strong>eTugra Signer App</strong><br />
+   Use this connector for local signing with user keys on a smart card or USB dongle.  </p>
+<ul>
+<li>
+<p><strong>Configuration</strong>:  </p>
+<ul>
+<li>Enter the application name and URL.  </li>
+<li>Upload a logo for the application.  </li>
+<li>Select the signing options: <strong>AES</strong>, <strong>QES</strong>, or both.  </li>
+</ul>
+</li>
+<li>
+<p><strong>Example Configuration Screen</strong>:<br />
+<img alt="eTugra Signer App" src="../../images/sign-etugra-signer-connector.png" /></p>
+</li>
+</ul>
+<p><strong>CSC 2.0</strong><br />
+   A Cloud Signature Consortium (CSC) 2.0-compliant solution for remote signing.  </p>
+<ul>
+<li>
+<p><strong>Configuration</strong>:  </p>
+<ul>
+<li>Enter the Base URL provided by your TSP administrator and click <strong>Fetch Info</strong> to populate the Name and OAuth2 Base URL fields.  </li>
+<li>Upload a logo for the connector.  </li>
+<li>Configure the Client ID, Client Secret, and Redirect URI provided by the TSP administrator.  </li>
+<li>Select the authentication type: <strong>oauth2code</strong> or <strong>oauth2client</strong>.  </li>
+<li>Select the signing options: <strong>AES</strong>, <strong>QES</strong>, or both.  </li>
+</ul>
+</li>
+<li>
+<p><strong>Example Configuration Screen</strong>:<br />
+<img alt="CSC 2.0" src="../../images/sign-cscv2-connector.png" /></p>
+</li>
+</ul>
+<hr />
+<h3 id="email-connectors"><strong>Email Connectors</strong></h3>
+<p>These connectors enable email notifications. Select the email service provider and configure the settings:</p>
+<p><strong>SMTP</strong><br />
+   Use this connector to send emails via your organization's mail server.  </p>
+<ul>
+<li>
+<p><strong>Configuration</strong>:  </p>
+<ul>
+<li>Enter the SMTP Server name and port.  </li>
+<li>Choose the authentication mechanism.  </li>
+<li>Provide a "From" email address.  </li>
+</ul>
+</li>
+<li>
+<p><strong>Example Configuration Screen</strong>:<br />
+<img alt="SMTP Configuration" src="../../images/email-smtp-connector.png" /></p>
+</li>
+</ul>
+<p><strong>SendGrid</strong><br />
+   Use this connector for cloud-based email delivery with SendGrid.  </p>
+<ul>
+<li>
+<p><strong>Configuration</strong>:  </p>
+<ul>
+<li>Enter the SendGrid API Key.  </li>
+<li>Provide a "From" email address.  </li>
+</ul>
+</li>
+<li>
+<p><strong>Example Configuration Screen</strong>:<br />
+<img alt="SendGrid Configuration" src="../../images/email-sendgrid-connector.png" /></p>
+</li>
+</ul>
+<p><strong>Amazon SES</strong><br />
+   Use this connector for scalable email sending with Amazon SES.  </p>
+<ul>
+<li>
+<p><strong>Configuration</strong>:  </p>
+<ul>
+<li>Enter the API Key and Access Key.  </li>
+<li>Specify the region for the SES service.  </li>
+<li>Provide a "From" email address.  </li>
+</ul>
+</li>
+<li>
+<p><strong>Example Configuration Screen</strong>:<br />
+<img alt="Amazon SES Configuration" src="../../images/email-amazon-ses-connector.png" /></p>
+</li>
+</ul>
+<hr />
 <blockquote>
-<p><strong>Note:</strong> Select the connector type and configuration that aligns with your organizational needs for seamless operation. </p>
+<p><strong>Note:</strong> Carefully select the connector type and configuration that best meets your organizational requirements for optimal operation.</p>
 </blockquote>
 
 
