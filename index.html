@@ -1,123 +1,179 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="None" />
-      <link rel="shortcut icon" href="img/favicon.ico" />
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="None">
+    
+    
+    <link rel="shortcut icon" href="./img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
     <title>vScrawl Admin Guide</title>
-    <link rel="stylesheet" href="css/theme.css" />
-    <link rel="stylesheet" href="css/theme_extra.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
-    
-      <script>
-        // Current page data
-        var mkdocs_page_name = "vScrawl Admin Guide";
-        var mkdocs_page_input_path = "index.md";
-        var mkdocs_page_url = null;
-      </script>
-    
+    <link href="./css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="./css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="./css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-      <script src="js/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
-      <script>hljs.highlightAll();</script> 
+
+    <script src="./js/jquery-3.2.1.min.js"></script>
+    <script src="./js/bootstrap-3.3.7.min.js"></script>
+    <script src="./js/highlight.pack.js"></script>
+    
+      <script src="./js/elasticlunr.min.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '.';
+      var is_top_frame = (window === window.parent);
+        
+        var pageToc = [
+          {title: "vScrawl Admin Guide", url: "#_top", children: [
+              {title: "Table of Contents", url: "#table-of-contents" },
+          ]},
+        ];
+
+    </script>
+    <script src="./js/base.js"></script> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
 
-  <div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
-    <div class="wy-side-scroll">
-      <div class="wy-side-nav-search">
-          <a href=".">
-          <img src="images/vscrawl-logo.png" class="logo" alt="Logo"/>
-        </a><div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
-      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
-  </form>
-</div>
-      </div>
-
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="overview/">Overview</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="general_description/">General Description</a>
-                </li>
-              </ul>
-              <p class="caption"><span class="caption-text">Start Using vScrawl Admin Console</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="start_using/access_console/">Access the vScrawl Admin Console</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">Configure Role Based Access Control (RBAC)</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="configure_rbac/configure_rbac/">Why Start With RBAC</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="configure_rbac/create_role/">Create a new Role</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="configure_rbac/add_admin/">Add a new Administrator</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">Add and Configure Connectors</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="connectors/add_connectors/">Add Connectors</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="connectors/configure_connectors/">Configure Connectors in Default Settings</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">Other Administrative Operations</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="other_admin_operations/what_comes_next/">What Comes Next</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="other_admin_operations/license_manager/">License Manager</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="other_admin_operations/application_settings/">Application Settings</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="other_admin_operations/authentication_settings/">Authentication Settings</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="other_admin_operations/storage_settings/">Storage Settings</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="other_admin_operations/security_settings/">Security Settings</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="other_admin_operations/signature_settings/">Signature Settings</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="other_admin_operations/privacy_policy/">Privacy Policy</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="other_admin_operations/branding/">Branding</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="other_admin_operations/organization/">Organization</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="other_admin_operations/users/">Users</a>
-                  </li>
-              </ul>
-      </div>
-    </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href=".">vScrawl Admin Guide</a>
+<nav class="navbar wm-page-top-frame">
+  <div class="container-fluid wm-top-container">
+    
+    <div class="wm-top-tool pull-right wm-vcenter">
+      <form class="dropdown wm-vcentered" id="wm-search-form" action="./search.html">
         
-      </nav>
-      <div class="wy-nav-content">
-        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
-  <ul class="wy-breadcrumbs">
-    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">vScrawl Admin Guide</li>
-    <li class="wy-breadcrumbs-aside">
-    </li>
+        <button id="wm-search-show" class="btn btn-sm btn-default" type="submit"
+          ><i class="fa fa-search" aria-hidden="true"></i></button>
+
+        <div class="input-group input-group-sm wm-top-search">
+          <input type="text" name="q" class="form-control" id="mkdocs-search-query" placeholder="Search" autocomplete="off">
+          <span class="input-group-btn" role="search">
+            
+            <button class="btn btn-default dropdown-toggle collapse" data-toggle="dropdown" type="button"><span class="caret"></span></button>
+            <ul id="mkdocs-search-results" class="dropdown-menu dropdown-menu-right"></ul>
+            <button id="wm-search-go" class="btn btn-default" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+          </span>
+        </div>
+      </form>
+    </div>
+
+    
+    <div class="wm-top-tool wm-vcenter pull-right wm-small-left">
+      <button id="wm-toc-button" type="button" class="btn btn-sm btn-default wm-vcentered"><i class="fa fa-th-list" aria-hidden="true"></i></button>
+    </div>
+
+    
+    
+
+    
+    <a href="" class="wm-top-brand wm-top-link wm-vcenter">
+      
+      <div class="wm-top-title">
+        vScrawl Admin Guide<br>
+        
+      </div>
+    </a>
+  </div>
+</nav>
+
+  <div id="main-content" class="wm-page-top-frame">
+    
+<nav class="wm-toc-pane">
+  
+  <ul class="wm-toctree">
+        <li class="wm-toc-li wm-toc-lev1 "><a href="overview/" class="wm-article-link wm-toc-text">Overview</a>
+</li>
+        <li class="wm-toc-li wm-toc-lev1 "><a href="general_description/" class="wm-article-link wm-toc-text">General Description</a>
+</li>
+        <li class="wm-toc-li wm-toc-lev1 wm-toc-opener"><span class="wm-toc-text">Start Using vScrawl Admin Console</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev2 "><a href="start_using/access_console/" class="wm-article-link wm-toc-text">Access the vScrawl Admin Console</a>
+</li>
   </ul>
-  <hr/>
-</div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-            <div class="section" itemprop="articleBody">
-              
-                <h1 id="vscrawl-admin-guide">vScrawl Admin Guide</h1>
+</li>
+
+        <li class="wm-toc-li wm-toc-lev1 wm-toc-opener"><span class="wm-toc-text">Configure Role Based Access Control (RBAC)</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev2 "><a href="configure_rbac/configure_rbac/" class="wm-article-link wm-toc-text">Why Start With RBAC</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="configure_rbac/create_role/" class="wm-article-link wm-toc-text">Create a new Role</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="configure_rbac/add_admin/" class="wm-article-link wm-toc-text">Add a new Administrator</a>
+</li>
+  </ul>
+</li>
+
+        <li class="wm-toc-li wm-toc-lev1 wm-toc-opener"><span class="wm-toc-text">Add and Configure Connectors</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev2 "><a href="connectors/add_connectors/" class="wm-article-link wm-toc-text">Add Connectors</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="connectors/configure_connectors/" class="wm-article-link wm-toc-text">Configure Connectors in Default Settings</a>
+</li>
+  </ul>
+</li>
+
+        <li class="wm-toc-li wm-toc-lev1 wm-toc-opener"><span class="wm-toc-text">Other Administrative Operations</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev2 "><a href="other_admin_operations/what_comes_next/" class="wm-article-link wm-toc-text">What Comes Next</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="other_admin_operations/license_manager/" class="wm-article-link wm-toc-text">License Manager</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="other_admin_operations/application_settings/" class="wm-article-link wm-toc-text">Application Settings</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="other_admin_operations/authentication_settings/" class="wm-article-link wm-toc-text">Authentication Settings</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="other_admin_operations/storage_settings/" class="wm-article-link wm-toc-text">Storage Settings</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="other_admin_operations/security_settings/" class="wm-article-link wm-toc-text">Security Settings</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="other_admin_operations/signature_settings/" class="wm-article-link wm-toc-text">Signature Settings</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="other_admin_operations/privacy_policy/" class="wm-article-link wm-toc-text">Privacy Policy</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="other_admin_operations/branding/" class="wm-article-link wm-toc-text">Branding</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="other_admin_operations/organization/" class="wm-article-link wm-toc-text">Organization</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="other_admin_operations/users/" class="wm-article-link wm-toc-text">Users</a>
+</li>
+  </ul>
+</li>
+
+  </ul>
+</nav>
+
+    <div class="wm-content-pane">
+      <iframe class="wm-article" name="article"></iframe>
+    </div>
+  </div>
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+
+    <h1 id="vscrawl-admin-guide">vScrawl Admin Guide</h1>
 <p>Welcome to the <strong>vScrawl Admin Guide</strong>. This guide will walk you through setting up and configuring the vScrawl Admin Console, managing users, roles, connectors, security settings, and more.</p>
 <h2 id="table-of-contents">Table of Contents</h2>
 <ul>
@@ -153,48 +209,20 @@
 <li><a href="other_admin_operations/organization/">Organization</a></li>
 <li><a href="other_admin_operations/users/">Users</a></li>
 </ul>
-              
-            </div>
-          </div><footer>
 
-  <hr/>
-
-  <div role="contentinfo">
-    <!-- Copyright etc -->
-  </div>
-
-  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
-</footer>
-          
-        </div>
-      </div>
-
-    </section>
-
-  </div>
-
-  <div class="rst-versions" role="note" aria-label="Versions">
-  <span class="rst-current-version" data-toggle="rst-current-version">
+  <br>
     
-    
-    
-  </span>
+
+    <br>
 </div>
-    <script src="js/jquery-3.6.0.min.js"></script>
-    <script>var base_url = ".";</script>
-    <script src="js/theme_extra.js"></script>
-    <script src="js/theme.js"></script>
-      <script src="search/main.js"></script>
-    <script>
-        jQuery(function () {
-            SphinxRtdTheme.Navigation.enable(true);
-        });
-    </script>
+
+<footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
 
 </body>
 </html>
-
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2024-12-17 14:59:17.452241+00:00
+Build Date UTC : 2024-12-17 15:00:57.954333+00:00
 -->
