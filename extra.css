@@ -3,7 +3,26 @@ body {
   padding: 0;
 }
 
+/* Adjust the content width to ensure it doesn't go too far left or under the navigation panel */
 .wm-page-content {
-  margin-left: 0;
-  margin-right: 0;
+  margin-left: 125px; /* Adjust this depending on the width of the left sidebar */
+  margin-right: 20px; /* Adds some padding to the right side */
+  padding: 20px; /* Optional: Adds padding to the content itself */
+  max-width: calc(100% - 270px); /* Ensures content width respects left sidebar */
+  box-sizing: border-box; /* Ensures padding and margins are included in the width */
+}
+
+.navbar {
+  background-color: #F8B716;
+  box-shadow: 0 1.5px 3px rgba(0,0,0,.24), 0 3px 8px rgba(0,0,0,.05);
+  border: none;
+  border-radius: 0px;
+  margin-bottom: 0px;
+  height: 50px;
+  z-index: 2;
+}
+
+.wm-toc-li.wm-current, .wm-toc-li.wm-current:hover {
+  background-color: #F8B716;
+  color: white;
 }
