@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Install vScrawl - vScrawl Admin Guide</title>
+    <link href="../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "vScrawl Installation Guide", url: "#_top", children: [
+              {title: "Prerequisites", url: "#prerequisites" },
+              {title: "Unpack and Prepare Installation Files", url: "#unpack-and-prepare-installation-files" },
+              {title: "Run the Setup Script", url: "#run-the-setup-script" },
+              {title: "Configure Application URLs", url: "#configure-application-urls" },
+              {title: "Generate SSL Certificates", url: "#generate-ssl-certificates" },
+              {title: "Monitor Docker Containers", url: "#monitor-docker-containers" },
+          ]},
+        ];
+
+    </script>
+    <script src="../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../start_using/access_console/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../start_using/access_console/" class="btn btn-xs btn-link">
+        Access the vScrawl Admin Console
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../general_description/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../general_description/" class="btn btn-xs btn-link">
+        General Description
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="vscrawl-installation-guide">vScrawl Installation Guide</h1>
+<p>This guide provides a step-by-step walkthrough for installing <strong>vScrawl</strong> on an in-house server. The installation process is automated through a setup script but requires administrator input and consent at various stages. Follow this guide carefully to ensure a successful installation.</p>
+<hr />
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Ensure the following before starting the installation:</p>
+<h3 id="system-requirements">System Requirements</h3>
+<ul>
+<li><strong>Operating System</strong>: Ubuntu 24.04 LTS.</li>
+<li><strong>Hardware</strong>:<ul>
+<li>A physical or a virtual server with minimum 8 cores.</li>
+<li>16 GB RAM as minimum.</li>
+<li>50 GB SSD storage.</li>
+<li>Based on the usage volume for this vScrawl dcployment, you may choose to scale up the server resources, accordingly.</li>
+<li>For documents management, an additional storage of 50-100 GBs may be used or a network storage server may be used for this purpose.   </li>
+</ul>
+</li>
+</ul>
+<h3 id="network-configuration">Network Configuration</h3>
+<ul>
+<li>Open ports: <strong>80 (HTTP)</strong> and <strong>443 (HTTPS)</strong>.</li>
+<li>Static IP address for the server.</li>
+<li>Have adequate DNS enteries created for the application URLs resolving to the <strong>external</strong> static IP of the server e.g.:<ul>
+<li>app.example.com</li>
+<li>admin.example.com</li>
+<li>api.example.com</li>
+</ul>
+</li>
+</ul>
+<h3 id="access-and-connectivity">Access and Connectivity</h3>
+<ul>
+<li><strong>Administrator privileges</strong> (sudo/root access).</li>
+<li>Arrange SSH access to the server using the external IP.</li>
+<li>Internet connectivity for downloading dependencies.</li>
+</ul>
+<h3 id="miscellaneous">Miscellaneous</h3>
+<ul>
+<li>A valid email address for SSL certificate generation.</li>
+</ul>
+<hr />
+<h2 id="unpack-and-prepare-installation-files">Unpack and Prepare Installation Files</h2>
+<ul>
+<li>Download the <strong>vScrawl installation package</strong> and transfer it to the target server.</li>
+<li>Extract the package to the desired location:</li>
+</ul>
+<pre><code class="language-bash">unzip vScrawl-vx.x-YYYYMMDD.zip
+</code></pre>
+<ul>
+<li>Navigate to the installation directory:</li>
+</ul>
+<pre><code class="language-bash">cd /home/vscrawl/vScrawl-vx.x.YYYYMMDD
+</code></pre>
+<hr />
+<h2 id="run-the-setup-script">Run the Setup Script</h2>
+<h3 id="starting-the-script">Starting the Script</h3>
+<p>Run the setup script:</p>
+<pre><code class="language-bash">./setup.sh
+</code></pre>
+<h3 id="installation-options">Installation Options</h3>
+<p>When prompted, select:
+- <strong>1. Complete Setup</strong></p>
+<h3 id="configuration-inputs">Configuration Inputs</h3>
+<ul>
+<li><strong>Server IP Address</strong>: Static <strong>local</strong> IP of the server.</li>
+<li><strong>Database Server IP Address</strong>: Leave blank if it is same as the server IP.</li>
+<li><strong>Database Credentials</strong>:<ul>
+<li>Username: Enter vScrawl database username e.g., <code>vscrawldbuser</code></li>
+<li>Password: A secure password.</li>
+<li>Name: Enter vScrawl database schema name e.g., <code>vscrawldb</code></li>
+<li>MySQL Root Password: A secure password for MySQL root user.</li>
+</ul>
+</li>
+<li>
+<p><strong>Docker Image Version</strong>: Default is <code>latest</code> (it is required to enter a specific version e.g., <code>v1.0</code>).</p>
+</li>
+<li>
+<p>The script will create a <code>.env</code> configuration file.</p>
+</li>
+<li>Install required components: MySQL, Docker, Certbot, and Nginx.</li>
+</ul>
+<hr />
+<h2 id="configure-application-urls">Configure Application URLs</h2>
+<ul>
+<li>During setup, select <strong>Option 2: Use Let's Encrypt SSL</strong> for HTTPS.</li>
+<li>Provide URLs for:<ul>
+<li><strong>Application</strong> (e.g., <code>app.example.com</code>)</li>
+<li><strong>Admin Console</strong> (e.g., <code>admin.example.com</code>)</li>
+<li><strong>API Gateway</strong> (e.g., <code>api.example.com</code>)</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>Note</strong>: You’ll re-enter these URLs for SSL verification in a later step if you choose to use SSL certificates issued using Let's Encrypt.</p>
+</blockquote>
+<p>The installation process will get started.  MySQL database server, Docker, Certbot and Nginx will be automatically instlaled.  Docker images will also be loaded from the extracted package and vScrawl services will be started.  The wizard will prompt for administrator's consent for installation of some components e.g. docker etc., enter <code>y</code> to continue the setup wizard.</p>
+<hr />
+<h2 id="generate-ssl-certificates">Generate SSL Certificates</h2>
+<ul>
+<li>Certbot is installed during the setup.</li>
+<li>When prompted, choose: <strong>Option 1: Generate New SSL Certificates</strong></li>
+<li>Provide:<ul>
+<li>Email address for SSL notifications (e.g., <code>admin@example.com</code>).</li>
+<li>Re-enter application URLs for verification.</li>
+</ul>
+</li>
+</ul>
+<p>Certbot will generate SSL certificates and configure <strong>Nginx</strong> for HTTPS.</p>
+<p>This completes the vScrawl installation.  Verify the installed setup by accessing</p>
+<ul>
+<li><code>https://app.example.com</code></li>
+<li><code>https://admin.example.com</code></li>
+<li><code>https://api.example.com</code></li>
+</ul>
+<hr />
+<h2 id="monitor-docker-containers">Monitor Docker Containers</h2>
+<ul>
+<li>View running containers:</li>
+</ul>
+<pre><code class="language-bash">docker ps
+</code></pre>
+<ul>
+<li>Check logs for specific containers:</li>
+</ul>
+<pre><code class="language-bash">docker logs -f &lt;container_name&gt;
+</code></pre>
+<ul>
+<li>
+<p><strong>SSL Certificate Errors</strong>:</p>
+<ul>
+<li>Verify URLs resolve to the server’s IP.</li>
+<li>Ensure ports <strong>80</strong> and <strong>443</strong> are accessible.</li>
+</ul>
+</li>
+<li>
+<p><strong>Database Connectivity Issues</strong>:</p>
+</li>
+<li>Check <code>.env</code> file values and MySQL permissions.</li>
+</ul>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../start_using/access_console/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../start_using/access_console/" class="btn btn-xs btn-link">
+        Access the vScrawl Admin Console
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../general_description/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../general_description/" class="btn btn-xs btn-link">
+        General Description
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>
