@@ -1106,7 +1106,7 @@
 <ul>
 <li>Open ports: <strong>80 (HTTP)</strong> and <strong>443 (HTTPS)</strong>.</li>
 <li>Static IP address for the server.</li>
-<li>Have adequate DNS enteries created for the application URLs resolving to the <strong>external</strong> static IP of the server e.g.:<ul>
+<li>Have adequate DNS entries created for the application URLs resolving to the <strong>external</strong> static IP of the server e.g.:<ul>
 <li>app.example.com</li>
 <li>admin.example.com</li>
 <li>api.example.com</li>
@@ -1126,7 +1126,7 @@
 <hr />
 <h2 id="unpack-and-prepare-installation-files">Unpack and Prepare Installation Files</h2>
 <ul>
-<li>Download the <strong>vScrawl installation package</strong> and transfer it to the target server. You may choose between the offline or an online package based on your preference.  The offline package has all docker images bundled within the package.  The online package will pull the docker images online during the installation.</li>
+<li>Download the <strong>vScrawl installation package</strong> and transfer it to the target server. You may choose between the <strong>offline</strong> or an <strong>online</strong> package based on your preference.  The <strong>offline</strong> package has all docker images bundled within the package.  The <strong>online</strong> package will pull the docker images online during the installation.</li>
 <li>Extract the package to the desired location:</li>
 </ul>
 <pre><code class="language-bash">unzip vScrawl-vx.x-offline-YYYYMMDD.zip
@@ -1139,16 +1139,38 @@
 </ul>
 <pre><code class="language-bash">cd /home/vscrawl/vScrawl-vx.x-offline-YYYYMMDD
 </code></pre>
-<p>or</p>
+<p>Or</p>
 <pre><code class="language-bash">cd /home/vscrawl/vScrawl-vx.x-online-YYYYMMDD
 </code></pre>
 <hr />
 <h2 id="run-the-setup-script">Run the Setup Script</h2>
 <h3 id="starting-the-script">Starting the Script</h3>
 <p>Run the setup script:</p>
-<pre><code class="language-bash">./setup.sh
+<pre><code class="language-bash">./setup_offline.sh
+</code></pre>
+<p>Or</p>
+<pre><code class="language-bash">./setup_online.sh
 </code></pre>
 <h3 id="installation-options">Installation Options</h3>
+<pre><code class="language-bash">#########################################
+###     WELCOME TO VSCRAWL SETUP      ###
+#########################################
+
+Choose from the following:
+ 0. Exit
+ 1. Complete Setup
+ 2. Set Environment
+ 3. Set Web Apps URLs
+ 4. Install MySQL DB Server
+ 5. Install Docker
+ 6. Run All Services
+ 7. Change URLs
+ 8. Install Let's Encrypt Certbot
+ 9. Get SSL Certificates
+ 10. Restart All Services
+ 11. Restart Web Apps
+Enter your choice (0-11):
+</code></pre>
 <p>When prompted, select:
 - <strong>1. Complete Setup</strong></p>
 <h3 id="configuration-inputs">Configuration Inputs</h3>
@@ -1162,18 +1184,17 @@
 <li>MySQL Root Password: A secure password for MySQL root user.</li>
 </ul>
 </li>
-<li>
-<p><strong>Docker Image Version</strong>: Default is <code>latest</code> (it is required to enter a specific version e.g., <code>v1.0</code>).</p>
+<li><strong>Docker Image Version</strong>: Default is <code>latest</code> (it is required to enter a specific version e.g., <code>v1.0</code>).<blockquote>
+<p>For <strong>Docker Image Version</strong>, always enter a specific version number instead of using the default <code>latest</code>.</p>
+</blockquote>
 </li>
-<li>
-<p>The script will create a <code>.env</code> configuration file.</p>
-</li>
+<li>The script will create a <code>.env</code> configuration file.</li>
 <li>Install required components: MySQL, Docker, Certbot, and Nginx.</li>
 </ul>
 <hr />
 <h2 id="configure-application-urls">Configure Application URLs</h2>
 <ul>
-<li>During setup, select <strong>Option 2: Use Let's Encrypt SSL</strong> for HTTPS.</li>
+<li>During setup, select <strong>Option 2: Use Let's Encrypt SSL</strong> for HTTPS configurations to use Let's Encrypts SSL.</li>
 <li>Provide URLs for:<ul>
 <li><strong>Application</strong> (e.g., <code>app.example.com</code>)</li>
 <li><strong>Admin Console</strong> (e.g., <code>admin.example.com</code>)</li>
