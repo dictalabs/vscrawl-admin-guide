@@ -599,6 +599,30 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#certification-authorities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Certification Authorities
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Certification Authorities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejbca" class="md-nav__link">
+    <span class="md-ellipsis">
+      EJBCA
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1061,6 +1085,30 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#certification-authorities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Certification Authorities
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Certification Authorities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejbca" class="md-nav__link">
+    <span class="md-ellipsis">
+      EJBCA
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1207,6 +1255,26 @@
 <li>
 <p><strong>Example Configuration Screen</strong>:<br />
 <img alt="Amazon SES Configuration" src="../../images/email-amazon-ses-connector.png" /></p>
+</li>
+</ul>
+<hr />
+<h3 id="certification-authorities"><strong>Certification Authorities</strong></h3>
+<p>These connectors enable vScrawl to communicate with the configured Certification Authorities to issue vScrawl signing user certificates.  Currently only EJBCA is supported.</p>
+<h4 id="ejbca">EJBCA</h4>
+<p>Use this connector to communicate with a pre-deployed EJBCA instance to issue user certificates.  </p>
+<ul>
+<li>
+<p><strong>Configuration</strong>:  </p>
+<ul>
+<li>Enter the EJBCA instance name and its base URI.  </li>
+<li>Provide the CCA Profile Name (certificate profile) and End Entity Profile as configured on EJBCA.  </li>
+<li>Provide the Certificate Authority (Issuing CA) name and corresponding username and password.</li>
+<li>Browse for the keystore file to authenticate to the EJBCA and the keystore password.</li>
+</ul>
+</li>
+<li>
+<p><strong>Example Configuration Screen</strong>:<br />
+<img alt="Amazon SES Configuration" src="../../images/ca-ejbca-connector.png" /></p>
 </li>
 </ul>
 <hr />
