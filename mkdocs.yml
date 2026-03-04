@@ -1,0 +1,49 @@
+site_name: vScrawl Admin Guide
+theme:
+  name: material
+  theme_dir: docs/custom_theme
+  logo: images/vscrawl-logo.png
+  favicon: images/vscrawl-favicon.png
+
+extra_css:
+  - extra.css
+
+extra:
+  generator: false  # This disables the "Made with Material for MkDocs" footer
+  footer: "© 2025 Dictalabs. All rights reserved."
+
+extra_javascript:
+  - extra.js  # Make sure to point to the correct location of extra.js
+
+copyright: "© 2025 Dictalabs. All rights reserved."
+
+nav:
+  - Overview: overview.md
+  - General Description: general_description.md
+  - Install vScrawl: vscrawl_installation.md
+  - Uninstall vScrawl: vscrawl_uninstall.md
+  - Access the vScrawl Admin Console: start_using/access_console.md
+  - Configure Role Based Access Control (RBAC):
+      - Why Start With RBAC: configure_rbac/configure_rbac.md
+      - Create a new Role: configure_rbac/create_role.md
+      - Add a new Administrator: configure_rbac/add_admin.md
+  - Add and Configure Connectors:
+      - Add Connectors: connectors/add_connectors.md
+      - Configure Connectors in Default Settings: connectors/configure_connectors.md
+  - Finance:
+      - Finance Settings: finance_settings/finance_settings.md
+      - Service Plan: finance_settings/service_plans.md
+      - Package: finance_settings/package.md
+      - Credit Details: finance_settings/credit_details.md
+  - Other Administrative Operations:
+      - What Comes Next: other_admin_operations/what_comes_next.md
+      - License Manager: other_admin_operations/license_manager.md
+      - Application Settings: other_admin_operations/application_settings.md
+      - Authentication Settings: other_admin_operations/authentication_settings.md
+      - Storage Settings: other_admin_operations/storage_settings.md
+      - Security Settings: other_admin_operations/security_settings.md
+      - Signature Settings: other_admin_operations/signature_settings.md
+      - Privacy Policy: other_admin_operations/privacy_policy.md
+      - Branding: other_admin_operations/branding.md
+      - Organization: other_admin_operations/organization.md
+      - Users: other_admin_operations/users.md

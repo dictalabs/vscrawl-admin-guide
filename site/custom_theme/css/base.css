@@ -1,0 +1,87 @@
+/* Ensure the body and html elements fill the entire height */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Ensure that the main content fills available space */
+.wm-page-content, .wm-content-pane {
+  height: calc(100% - 50px); /* Subtract the height of the navbar */
+  padding-top: 20px; /* Adjust padding as needed */
+  overflow: auto; /* Ensure scrollable content when needed */
+}
+
+/* Make sure the table of contents is always 100% height */
+.wm-toc-pane {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  padding-top: 70px; /* Adjust if needed to fit with the navbar */
+  min-width: 250px;
+  background-color: #f2f2f2;
+  border-right: 1px solid #e0e0e0;
+  overflow-y: auto;
+  z-index: 1;
+}
+
+/* Adjust content pane when the TOC is visible */
+.wm-content-pane {
+  margin-left: 250px; /* Adjust for the width of the TOC */
+  padding-left: 20px; /* Optional for padding between content and TOC */
+}
+
+/* On small screens, stack the content */
+@media (max-width: 600px) {
+  .wm-toc-pane {
+    display: none; /* Hide TOC */
+  }
+  
+  .wm-content-pane {
+    margin-left: 0;
+    padding-left: 10px; /* Less padding for smaller screens */
+  }
+
+  .wm-small-show {
+    display: block;
+  }
+  
+  .wm-top-search {
+    width: 100%;
+    display: block;
+    padding: 5px;
+  }
+}
+
+/* Additional responsiveness for full content area */
+.wm-page-content {
+  max-width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.wm-content-pane {
+  padding: 0 10px;
+  margin-left: 0; /* Ensures content fills width on small screens */
+  height: auto; /* Adjusts height to fit content */
+}
+
+/* Ensure images inside content area scale properly */
+.wm-page-content img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Footer adjustments */
+footer {
+  margin-top: 10px;
+  text-align: center;
+  font-weight: 200;
+  font-size: smaller;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  padding: 10px;
+}
