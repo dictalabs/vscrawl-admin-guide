@@ -19,7 +19,7 @@ Upon successful login, the **vScrawl Admin Console Dashboard** is displayed, pro
 - **Signatures**
 - **Documents**  
 
-These details are presented in separate tabs for easy navigation.
+These details are presented in separate tabs for easy navigation. Users can view the statistics based on **Current Month, Last Month, Last 3 Months, Current Year, or a Custom Date Range** for better analysis and reporting.
 
 ![vScrawl Admin Console Dashboard Page](../images/admin-dashboard-page.png)
 

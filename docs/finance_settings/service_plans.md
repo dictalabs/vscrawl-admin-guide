@@ -15,3 +15,5 @@ To add a new service plan, provide:
 - Status whether **ACTIVE** or **INACTIVE**.
 - Select the signature qualifiers i.e. **SES**, **AES** and/or **QES**.  In case any of **AES** and/or **QES** is selected in this service plan, it will be additionally required to select an option from the list of available signing connectors, for each of these.
 - Administrator may additionally choose to turn on 2-Factor Authentication for users who use this service plan.
+- Allows administrators to control whether users can share workflow documents with other users. When enabled, users can share documents for collaboration; when disabled, document sharing is restricted.
+- Allows users to log in to the system using **SmartCard authentication**. When enabled, SmartCard login is available; when disabled, users must use the standard login methods.

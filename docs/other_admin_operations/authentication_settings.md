@@ -1,7 +1,7 @@
 # Authentication Settings  
 
 The **Authentication Settings** screen is used to configure various settings to ensure secure collaboration on sensitive document workflows.  
-![Authentication Settings](../images/authentication-settings.png)
+![Authentication Settings|557](../images/authentication-settings.png)
 
 ## Token Configuration  
 vScrawl provides REST-based APIs for all its operations and uses **access tokens** and **refresh tokens** for secure authentication. Using this screen, the administrator can:  
@@ -18,5 +18,9 @@ For secure user login to the vScrawl application, **Two-Factor Authentication (2
   - **SMS-based authentication**.  
   - **Google Authenticator app**.  
 
+## Smart Card Authentication
+Administrators can enable or disable **Smart Card Authentication** to allow login through a **Smart Card**.
+
 ## Single Sign-On (SSO)  
 Administrators can configure login using a user’s **Google account** to enable the **Single Sign-On (SSO)** feature.   
+Administrators can configure login using **Keycloak authentication** to enable **Single Sign-On (SSO)**. When enabled, users can securely log in through Keycloak; when disabled, only the standard login methods will be available.
