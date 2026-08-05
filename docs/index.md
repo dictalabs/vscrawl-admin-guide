@@ -29,7 +29,6 @@ Welcome to the **vScrawl Admin Guide**. This guide will walk you through setting
 - [Credit Details](finance_settings/credit_details.md)
 
 ### Other Administrative Operations:
-- [What Comes Next](other_admin_operations/what_comes_next.md)
 - [License Manager](other_admin_operations/license_manager.md)
 - [Application Settings](other_admin_operations/application_settings.md)
 - [Authentication Settings](other_admin_operations/authentication_settings.md)

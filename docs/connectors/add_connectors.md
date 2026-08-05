@@ -29,6 +29,10 @@ Click on the **Add Connector** button to open the connector creation screen.
 - **Purpose**: Select the purpose from the following options:  
   - **Email**  
   - **Sign**  
+  - **Certification Authority**
+  - **Auth**
+
+![Purpose Dropdown](../images/connector-purpose-dropdown.png)
 
 ---
 
@@ -45,9 +49,11 @@ These connectors facilitate digital signing. Choose the appropriate signing meth
      - Upload a logo for the application.  
      - Enter the server URL for eTugra Middleware.  
      - Select the signing options: **AES**, **QES**, or both.  
+     - Optionally toggle **Enable HSM Signing** to sign through a Hardware Security Module. When enabled, the **HSM Identifier** field becomes required.
 
    - **Example Configuration Screen**:  
      ![eTugra Middleware](../images/sign-etugra-middleware-connector.png)
+     ![eTugra Middleware HSM Signing](../images/connector-etugra-middleware-hsm.png)
 
 ####eTugra Signer App  
    Use this connector for local signing with user keys on a smart card or USB dongle.  
@@ -73,6 +79,19 @@ These connectors facilitate digital signing. Choose the appropriate signing meth
 
    - **Example Configuration Screen**:  
      ![CSC 2.0](../images/sign-cscv2-connector.png)
+
+####Crypto Engine
+   Use this connector for local signing backed by AWS KMS.
+
+   - **Configuration**:
+     - Enter a Name and the Crypto Engine's Base URI.
+     - Provide the AWS KMS Client ID and Client Secret.
+     - Provide a Store Name.
+     - Optionally upload a logo.
+     - Select the signature qualifiers: **Advanced Electronic Signature**, **Qualified Electronic Signature**, or both.
+
+   - **Example Configuration Screen**:
+     ![Crypto Engine](../images/connector-crypto-engine.png)
 
 ---
 
@@ -111,22 +130,66 @@ These connectors enable email notifications. Select the email service provider a
    - **Example Configuration Screen**:  
      ![Amazon SES Configuration](../images/email-amazon-ses-connector.png)
 
+####Microsoft 365 Graph (Microsoft OAuth2)
+   Use this connector to send email through a Microsoft 365 mailbox via the Microsoft Graph API.
+
+   - **Configuration**:
+     - Enter the Tenant ID and Client ID of the Microsoft Entra app registration.
+     - Provide the Client Secret.
+     - Provide the OAuth Scope (defaults to `https://graph.microsoft.com/.default`).
+     - Provide the Email From address used as the sender for outgoing emails.
+     - Click **Test Connection** to verify the configuration before saving.
+
+   - **Example Configuration Screen**:
+     ![Microsoft 365 Graph](../images/connector-microsoft365-graph.png)
+
 ---
 
 ### **Certification Authorities**  
-These connectors enable vScrawl to communicate with the configured Certification Authorities to issue vScrawl signing user certificates.  Currently only EJBCA is supported.
+These connectors enable vScrawl to communicate with the configured Certification Authorities to issue vScrawl signing user certificates. Select **Certification Authority** as the Purpose, then choose a Provider: **EJBCA** or **DictaLabs CA**.
 
 ####EJBCA  
    Use this connector to communicate with a pre-deployed EJBCA instance to issue user certificates.  
 
    - **Configuration**:  
      - Enter the EJBCA instance name and its base URI.  
-     - Provide the CCA Profile Name (certificate profile) and End Entity Profile as configured on EJBCA.  
+     - Provide the CCA Profile Name (certificate profile) and Profile Name for End Entity Certificates as configured on EJBCA.  
+     - Provide the QES Certificate Profile Name.
      - Provide the Certificate Authority (Issuing CA) name and corresponding username and password.
      - Browse for the keystore file to authenticate to the EJBCA and the keystore password.
 
    - **Example Configuration Screen**:  
      ![Amazon SES Configuration](../images/ca-ejbca-connector.png)
+     ![EJBCA QES Profile Name](../images/connector-ejbca-qes-profile.png)
+
+####DictaLabs CA
+   Use this connector to issue certificates through DictaLabs' own Certification Authority.
+
+   - **Configuration**:
+     - Enter a Name and the Base URI of the DictaLabs CA API.
+     - Provide the API Key (sent as `x-api-key`).
+     - Provide the CA Profile Name (Certification Authority Profile Name).
+     - Provide the QES Certificate Profile Name.
+
+   - **Example Configuration Screen**:
+     ![DictaLabs CA](../images/connector-dictalabs-ca.png)
+
+---
+
+### **Auth Connectors**
+These connectors let vScrawl delegate authentication to an external identity provider. Select **Auth** as the Purpose, then choose a Provider.
+
+####Keycloak
+   Use this connector to enable Single Sign-On via Keycloak. This connector must be configured before enabling Keycloak in [Authentication Settings](../other_admin_operations/authentication_settings.md).
+
+   - **Configuration**:
+     - Enter the Keycloak URL (base URL of the Keycloak server) and Realm name.
+     - Provide the Client ID and Client Secret registered in the realm.
+     - Provide the Admin Username and Admin Password for the Keycloak admin console.
+
+   - **Example Configuration Screen**:
+     ![Keycloak](../images/connector-keycloak.png)
+
 ---
 
 > **Note:** Carefully select the connector type and configuration that best meets your organizational requirements for optimal operation.

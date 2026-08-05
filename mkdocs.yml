@@ -36,8 +36,8 @@ nav:
       - Package: finance_settings/package.md
       - Credit Details: finance_settings/credit_details.md
   - Other Administrative Operations:
-      - What Comes Next: other_admin_operations/what_comes_next.md
       - License Manager: other_admin_operations/license_manager.md
+      - Qualified Certificate Requests: other_admin_operations/qualified_cert_requests.md
       - Application Settings: other_admin_operations/application_settings.md
       - Authentication Settings: other_admin_operations/authentication_settings.md
       - Storage Settings: other_admin_operations/storage_settings.md
@@ -47,3 +47,10 @@ nav:
       - Branding: other_admin_operations/branding.md
       - Organization: other_admin_operations/organization.md
       - Users: other_admin_operations/users.md
+      - Activity Logs: other_admin_operations/activity_logs.md
+      - Audit Logs: other_admin_operations/audit_logs.md
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences

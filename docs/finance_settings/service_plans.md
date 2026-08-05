@@ -17,3 +17,10 @@ To add a new service plan, provide:
 - Administrator may additionally choose to turn on 2-Factor Authentication for users who use this service plan.
 - Allows administrators to control whether users can share workflow documents with other users. When enabled, users can share documents for collaboration; when disabled, document sharing is restricted.
 - Allows users to log in to the system using **SmartCard authentication**. When enabled, SmartCard login is available; when disabled, users must use the standard login methods.
+- **Compliance Mode** – Restrict which signing modes this service plan allows (cannot exceed what the uploaded license permits — see [License Manager](../other_admin_operations/license_manager.md)):
+    - **eIDAS (EU)** – Advanced & Qualified Electronic Signatures.
+    - **ESIGN + UETA (US)** – Simple Electronic Signatures with consent disclosure.
+    - These toggles only appear when the corresponding mode is enabled on the license. When eIDAS mode is on, at least one AES/QES connector must be selected above.
+- **Custom Email Connector** – Toggle **Allow custom email connector** to let organizations on this plan use their own email connector(s) instead of the system default, then select which connectors they may use from **Available email connectors**. This option is only available when the license permits custom SMTP.
+
+![Compliance Mode and Custom Email Connector](../images/admin-service-plan-compliance-custom-email.png)

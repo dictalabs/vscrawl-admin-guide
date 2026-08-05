@@ -19,8 +19,14 @@ For secure user login to the vScrawl application, **Two-Factor Authentication (2
   - **Google Authenticator app**.  
 
 ## Smart Card Authentication
-Administrators can enable or disable **Smart Card Authentication** to allow login through a **Smart Card**.
+Administrators can enable or disable **Smart Card Authentication** to allow login through a **Smart Card**. When enabled, a required **Smart Card Login Heading** field appears — the text shown as the heading on the smart card login screen.
 
 ## Single Sign-On (SSO)  
-Administrators can configure login using a user’s **Google account** to enable the **Single Sign-On (SSO)** feature.   
-Administrators can configure login using **Keycloak authentication** to enable **Single Sign-On (SSO)**. When enabled, users can securely log in through Keycloak; when disabled, only the standard login methods will be available.
+SSO is controlled by a parent **Enable SSO** toggle. Turning it on reveals two provider toggles nested underneath it:
+
+- **Enable Google Authentication** – Lets users log in with their **Google account**.
+- **Enable KeyCloak Authentication** – Lets users log in via **Keycloak**. This requires a [Keycloak connector](../connectors/add_connectors.md#auth-connectors) to be configured first.
+
+Turning the parent **Enable SSO** toggle off disables both providers, regardless of their individual state; when off, only the standard login methods are available.
+
+![admin-authentication-settings-sso-smartcard.png](../images/admin-authentication-settings-sso-smartcard.png)

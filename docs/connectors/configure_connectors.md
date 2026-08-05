@@ -8,5 +8,8 @@ In this screen, the administrator can select the default connectors for:
 
 - **Default Email Connector**: Choose the default email connector to manage email notifications.
 
-- **Default OnBoarding Connector**: Select the default onboarding connector for remote signatures. 
-- **Default CA Connector**: Select the default Certification Authority connector.  Currently only EJBCA based CA connector is supported.
+- **Default OnBoarding Connector**: Select the default onboarding connector for remote signatures. Only Sign connectors using the **eTugra Middleware** or **Crypto Engine** providers appear in this dropdown.
+- **Default CA Connector**: Select the default Certification Authority connector, from any configured **EJBCA** or **DictaLabs CA** connector.
+- **Power Survey Recipient Limit**: Set the maximum number of recipients allowed in a single Power Survey (numbers only). Leave blank to use the application default.
+
+![Power Survey Recipient Limit](../images/admin-default-settings-power-survey-limit.png)
