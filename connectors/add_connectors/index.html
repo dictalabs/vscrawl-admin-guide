@@ -552,6 +552,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#crypto-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      Crypto Engine
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -594,6 +603,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#microsoft-365-graph-microsoft-oauth2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Microsoft 365 Graph (Microsoft OAuth2)
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -613,6 +631,39 @@
   <a href="#ejbca" class="md-nav__link">
     <span class="md-ellipsis">
       EJBCA
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dictalabs-ca" class="md-nav__link">
+    <span class="md-ellipsis">
+      DictaLabs CA
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#auth-connectors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Auth Connectors
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Auth Connectors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#keycloak" class="md-nav__link">
+    <span class="md-ellipsis">
+      Keycloak
     </span>
   </a>
   
@@ -833,11 +884,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../other_admin_operations/what_comes_next/" class="md-nav__link">
+      <a href="../../other_admin_operations/license_manager/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    What Comes Next
+    License Manager
   </span>
   
 
@@ -854,11 +905,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../other_admin_operations/license_manager/" class="md-nav__link">
+      <a href="../../other_admin_operations/qualified_cert_requests/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    License Manager
+    Qualified Certificate Requests
   </span>
   
 
@@ -1057,6 +1108,48 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other_admin_operations/activity_logs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Activity Logs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other_admin_operations/audit_logs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Audit Logs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1164,6 +1257,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#crypto-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      Crypto Engine
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1206,6 +1308,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#microsoft-365-graph-microsoft-oauth2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Microsoft 365 Graph (Microsoft OAuth2)
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1225,6 +1336,39 @@
   <a href="#ejbca" class="md-nav__link">
     <span class="md-ellipsis">
       EJBCA
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dictalabs-ca" class="md-nav__link">
+    <span class="md-ellipsis">
+      DictaLabs CA
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#auth-connectors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Auth Connectors
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Auth Connectors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#keycloak" class="md-nav__link">
+    <span class="md-ellipsis">
+      Keycloak
     </span>
   </a>
   
@@ -1276,7 +1420,10 @@
 <li><strong>Purpose</strong>: Select the purpose from the following options:  </li>
 <li><strong>Email</strong>  </li>
 <li><strong>Sign</strong>  </li>
+<li><strong>Certification Authority</strong></li>
+<li><strong>Auth</strong></li>
 </ul>
+<p><img alt="Purpose Dropdown" src="../../images/connector-purpose-dropdown.png" /></p>
 <hr />
 <h2 id="connector-options">Connector Options</h2>
 <h3 id="sign-connectors"><strong>Sign Connectors</strong></h3>
@@ -1291,11 +1438,13 @@
 <li>Upload a logo for the application.  </li>
 <li>Enter the server URL for eTugra Middleware.  </li>
 <li>Select the signing options: <strong>AES</strong>, <strong>QES</strong>, or both.  </li>
+<li>Optionally toggle <strong>Enable HSM Signing</strong> to sign through a Hardware Security Module. When enabled, the <strong>HSM Identifier</strong> field becomes required.</li>
 </ul>
 </li>
 <li>
 <p><strong>Example Configuration Screen</strong>:<br />
-<img alt="eTugra Middleware" src="../../images/sign-etugra-middleware-connector.png" /></p>
+<img alt="eTugra Middleware" src="../../images/sign-etugra-middleware-connector.png" />
+     <img alt="eTugra Middleware HSM Signing" src="../../images/connector-etugra-middleware-hsm.png" /></p>
 </li>
 </ul>
 <h4 id="etugra-signer-app">eTugra Signer App</h4>
@@ -1331,6 +1480,24 @@
 <li>
 <p><strong>Example Configuration Screen</strong>:<br />
 <img alt="CSC 2.0" src="../../images/sign-cscv2-connector.png" /></p>
+</li>
+</ul>
+<h4 id="crypto-engine">Crypto Engine</h4>
+<p>Use this connector for local signing backed by AWS KMS.</p>
+<ul>
+<li>
+<p><strong>Configuration</strong>:</p>
+<ul>
+<li>Enter a Name and the Crypto Engine's Base URI.</li>
+<li>Provide the AWS KMS Client ID and Client Secret.</li>
+<li>Provide a Store Name.</li>
+<li>Optionally upload a logo.</li>
+<li>Select the signature qualifiers: <strong>Advanced Electronic Signature</strong>, <strong>Qualified Electronic Signature</strong>, or both.</li>
+</ul>
+</li>
+<li>
+<p><strong>Example Configuration Screen</strong>:
+     <img alt="Crypto Engine" src="../../images/connector-crypto-engine.png" /></p>
 </li>
 </ul>
 <hr />
@@ -1383,9 +1550,27 @@
 <img alt="Amazon SES Configuration" src="../../images/email-amazon-ses-connector.png" /></p>
 </li>
 </ul>
+<h4 id="microsoft-365-graph-microsoft-oauth2">Microsoft 365 Graph (Microsoft OAuth2)</h4>
+<p>Use this connector to send email through a Microsoft 365 mailbox via the Microsoft Graph API.</p>
+<ul>
+<li>
+<p><strong>Configuration</strong>:</p>
+<ul>
+<li>Enter the Tenant ID and Client ID of the Microsoft Entra app registration.</li>
+<li>Provide the Client Secret.</li>
+<li>Provide the OAuth Scope (defaults to <code>https://graph.microsoft.com/.default</code>).</li>
+<li>Provide the Email From address used as the sender for outgoing emails.</li>
+<li>Click <strong>Test Connection</strong> to verify the configuration before saving.</li>
+</ul>
+</li>
+<li>
+<p><strong>Example Configuration Screen</strong>:
+     <img alt="Microsoft 365 Graph" src="../../images/connector-microsoft365-graph.png" /></p>
+</li>
+</ul>
 <hr />
 <h3 id="certification-authorities"><strong>Certification Authorities</strong></h3>
-<p>These connectors enable vScrawl to communicate with the configured Certification Authorities to issue vScrawl signing user certificates.  Currently only EJBCA is supported.</p>
+<p>These connectors enable vScrawl to communicate with the configured Certification Authorities to issue vScrawl signing user certificates. Select <strong>Certification Authority</strong> as the Purpose, then choose a Provider: <strong>EJBCA</strong> or <strong>DictaLabs CA</strong>.</p>
 <h4 id="ejbca">EJBCA</h4>
 <p>Use this connector to communicate with a pre-deployed EJBCA instance to issue user certificates.  </p>
 <ul>
@@ -1393,14 +1578,52 @@
 <p><strong>Configuration</strong>:  </p>
 <ul>
 <li>Enter the EJBCA instance name and its base URI.  </li>
-<li>Provide the CCA Profile Name (certificate profile) and End Entity Profile as configured on EJBCA.  </li>
+<li>Provide the CCA Profile Name (certificate profile) and Profile Name for End Entity Certificates as configured on EJBCA.  </li>
+<li>Provide the QES Certificate Profile Name.</li>
 <li>Provide the Certificate Authority (Issuing CA) name and corresponding username and password.</li>
 <li>Browse for the keystore file to authenticate to the EJBCA and the keystore password.</li>
 </ul>
 </li>
 <li>
 <p><strong>Example Configuration Screen</strong>:<br />
-<img alt="Amazon SES Configuration" src="../../images/ca-ejbca-connector.png" /></p>
+<img alt="Amazon SES Configuration" src="../../images/ca-ejbca-connector.png" />
+     <img alt="EJBCA QES Profile Name" src="../../images/connector-ejbca-qes-profile.png" /></p>
+</li>
+</ul>
+<h4 id="dictalabs-ca">DictaLabs CA</h4>
+<p>Use this connector to issue certificates through DictaLabs' own Certification Authority.</p>
+<ul>
+<li>
+<p><strong>Configuration</strong>:</p>
+<ul>
+<li>Enter a Name and the Base URI of the DictaLabs CA API.</li>
+<li>Provide the API Key (sent as <code>x-api-key</code>).</li>
+<li>Provide the CA Profile Name (Certification Authority Profile Name).</li>
+<li>Provide the QES Certificate Profile Name.</li>
+</ul>
+</li>
+<li>
+<p><strong>Example Configuration Screen</strong>:
+     <img alt="DictaLabs CA" src="../../images/connector-dictalabs-ca.png" /></p>
+</li>
+</ul>
+<hr />
+<h3 id="auth-connectors"><strong>Auth Connectors</strong></h3>
+<p>These connectors let vScrawl delegate authentication to an external identity provider. Select <strong>Auth</strong> as the Purpose, then choose a Provider.</p>
+<h4 id="keycloak">Keycloak</h4>
+<p>Use this connector to enable Single Sign-On via Keycloak. This connector must be configured before enabling Keycloak in <a href="../../other_admin_operations/authentication_settings/">Authentication Settings</a>.</p>
+<ul>
+<li>
+<p><strong>Configuration</strong>:</p>
+<ul>
+<li>Enter the Keycloak URL (base URL of the Keycloak server) and Realm name.</li>
+<li>Provide the Client ID and Client Secret registered in the realm.</li>
+<li>Provide the Admin Username and Admin Password for the Keycloak admin console.</li>
+</ul>
+</li>
+<li>
+<p><strong>Example Configuration Screen</strong>:
+     <img alt="Keycloak" src="../../images/connector-keycloak.png" /></p>
 </li>
 </ul>
 <hr />

@@ -828,11 +828,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../other_admin_operations/what_comes_next/" class="md-nav__link">
+      <a href="../other_admin_operations/license_manager/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    What Comes Next
+    License Manager
   </span>
   
 
@@ -849,11 +849,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../other_admin_operations/license_manager/" class="md-nav__link">
+      <a href="../other_admin_operations/qualified_cert_requests/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    License Manager
+    Qualified Certificate Requests
   </span>
   
 
@@ -1043,6 +1043,48 @@
   
   <span class="md-ellipsis">
     Users
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../other_admin_operations/activity_logs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Activity Logs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../other_admin_operations/audit_logs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Audit Logs
   </span>
   
 
@@ -1307,53 +1349,55 @@
 <h2 id="unpack-and-prepare-installation-files">Unpack and Prepare Installation Files</h2>
 <ul>
 <li>Download the <strong>vScrawl installation package</strong> and transfer it to the target server. You may choose between the <strong>offline</strong> or an <strong>online</strong> package based on your preference.  The <strong>offline</strong> package has all docker images bundled within the package.  The <strong>online</strong> package will pull the docker images online during the installation.</li>
-<li>Extract the package to the desired location:</li>
+<li>
+<p>Extract the package to the desired location:
+<div class="highlight"><pre><span></span><code>unzip<span class="w"> </span>vScrawl-vx.x-offline-YYYYMMDD.zip
+</code></pre></div>
+Or
+<div class="highlight"><pre><span></span><code>unzip<span class="w"> </span>vScrawl-vx.x-online-YYYYMMDD.zip
+</code></pre></div></p>
+</li>
+<li>
+<p>Navigate to the installation directory:
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>/home/vscrawl/vScrawl-vx.x-offline-YYYYMMDD
+</code></pre></div>
+Or
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>/home/vscrawl/vScrawl-vx.x-online-YYYYMMDD
+</code></pre></div></p>
+</li>
 </ul>
-<pre><code class="language-bash">unzip vScrawl-vx.x-offline-YYYYMMDD.zip
-</code></pre>
-<p>Or</p>
-<pre><code class="language-bash">unzip vScrawl-vx.x-online-YYYYMMDD.zip
-</code></pre>
-<ul>
-<li>Navigate to the installation directory:</li>
-</ul>
-<pre><code class="language-bash">cd /home/vscrawl/vScrawl-vx.x-offline-YYYYMMDD
-</code></pre>
-<p>Or</p>
-<pre><code class="language-bash">cd /home/vscrawl/vScrawl-vx.x-online-YYYYMMDD
-</code></pre>
 <hr />
 <h2 id="run-the-setup-script">Run the Setup Script</h2>
 <h3 id="confirm-permissions">Confirm Permissions</h3>
 <p>Make sure to confirm if sufficient permissions (rwxrwxrwx) are provided to the installation scripts present under the base installation directory and under the <strong>install-scripts</strong> and <strong>uninstall-scripts</strong> sub-directories.</p>
 <h3 id="starting-the-script">Starting the Script</h3>
-<p>Run the setup script:</p>
-<pre><code class="language-bash">./setup_offline.sh
-</code></pre>
-<p>Or</p>
-<pre><code class="language-bash">./setup_online.sh
-</code></pre>
+<p>Run the setup script:
+<div class="highlight"><pre><span></span><code>./setup_offline.sh
+</code></pre></div>
+Or
+<div class="highlight"><pre><span></span><code>./setup_online.sh
+</code></pre></div></p>
 <h3 id="installation-options">Installation Options</h3>
-<pre><code class="language-bash">#########################################
-###     WELCOME TO VSCRAWL SETUP      ###
-#########################################
+<p><div class="highlight"><pre><span></span><code><span class="c1">#########################################</span>
+<span class="c1">###     WELCOME TO VSCRAWL SETUP      ###</span>
+<span class="c1">#########################################</span>
 
-Choose from the following:
- 0. Exit
- 1. Complete Setup
- 2. Set Environment
- 3. Set Web Apps URLs
- 4. Install MySQL DB Server
- 5. Install Docker
- 6. Run All Services
- 7. Change URLs
- 8. Install Let's Encrypt Certbot
- 9. Get SSL Certificates
- 10. Restart All Services
- 11. Restart Web Apps
-Enter your choice (0-11):
-</code></pre>
-<p>When prompted, select:
+Choose<span class="w"> </span>from<span class="w"> </span>the<span class="w"> </span>following:
+<span class="w"> </span><span class="m">0</span>.<span class="w"> </span>Exit
+<span class="w"> </span><span class="m">1</span>.<span class="w"> </span>Complete<span class="w"> </span>Setup
+<span class="w"> </span><span class="m">2</span>.<span class="w"> </span>Set<span class="w"> </span>Environment
+<span class="w"> </span><span class="m">3</span>.<span class="w"> </span>Set<span class="w"> </span>Web<span class="w"> </span>Apps<span class="w"> </span>URLs
+<span class="w"> </span><span class="m">4</span>.<span class="w"> </span>Install<span class="w"> </span>MySQL<span class="w"> </span>DB<span class="w"> </span>Server
+<span class="w"> </span><span class="m">5</span>.<span class="w"> </span>Install<span class="w"> </span>Docker
+<span class="w"> </span><span class="m">6</span>.<span class="w"> </span>Run<span class="w"> </span>All<span class="w"> </span>Services
+<span class="w"> </span><span class="m">7</span>.<span class="w"> </span>Change<span class="w"> </span>URLs
+<span class="w"> </span><span class="m">8</span>.<span class="w"> </span>Install<span class="w"> </span>Let<span class="err">&#39;</span>s<span class="w"> </span>Encrypt<span class="w"> </span>Certbot
+<span class="w"> </span><span class="m">9</span>.<span class="w"> </span>Get<span class="w"> </span>SSL<span class="w"> </span>Certificates
+<span class="w"> </span><span class="m">10</span>.<span class="w"> </span>Restart<span class="w"> </span>All<span class="w"> </span>Services
+<span class="w"> </span><span class="m">11</span>.<span class="w"> </span>Restart<span class="w"> </span>Web<span class="w"> </span>Apps
+Enter<span class="w"> </span>your<span class="w"> </span>choice<span class="w"> </span><span class="o">(</span><span class="m">0</span>-11<span class="o">)</span>:
+</code></pre></div>
+When prompted, select:
 - <strong>1. Complete Setup</strong></p>
 <h3 id="configuration-inputs">Configuration Inputs</h3>
 <ul>
@@ -1402,16 +1446,14 @@ Enter your choice (0-11):
 <hr />
 <h2 id="monitor-docker-containers">Monitor Docker Containers</h2>
 <ul>
-<li>View running containers:</li>
-</ul>
-<pre><code class="language-bash">docker ps
-</code></pre>
-<ul>
-<li>Check logs for specific containers:</li>
-</ul>
-<pre><code class="language-bash">docker logs -f &lt;container_name&gt;
-</code></pre>
-<ul>
+<li>View running containers:
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>ps
+</code></pre></div></li>
+<li>
+<p>Check logs for specific containers:
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>&lt;container_name&gt;
+</code></pre></div></p>
+</li>
 <li>
 <p><strong>SSL Certificate Errors</strong>:</p>
 <ul>

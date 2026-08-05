@@ -643,11 +643,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../what_comes_next/" class="md-nav__link">
+      <a href="../license_manager/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    What Comes Next
+    License Manager
   </span>
   
 
@@ -664,11 +664,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../license_manager/" class="md-nav__link">
+      <a href="../qualified_cert_requests/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    License Manager
+    Qualified Certificate Requests
   </span>
   
 
@@ -943,6 +943,48 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../activity_logs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Activity Logs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../audit_logs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Audit Logs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1044,10 +1086,15 @@
   - <strong>SMS-based authentication</strong>.<br />
   - <strong>Google Authenticator app</strong>.  </p>
 <h2 id="smart-card-authentication">Smart Card Authentication</h2>
-<p>Administrators can enable or disable <strong>Smart Card Authentication</strong> to allow login through a <strong>Smart Card</strong>.</p>
+<p>Administrators can enable or disable <strong>Smart Card Authentication</strong> to allow login through a <strong>Smart Card</strong>. When enabled, a required <strong>Smart Card Login Heading</strong> field appears — the text shown as the heading on the smart card login screen.</p>
 <h2 id="single-sign-on-sso">Single Sign-On (SSO)</h2>
-<p>Administrators can configure login using a user’s <strong>Google account</strong> to enable the <strong>Single Sign-On (SSO)</strong> feature. <br />
-Administrators can configure login using <strong>Keycloak authentication</strong> to enable <strong>Single Sign-On (SSO)</strong>. When enabled, users can securely log in through Keycloak; when disabled, only the standard login methods will be available.</p>
+<p>SSO is controlled by a parent <strong>Enable SSO</strong> toggle. Turning it on reveals two provider toggles nested underneath it:</p>
+<ul>
+<li><strong>Enable Google Authentication</strong> – Lets users log in with their <strong>Google account</strong>.</li>
+<li><strong>Enable KeyCloak Authentication</strong> – Lets users log in via <strong>Keycloak</strong>. This requires a <a href="../../connectors/add_connectors/#auth-connectors">Keycloak connector</a> to be configured first.</li>
+</ul>
+<p>Turning the parent <strong>Enable SSO</strong> toggle off disables both providers, regardless of their individual state; when off, only the standard login methods are available.</p>
+<p><img alt="admin-authentication-settings-sso-smartcard.png" src="../../images/admin-authentication-settings-sso-smartcard.png" /></p>
 
 
 

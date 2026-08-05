@@ -653,11 +653,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../other_admin_operations/what_comes_next/" class="md-nav__link">
+      <a href="../../other_admin_operations/license_manager/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    What Comes Next
+    License Manager
   </span>
   
 
@@ -674,11 +674,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../other_admin_operations/license_manager/" class="md-nav__link">
+      <a href="../../other_admin_operations/qualified_cert_requests/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    License Manager
+    Qualified Certificate Requests
   </span>
   
 
@@ -877,6 +877,48 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other_admin_operations/activity_logs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Activity Logs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other_admin_operations/audit_logs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Audit Logs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -932,7 +974,15 @@ To add a new service plan, provide:</p>
 <li>Administrator may additionally choose to turn on 2-Factor Authentication for users who use this service plan.</li>
 <li>Allows administrators to control whether users can share workflow documents with other users. When enabled, users can share documents for collaboration; when disabled, document sharing is restricted.</li>
 <li>Allows users to log in to the system using <strong>SmartCard authentication</strong>. When enabled, SmartCard login is available; when disabled, users must use the standard login methods.</li>
+<li><strong>Compliance Mode</strong> – Restrict which signing modes this service plan allows (cannot exceed what the uploaded license permits — see <a href="../../other_admin_operations/license_manager/">License Manager</a>):<ul>
+<li><strong>eIDAS (EU)</strong> – Advanced &amp; Qualified Electronic Signatures.</li>
+<li><strong>ESIGN + UETA (US)</strong> – Simple Electronic Signatures with consent disclosure.</li>
+<li>These toggles only appear when the corresponding mode is enabled on the license. When eIDAS mode is on, at least one AES/QES connector must be selected above.</li>
 </ul>
+</li>
+<li><strong>Custom Email Connector</strong> – Toggle <strong>Allow custom email connector</strong> to let organizations on this plan use their own email connector(s) instead of the system default, then select which connectors they may use from <strong>Available email connectors</strong>. This option is only available when the license permits custom SMTP.</li>
+</ul>
+<p><img alt="Compliance Mode and Custom Email Connector" src="../../images/admin-service-plan-compliance-custom-email.png" /></p>
 
 
 

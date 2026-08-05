@@ -699,11 +699,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../other_admin_operations/what_comes_next/" class="md-nav__link">
+      <a href="../other_admin_operations/license_manager/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    What Comes Next
+    License Manager
   </span>
   
 
@@ -720,11 +720,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../other_admin_operations/license_manager/" class="md-nav__link">
+      <a href="../other_admin_operations/qualified_cert_requests/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    License Manager
+    Qualified Certificate Requests
   </span>
   
 
@@ -923,6 +923,48 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../other_admin_operations/activity_logs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Activity Logs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../other_admin_operations/audit_logs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Audit Logs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -993,29 +1035,29 @@
 <p>This section provides a step-by-step walkthrough for uninstalling <strong>vScrawl</strong> on an in-house server.  Before uninstalling vScrawl, always consider taking a full backup of the applicaiton files, logs and the database.</p>
 <h2 id="starting-the-script">Starting the Script</h2>
 <p>Go to the directory <strong>uninstall-scripts</strong> within the extracted deployment package and execute <strong>uninstall.sh</strong> script:</p>
-<pre><code class="language-bash">cd uninstall-scripts
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>uninstall-scripts
 ./uninstall.sh
-</code></pre>
+</code></pre></div>
 <h2 id="uninstall-options">Uninstall Options</h2>
 <p>The following uninstall options are available:</p>
-<pre><code class="language-bash">##########################################################################
-###                                                                    ###
-###                            WARNING                                 ###
-###                                                                    ###
-### You will loose all the data and will have to redo the installation ###
-### from scratch if it is needed again. It is advised to take backups  ###
-### of the application, logs and the database.                         ###
-###                                                                    ###
-##########################################################################
-This is a critical operation. Proceed with caution.
-Please select an option:
- 0) Exit
- 1) Remove Services
- 2) Remove Docker
- 3) Remove Certbot and Nginx
- 4) Remove MySQL
- 5) Complete Uninstall
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1">##########################################################################</span>
+<span class="c1">###                                                                    ###</span>
+<span class="c1">###                            WARNING                                 ###</span>
+<span class="c1">###                                                                    ###</span>
+<span class="c1">### You will loose all the data and will have to redo the installation ###</span>
+<span class="c1">### from scratch if it is needed again. It is advised to take backups  ###</span>
+<span class="c1">### of the application, logs and the database.                         ###</span>
+<span class="c1">###                                                                    ###</span>
+<span class="c1">##########################################################################</span>
+This<span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span>critical<span class="w"> </span>operation.<span class="w"> </span>Proceed<span class="w"> </span>with<span class="w"> </span>caution.
+Please<span class="w"> </span><span class="k">select</span><span class="w"> </span>an<span class="w"> </span>option:
+<span class="w"> </span><span class="m">0</span><span class="o">)</span><span class="w"> </span>Exit
+<span class="w"> </span><span class="m">1</span><span class="o">)</span><span class="w"> </span>Remove<span class="w"> </span>Services
+<span class="w"> </span><span class="m">2</span><span class="o">)</span><span class="w"> </span>Remove<span class="w"> </span>Docker
+<span class="w"> </span><span class="m">3</span><span class="o">)</span><span class="w"> </span>Remove<span class="w"> </span>Certbot<span class="w"> </span>and<span class="w"> </span>Nginx
+<span class="w"> </span><span class="m">4</span><span class="o">)</span><span class="w"> </span>Remove<span class="w"> </span>MySQL
+<span class="w"> </span><span class="m">5</span><span class="o">)</span><span class="w"> </span>Complete<span class="w"> </span>Uninstall
+</code></pre></div>
 <blockquote>
 <p><strong>Note</strong>: As warned by the wizard, make sure you have taken necessary backups of the applicaiton files, Logs and the database.</p>
 </blockquote>
