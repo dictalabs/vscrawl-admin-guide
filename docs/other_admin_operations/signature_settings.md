@@ -12,3 +12,15 @@ Use the **Signature Settings** screen to configure various signature options wit
 - **Evidence Report Signing Certificate**: Specify the certificate to sign the evidence report.  
 - **Evidence Report Signing Certificate Password**: Enter the password for the evidence report signing certificate.  
 - **Signature Level**: Choose whether the digital signatures will be basic or timestamped signatures.
+
+## Saved Signature Limits
+
+Every user keeps their own library of saved signatures, initials and stamps, and applies the right one to each field they sign. Use this section to control how large those libraries may grow.
+
+![Saved Signature Limits](../images/saved-signature-limits.png)
+
+- **Maximum Saved Signatures**: How many signatures one user can keep in their library.
+- **Maximum Saved Initials**: How many sets of initials one user can keep in their library.
+- **Maximum Saved Stamps**: How many stamps one user can keep in their library.
+
+Each list is capped separately and the allowed range is **1–10** (the default is **5**). When a user reaches the limit, they must delete an item before saving another. Lowering a limit never deletes anything a user has already saved.
