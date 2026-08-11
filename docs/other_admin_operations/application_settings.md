@@ -6,6 +6,6 @@ The **Application Settings** screen allows administrators to configure various a
 - Assigning a **Company Name**.  
 - Configuring the **Application URI**.  
 - Setting the **Admin URI** for the admin interface.  
-- Selecting a default **Locale** for the current deployment.
+- Selecting the default **Language** for the application. This sets the language the application starts in for every user; each user can still switch to another language from the language selector.
 - Enabling registration of new users through Sign Up.
 - Configuring the **Global Date Format** to define how dates are displayed across the application (e.g., `MM/DD/YYYY`, `DD/MM/YYYY`, `YYYY-MM-DD`, etc.).

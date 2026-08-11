@@ -4,7 +4,7 @@ As part of configuring the system for the first time, the next step is to add ex
 
 vScrawl can manage electronic signatures and advanced electronic signatures (AES) within the application. However, for **qualified electronic signatures (QES)**—remote digital signatures—vScrawl relies on an external **Trusted Service Provider (TSP)**. To enable this functionality, a connector must be defined.
 
-Additionally, connectors are required for email server configurations to manage email notifications.
+Additionally, connectors are required for email server configurations to manage email notifications, and for the **Time Stamping Authority (TSA)** used when signatures are timestamped.
 
 ---
 
@@ -31,8 +31,11 @@ Click on the **Add Connector** button to open the connector creation screen.
   - **Sign**  
   - **Certification Authority**
   - **Auth**
+  - **Timestamp**
 
 ![Purpose Dropdown](../images/connector-purpose-dropdown.png)
+
+The **Provider** dropdown only lists the providers that belong to the purpose you selected, so always choose the Purpose first.
 
 ---
 
@@ -189,6 +192,24 @@ These connectors let vScrawl delegate authentication to an external identity pro
 
    - **Example Configuration Screen**:
      ![Keycloak](../images/connector-keycloak.png)
+
+---
+
+### **Timestamp Connectors**
+These connectors point vScrawl at the **Time Stamping Authority (TSA)** server that issues the RFC 3161 timestamps embedded in signed documents. Select **Timestamp** as the Purpose, then choose the **TSA** Provider.
+
+A Timestamp connector is only used when the signature is timestamped. After adding it here, select it in the **TSA Connector** dropdown on the [Signature Settings](../other_admin_operations/signature_settings.md) page — the timestamp URL and credentials are no longer entered on that page.
+
+####TSA
+   Use this connector for any RFC 3161 compliant Time Stamping Authority.
+
+   - **Configuration**:
+     - Enter the **Timestamp URL** of the TSA server.
+     - Turn on **Authentication** only if the TSA server requires credentials. When it is off, the Username and Password fields are hidden and no credentials are sent.
+     - When Authentication is on, provide the **Username** and **Password** issued to you by the TSA operator.
+
+   - **Example Configuration Screen**:
+     ![TSA Timestamp Connector](../images/connector-tsa-timestamp.png)
 
 ---
 
