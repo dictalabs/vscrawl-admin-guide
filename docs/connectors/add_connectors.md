@@ -149,7 +149,7 @@ These connectors enable email notifications. Select the email service provider a
 ---
 
 ### **Certification Authorities**  
-These connectors enable vScrawl to communicate with the configured Certification Authorities to issue vScrawl signing user certificates. Select **Certification Authority** as the Purpose, then choose a Provider: **EJBCA** or **DictaLabs CA**.
+These connectors enable vScrawl to communicate with the configured Certification Authorities to issue vScrawl signing user certificates. Select **Certification Authority** as the Purpose, then choose a Provider: **EJBCA**, **DictaLabs CA** or **Microsoft CA**.
 
 ####EJBCA  
    Use this connector to communicate with a pre-deployed EJBCA instance to issue user certificates.  
@@ -176,6 +176,39 @@ These connectors enable vScrawl to communicate with the configured Certification
 
    - **Example Configuration Screen**:
      ![DictaLabs CA](../images/connector-dictalabs-ca.png)
+
+####Microsoft CA
+   Use this connector to issue certificates from a Microsoft Active Directory Certificate Services
+   (AD CS) Enterprise CA through its web enrollment application. Because AD CS rejects anonymous
+   requests, vScrawl authenticates with domain credentials. It supports both **Windows (NTLM)** and
+   **Basic** authentication and uses whichever the enrollment host offers, so no setting is needed
+   here when the CA administrator changes that.
+
+   - **Configuration**:
+     - Enter a Name and the Enrollment URI of the AD CS host, including the port if it is not the
+       default. vScrawl appends the `/certsrv` path itself, so entering it is optional.
+     - Provide the Certificate Template — the exact internal template name used for the signing
+       certificate, for example `AdvancedDocumentSigning`.
+     - Optionally provide the QES Certificate Template. It applies only when onboarding runs through
+       the signing middleware; the Crypto Engine onboarding path issues a single certificate from the
+       Certificate Template above.
+     - Provide the Domain, Username and Password of a domain account that holds **Enroll** permission
+       on the template. The username may be entered on its own, or as `DOMAIN\user` or `user@domain`.
+     - Optionally provide the Target CA Name. vScrawl compares it against the CA that the enrollment
+       host reports, which catches a host that has been re-pointed at a different CA.
+     - Optionally switch on **Include Email as SAN** to add the signer's email address to the request
+       as a subject alternative name. The CA must be configured to accept SAN attributes in requests,
+       otherwise it ignores them.
+
+   - **Verifying the settings**: use **Test Connection** before saving. It authenticates against the
+     enrollment host without submitting a certificate request, and reports separately whether the host
+     was unreachable, the credentials were rejected, or web enrollment is not installed.
+
+   - **Requirements on the CA**: the certificate template must be configured with **Supply in the
+     request** for the subject name. On *Build from Active Directory information* every issued
+     certificate carries the service account's identity instead of the signer's. The template must
+     also accept RSA-2048 keys, and must not require certificate-manager approval — an approval-gated
+     template returns no certificate in-band, and onboarding fails.
 
 ---
 
