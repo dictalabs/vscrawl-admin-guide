@@ -36,6 +36,7 @@ nav:
       - Package: finance_settings/package.md
       - Credit Details: finance_settings/credit_details.md
   - Other Administrative Operations:
+      - Security & Trust Infrastructure: other_admin_operations/security_trust.md
       - License Manager: other_admin_operations/license_manager.md
       - Qualified Certificate Requests: other_admin_operations/qualified_cert_requests.md
       - Application Settings: other_admin_operations/application_settings.md
