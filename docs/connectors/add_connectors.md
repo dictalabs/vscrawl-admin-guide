@@ -189,9 +189,11 @@ These connectors enable vScrawl to communicate with the configured Certification
        default. vScrawl appends the `/certsrv` path itself, so entering it is optional.
      - Provide the Certificate Template — the exact internal template name used for the signing
        certificate, for example `AdvancedDocumentSigning`.
-     - Optionally provide the QES Certificate Template. It applies only when onboarding runs through
-       the signing middleware; the Crypto Engine onboarding path issues a single certificate from the
-       Certificate Template above.
+     - Provide the QES Certificate Template when onboarding runs through the **signing middleware**
+       (Etugra Middleware) with remote signing enabled. That path issues a qualified certificate as
+       well as an advanced one, and leaving this empty fails the whole onboarding — the user is
+       created but receives no certificate. It is genuinely optional only on the **Crypto Engine**
+       onboarding path, which issues a single certificate from the Certificate Template above.
      - Provide the Domain, Username and Password of a domain account that holds **Enroll** permission
        on the template. The username may be entered on its own, or as `DOMAIN\user` or `user@domain`.
      - Optionally provide the Target CA Name. vScrawl compares it against the CA that the enrollment
@@ -200,15 +202,31 @@ These connectors enable vScrawl to communicate with the configured Certification
        as a subject alternative name. The CA must be configured to accept SAN attributes in requests,
        otherwise it ignores them.
 
+   - **Example Configuration Screen**:
+     ![Microsoft CA](../images/connector-microsoft-ca.png)
+
    - **Verifying the settings**: use **Test Connection** before saving. It authenticates against the
      enrollment host without submitting a certificate request, and reports separately whether the host
      was unreachable, the credentials were rejected, or web enrollment is not installed.
 
-   - **Requirements on the CA**: the certificate template must be configured with **Supply in the
-     request** for the subject name. On *Build from Active Directory information* every issued
-     certificate carries the service account's identity instead of the signer's. The template must
-     also accept RSA-2048 keys, and must not require certificate-manager approval — an approval-gated
-     template returns no certificate in-band, and onboarding fails.
+   - **Requirements on the CA**:
+     - The **Certification Authority Web Enrollment** role must be installed. vScrawl enrols through
+       the `/certsrv` pages; a CA without that role answers 404 and no certificate can be issued.
+     - The certificate template must be configured with **Supply in the request** for the subject
+       name. On *Build from Active Directory information* every issued certificate carries the
+       service account's identity instead of the signer's.
+     - The template must accept RSA-2048 keys, and must not require certificate-manager approval — an
+       approval-gated template returns no certificate in-band, and onboarding fails.
+     - The domain account must hold **Enroll** permission on every template named above, including
+       the QES Certificate Template when one is configured.
+     - Where the CA issues **qualified** certificates, the QES template itself has to assert the
+       qcStatements extension. vScrawl does not add it to the request, and AD CS does not copy
+       request extensions unless the CA is explicitly configured to.
+
+   - **Transport security**: prefer an `https://` Enrollment URI. Over plain HTTP the issued
+     certificate travels unencrypted, and if the host answers with Basic rather than Windows
+     authentication the account password is effectively sent in the clear. vScrawl logs a warning
+     each time it enrols over HTTP.
 
 ---
 

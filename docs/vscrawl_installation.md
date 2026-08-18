@@ -37,6 +37,7 @@ vScrawl is dependent on the following additional applications and services to pe
 	- **SMW** (For Onboarding users and signing documents)
 	- **Crypto Engine** (For Onboarding users and signing documents)
 	- **EJBCA** (For issuing certificate for the users that will onboard using crypto engine connector)
+	- **Microsoft CA (AD CS)** (Alternative certification authority. Requires the Certification Authority Web Enrollment role, so vScrawl can enrol through `/certsrv`)
 	- **Etugra RSS** (For remote signing)
 	- **Etugra Client App** (For client or token signing)
 	- **Sign8** (For remote signing)
