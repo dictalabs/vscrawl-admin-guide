@@ -28,7 +28,7 @@ Upon successful login, the **vScrawl Admin Console Dashboard** is displayed, pro
 
 Cards with an info icon show a tooltip explaining exactly how that number is calculated. Switching the Overview filter re-fetches all eight cards together.
 
-**Signature Trends** shows daily signature volume as a line chart, toggleable between **Last 30 Days** and **Last 90 Days**. Hovering over the chart shows the exact date and count for that day.
+**Signature Trends** shows daily signature volume as a line chart that can be toggled between **Last 30 Days** and **Last 90 Days**. Hovering over the chart shows the exact date and count for that day.
 
 **Live Activity** lists the 3 most recent activity log entries, with a **View All** link to the full Activity Logs screen.
 
