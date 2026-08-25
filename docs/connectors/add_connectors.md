@@ -55,7 +55,9 @@ These connectors facilitate digital signing. Choose the appropriate signing meth
      - Optionally toggle **Enable HSM Signing** to sign through a Hardware Security Module. When enabled, the **HSM Identifier** field becomes required.
 
    - **Example Configuration Screen**:  
+
      ![eTugra Middleware](../images/sign-etugra-middleware-connector.png)
+
      ![eTugra Middleware HSM Signing](../images/connector-etugra-middleware-hsm.png)
 
 ####eTugra Signer App  
@@ -67,6 +69,7 @@ These connectors facilitate digital signing. Choose the appropriate signing meth
      - Select the signing options: **AES**, **QES**, or both.  
 
    - **Example Configuration Screen**:  
+
      ![eTugra Signer App](../images/sign-etugra-signer-connector.png)
 
 ####CSC 2.0  
@@ -81,6 +84,7 @@ These connectors facilitate digital signing. Choose the appropriate signing meth
      - Select the signing options: **AES**, **QES**, or both.  
 
    - **Example Configuration Screen**:  
+
      ![CSC 2.0](../images/sign-cscv2-connector.png)
 
 ####Crypto Engine
@@ -94,6 +98,7 @@ These connectors facilitate digital signing. Choose the appropriate signing meth
      - Select the signature qualifiers: **Advanced Electronic Signature**, **Qualified Electronic Signature**, or both.
 
    - **Example Configuration Screen**:
+
      ![Crypto Engine](../images/connector-crypto-engine.png)
 
 ---
@@ -110,6 +115,7 @@ These connectors enable email notifications. Select the email service provider a
      - Provide a "From" email address.  
 
    - **Example Configuration Screen**:  
+
      ![SMTP Configuration](../images/email-smtp-connector.png)
 
 ####SendGrid  
@@ -120,6 +126,7 @@ These connectors enable email notifications. Select the email service provider a
      - Provide a "From" email address.  
 
    - **Example Configuration Screen**:  
+
      ![SendGrid Configuration](../images/email-sendgrid-connector.png)
 
 ####Amazon SES  
@@ -131,6 +138,7 @@ These connectors enable email notifications. Select the email service provider a
      - Provide a "From" email address.  
 
    - **Example Configuration Screen**:  
+
      ![Amazon SES Configuration](../images/email-amazon-ses-connector.png)
 
 ####Microsoft 365 Graph (Microsoft OAuth2)
@@ -144,6 +152,7 @@ These connectors enable email notifications. Select the email service provider a
      - Click **Test Connection** to verify the configuration before saving.
 
    - **Example Configuration Screen**:
+
      ![Microsoft 365 Graph](../images/connector-microsoft365-graph.png)
 
 ---
@@ -162,7 +171,9 @@ These connectors enable vScrawl to communicate with the configured Certification
      - Browse for the keystore file to authenticate to the EJBCA and the keystore password.
 
    - **Example Configuration Screen**:  
+
      ![Amazon SES Configuration](../images/ca-ejbca-connector.png)
+
      ![EJBCA QES Profile Name](../images/connector-ejbca-qes-profile.png)
 
 ####DictaLabs CA
@@ -175,6 +186,7 @@ These connectors enable vScrawl to communicate with the configured Certification
      - Provide the QES Certificate Profile Name.
 
    - **Example Configuration Screen**:
+
      ![DictaLabs CA](../images/connector-dictalabs-ca.png)
 
 ####Microsoft CA
@@ -203,6 +215,7 @@ These connectors enable vScrawl to communicate with the configured Certification
        otherwise it ignores them.
 
    - **Example Configuration Screen**:
+
      ![Microsoft CA](../images/connector-microsoft-ca.png)
 
    - **Verifying the settings**: use **Test Connection** before saving. It authenticates against the
@@ -242,6 +255,7 @@ These connectors let vScrawl delegate authentication to an external identity pro
      - Provide the Admin Username and Admin Password for the Keycloak admin console.
 
    - **Example Configuration Screen**:
+
      ![Keycloak](../images/connector-keycloak.png)
 
 ---
@@ -260,6 +274,7 @@ A Timestamp connector is only used when the signature is timestamped. After addi
      - When Authentication is on, provide the **Username** and **Password** issued to you by the TSA operator.
 
    - **Example Configuration Screen**:
+
      ![TSA Timestamp Connector](../images/connector-tsa-timestamp.png)
 
 ---

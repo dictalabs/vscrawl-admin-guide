@@ -1,7 +1,8 @@
 # Authentication Settings  
 
 The **Authentication Settings** screen is used to configure various settings to ensure secure collaboration on sensitive document workflows.  
-![Authentication Settings|557](../images/authentication-settings.png)
+
+![Authentication Settings](../images/authentication-settings.png)
 
 The screen is divided into the following sections.
 

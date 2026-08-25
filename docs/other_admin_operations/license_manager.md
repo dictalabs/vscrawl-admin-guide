@@ -3,6 +3,7 @@
 From the left navigation pane, click on **License** under **APPLICATION** to open the License Manager.  
 
 ![License Manager 1](../images/license-manager-one.png)
+
 ![License Manager 2](../images/license-manager-two.png)
 
 From this page, administrators can:  

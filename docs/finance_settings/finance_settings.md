@@ -5,6 +5,7 @@ Configure finance settings to ensure that registered organizations and signing u
 From the left navigation pane, click on **Configurations** under **APPLICATION** and then in the Configurations sub-menu click on **Finance Settings**.  
 
 ![Finance Settings 1](../images/finance-settings.png)
+
 From this screen, administrator can configure these:
 
 - Choose currency in which the signing users should be assigned/purchasing a service plan and corresponding package.

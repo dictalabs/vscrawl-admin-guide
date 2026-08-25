@@ -9,7 +9,9 @@ From the left navigation pane, click on **Package** under **FINANCE** to open th
 From this page, administrators can view a list of existing packages.  The useful details include **Credits**, **Credits Price**, **Service Plan**, **Status**, and finally whether a particular package is marked as default or not.  Under the **Options**, an administrator can choose to delete an existing package or click on three dots to mark an existing package as default or update an existing package.
 
 Clicking on Add Package shows the following page:
+
 ![Package 2](../images/add-package.png)
+
 Provide the following details to create a new package:
 
 - Name and optional description for the package.

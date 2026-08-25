@@ -1,6 +1,7 @@
 # Signature Settings  
 
 Use the **Signature Settings** screen to configure how vScrawl signs documents and the evidence reports that go with them.  
+
 ![Signature Settings](../images/signature-settings.png)
 
 The screen is divided into the following sections.
@@ -31,6 +32,7 @@ This dropdown only appears when the Signature Process is **LTV**, and it is requ
 The TSA server address and its credentials are configured on the connector itself, not on this page — see [Timestamp Connectors](../connectors/add_connectors.md#timestamp-connectors). Add the connector first, then come back here and select it.
 
 ## Evidence Report  
+
 ![Evidence Report](../images/signature-settings-evidence-report.png)
 
 - **Generate Evidence Reports on the Completion of Workflows** – Generates a digitally signed evidence report that records who shared the document, who signed it, the time of signing, and the signing method used. Turning it on reveals the engine that signs the report.  
