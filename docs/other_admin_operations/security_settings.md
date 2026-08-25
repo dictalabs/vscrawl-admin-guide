@@ -1,6 +1,6 @@
 # Security   
 
-The **Security** screen allows administrators to configure encryption and hashing for user data and documents, and how long the links sent by email stay valid.  
+The **Security** screen allows administrators to configure encryption and hashing for user data and documents, how long the links sent by email stay valid, and how early signing certificates are reported as expiring.  
 
 ![Security Settings](../images/security-settings.png)
 
@@ -26,5 +26,22 @@ These settings control how long a link sent by email keeps working. Both values 
 - **Expiry time for Invite & Password Reset Links** – How long an invitation link or a password reset link remains valid.  
 
 Once a link expires the recipient sees a "link expired" page and has to be sent a new one, so set a window that is long enough for your signers to react.
+
+## Certificate Monitoring  
+- **Certificate Expiry Warning (days)** – How many days before a signing certificate expires vScrawl should start treating that certificate as *expiring soon*.  
+
+![Certificate Monitoring](../images/security-settings-certificate-monitoring.png)
+
+This single value drives both the warnings your users receive and the numbers the platform reports:
+
+- **Warning and automatic renewal** – Once a day vScrawl looks for **AES** signing certificates that expire inside this window, notifies the user who owns each one, and flags it for automatic renewal. The renewal itself happens the next time that user signs a document — never from the admin console. Certificates that are already revoked are skipped, because they need replacing rather than renewing.  
+- **When the package cannot pay for it** – If the owner's organization no longer has the credits to cover a renewal, the certificate is still flagged and the owner is still notified, but the renewal is held back until the package is topped up.  
+- **Security & Trust dashboard** – The **Expiring** and **Renewals Needed** figures on the [Security & Trust Infrastructure](security_trust.md) page count certificates against this same window, so the dashboard always reports the same certificates your users were warned about.  
+
+Each user is notified once per certificate per expiry date, so a wide window does not mean a nightly reminder — a fresh notice is only raised once the certificate has been renewed and a new expiry date applies.
+
+Enter a whole number of days between **1** and **3650**; a value outside that range is refused when saving. If the setting has never been saved, vScrawl behaves as though it were **30** days.
+
+> **Note:** A wider window gives signers more time to renew before their certificate lapses, but also makes the **Expiring** count on the Security & Trust dashboard larger. A narrower window keeps that count small at the cost of a shorter runway.
 
 Click **Save** to apply the changes.

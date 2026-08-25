@@ -30,11 +30,11 @@ Welcome to the **vScrawl Admin Guide**. This guide will walk you through setting
 
 ### Other Administrative Operations:
 - [License Manager](other_admin_operations/license_manager.md)
-- [Application Settings](other_admin_operations/application_settings.md)
-- [Authentication Settings](other_admin_operations/authentication_settings.md)
-- [Storage Settings](other_admin_operations/storage_settings.md)
-- [Security Settings](other_admin_operations/security_settings.md)
-- [Signature Settings](other_admin_operations/signature_settings.md)
+- [Application](other_admin_operations/application_settings.md)
+- [Authentication](other_admin_operations/authentication_settings.md)
+- [Storage](other_admin_operations/storage_settings.md)
+- [Security](other_admin_operations/security_settings.md)
+- [Signature](other_admin_operations/signature_settings.md)
 - [Privacy Policy](other_admin_operations/privacy_policy.md)
 - [Branding](other_admin_operations/branding.md)
 - [Organization](other_admin_operations/organization.md)

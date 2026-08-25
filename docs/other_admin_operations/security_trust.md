@@ -59,7 +59,7 @@ A combined, most-recent-first list of two kinds of activity that may need a clos
 
 Below the identity section, four cards summarize the health of every signing certificate the platform has issued:
 
-- **Expiring** – certificates due to expire within the configured warning window (default 30 days, set under **General Settings → Certificate Expiry Warning**).
+- **Expiring** – certificates due to expire within the configured warning window (default 30 days, set under **Configurations → Security → Certificate Monitoring**, see [Certificate Monitoring](security_settings.md#certificate-monitoring)).
 - **Expired** – certificates already past their expiry date; signing is blocked until renewed.
 - **Revoked** – certificates confirmed revoked by an OCSP check.
 - **Renewals Needed** – expiring certificates whose organization is eligible for automatic renewal on the user's next sign.
