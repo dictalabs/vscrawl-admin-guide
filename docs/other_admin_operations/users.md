@@ -14,4 +14,4 @@ To change the status, click **Change Status**, which will display the following 
 
 ![Change Status Screen](../images/user-status.png)
 
-From the dropdown, select the user status as **ACTIVE** or **INACTIVE**.
+From the pop up, select the user status as **ACTIVE** or **INACTIVE**.

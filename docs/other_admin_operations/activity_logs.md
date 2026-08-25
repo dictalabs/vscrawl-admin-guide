@@ -7,7 +7,7 @@
 1. Log in to the admin console.
 2. From the left navigation menu, under **Audit**, click **Activity Logs**.
 
-Each row shows: **ID**, **User**, **Organization**, **Module**, **Action Performed**, **Performed By**, and **Date and time**. Use the search box to filter entries, and the pagination controls at the bottom to page through results.
+Each row shows: **ID**, **User**, **Organization**, **Module**, **Action**, **Performed By**, and **Date and time**. Use the search box to filter entries, and the pagination controls at the bottom to page through results.
 
 ![admin-activity-logs-list.png](../images/admin-activity-logs-list.png)
 
@@ -18,6 +18,10 @@ Click the **eye icon** in the **View Changes** column on any row to see exactly 
 - **Browser Agent** and **IP Address** the action was performed from.
 - **Previous** – the record's state before the action.
 - **Current** – the record's state after the action.
+- **Action** - what action was performed.
+- **Module** - In which module the change was occured.
+- **Trace ID** - The Id that can be used to trace the activity.
+- **Date & Time** - Shows the date and time of the action.
 
 ![admin-activity-logs-view-changes.png](../images/admin-activity-logs-view-changes.png)
 
