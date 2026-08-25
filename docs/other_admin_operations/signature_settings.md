@@ -1,6 +1,6 @@
-# Signature Settings  
+# Signature 
 
-Use the **Signature Settings** screen to configure how vScrawl signs documents and the evidence reports that go with them.  
+Use the **Signature** screen to configure how vScrawl signs documents and the evidence reports that go with them.  
 
 ![Signature Settings](../images/signature-settings.png)
 
