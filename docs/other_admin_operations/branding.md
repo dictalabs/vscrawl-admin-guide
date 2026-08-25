@@ -6,8 +6,11 @@ vScrawl is a brandable application. In addition to the option to change the lang
 
 You can update the **Company Logo** and **Favicon** with your own company's images. Additionally, the color scheme can be customized for the following sections:
 
+- Assets 
+- Theme Colors
 - Header Section
 - Left Panel Section
+- Main Background Section
 - Dialogs Section
 - Buttons Section
  
