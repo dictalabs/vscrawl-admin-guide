@@ -38,10 +38,14 @@ Please select an option:
 
 Carefully choose one of the available **uninstall** options. You may choose:
 
-- **1) Remove Services** if it is required to only remove the installed vScrawl Services.
-- **2) Remove Docker** if it is additionally required to remove Docker installation, and it will remove services as well as Docker.
-- **3) Remove Certbot and Nginx** to remove Lets Encrypt SSL as needed
-- **4) Remove MySQL** to remove MySQL database server as needed
-- **5) Complete Uninstall** if, for a strong reason, you choose to completely remove the whole installation.
+**1) Remove Services** if it is required to only remove the installed vScrawl Services.
+
+**2) Remove Docker** if it is additionally required to remove Docker installation, and it will remove services as well as Docker.
+
+**3) Remove Certbot and Nginx** to remove Lets Encrypt SSL as needed.
+
+**4) Remove MySQL** to remove MySQL database server as needed.
+
+**5) Complete Uninstall** if, for a strong reason, you choose to completely remove the whole installation.
 
 If you select the desired option and hit Enter button, the relevant components will get removed and there will be a notification about completion of the uninstall operation.
