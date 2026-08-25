@@ -1,8 +1,8 @@
 # Finance Settings  
 
-Configure finance settings to ensure that registered organizations and signing users are billed correctly. The first step in this process is to define the charging currency and set up a pricing model for the different user operations within vScrawl.
+Configure finance settings to ensure that registered organizations and signing users are billed correctly. The first step in this process is to define the charging currency and the price of a single credit, and then set up a pricing model that assigns a credit cost to each billable user operation within vScrawl.
 
-From the left navigation pane, click on **Configurations** under **APPLICATION** and then in the Configurations sub-menu click on **Finance Settings**.  
+From the left navigation pane, click on **Configurations** under **APPLICATION**, and then open the **Finance** tab on the Configurations page.  
 
 ![Finance Settings 1](../images/finance-settings.png)
 
