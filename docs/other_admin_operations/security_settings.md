@@ -1,6 +1,6 @@
-# Security Settings  
+# Security   
 
-The **Security Settings** screen allows administrators to configure encryption and hashing for user data and documents, and how long the links sent by email stay valid.  
+The **Security** screen allows administrators to configure encryption and hashing for user data and documents, and how long the links sent by email stay valid.  
 
 ![Security Settings](../images/security-settings.png)
 
