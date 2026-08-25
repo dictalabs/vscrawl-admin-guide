@@ -42,5 +42,3 @@ These settings control how users are enrolled into the **Remote Signature Servic
     - **Apple App Link** – Link to the same app on the Apple App Store.
 - **Admin Approval is Required for Onboarding** – When on, an administrator must approve each onboarding request before it completes. Requests waiting for approval are listed under [Qualified Certificate Requests](qualified_cert_requests.md).
 
-## Link Expiry
-The expiry times for email links and for invite / password reset links are configured in the [Link Expiry](security_settings.md#link-expiry) section of the Security Settings page.

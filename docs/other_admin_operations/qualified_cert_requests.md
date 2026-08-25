@@ -10,7 +10,7 @@ The **Qualified Certificate Requests** screen lets administrators review the ide
 1. Log in to the admin console.
 2. From the left navigation menu, under **Administration**, click **Qualified Certificate Requests**.
 
-The list shows every request with **Name**, **Email**, **Mobile Phone**, **Nationality**, **Status** (Pending / Approved / Rejected), **Meeting Date**, and **Created On**. Use the search box to filter by name or email.
+The list shows every request with **Name**, **Email**, **Mobile**, **Nationality**, **Status** (Pending / Approved / Rejected), **Meeting**, and **Created On**,  **Action**. Use the search box to filter by name or email.
 
 ![admin-qualified-cert-requests-list.png](../images/admin-qualified-cert-requests-list.png)
 
