@@ -1,4 +1,4 @@
-# Application Settings  
+# Application  
 
 The **Application Settings** screen allows administrators to configure various aspects of the deployed application, including:  
 

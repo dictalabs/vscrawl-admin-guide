@@ -1,4 +1,4 @@
-# Storage Settings  
+# Storage  
 
 The **Storage Settings** screen allows administrators to configure document storage and retrieval settings for vScrawl.  
 

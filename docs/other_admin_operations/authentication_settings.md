@@ -1,4 +1,4 @@
-# Authentication Settings  
+# Authentication  
 
 The **Authentication Settings** screen is used to configure various settings to ensure secure collaboration on sensitive document workflows.  
 
