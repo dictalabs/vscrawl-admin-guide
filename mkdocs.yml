@@ -50,6 +50,11 @@ nav:
       - Users: other_admin_operations/users.md
       - Activity Logs: other_admin_operations/activity_logs.md
       - Audit Logs: other_admin_operations/audit_logs.md
+  - Compliance:
+      - GDPR Overview: compliance/gdpr_overview.md
+      - Consent Records: compliance/consent_records.md
+      - Data Subject Requests: compliance/data_subject_requests.md
+      - Data Retention: compliance/data_retention.md
 
 markdown_extensions:
   - admonition

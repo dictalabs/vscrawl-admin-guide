@@ -1,0 +1,144 @@
+# Data Subject Requests
+
+**A data subject request is someone asking what you hold about them, or asking you to change or delete it.** Under GDPR you must respond within **one month**, free of charge. This page is the operational procedure for handling one using the admin console.
+
+## The clock
+
+One month from **receipt**, not from when you got around to it. You may extend by two further months for genuinely complex requests, but you must tell the requester **within the first month** — the extension notice is itself deadline-bound.
+
+Record every request: what was asked, what you did, what you refused and why, and when you responded. That record is your evidence of compliance, and a supervisory authority will ask for it.
+
+## Step 1 — Establish who is the controller
+
+This determines whether you answer or forward.
+
+| The requester is | Controller | Your action |
+| --- | --- | --- |
+| A registered user of your platform | You | Answer it |
+| A recipient who was sent a document to sign, and has no account | **The organization that sent it** | Forward to that organization; tell the requester who they are |
+| Asking about a document another organization sent them | **That organization** | Forward |
+
+!!! warning ""
+    Do not delete or alter a document because a recipient asked you to. The sending organization is the controller for that document — acting unilaterally on a recipient's instruction would breach your obligations to the sender.
+
+    The exception is data you hold in your own right, such as log entries about that person's signing session. Answer that part directly.
+
+## Step 2 — Verify identity
+
+You must be reasonably sure the requester is who they claim to be — releasing someone's data to an impostor is itself a breach.
+
+| Requester | How to verify |
+| --- | --- |
+| Signed in already | The authenticated session is enough |
+| Emailing from the address on the account | Send a confirmation link to that address |
+| Emailing from any other address | Do not proceed on that alone; contact the address on file |
+| A lawyer or agent acting for someone | Written authority, plus verification of the person themselves |
+
+!!! warning ""
+    **Never ask for a passport or ID scan to verify a privacy request.** Collecting a high-risk identity document in order to honor a privacy right is a disproportionate collection and will not be viewed kindly.
+
+## Step 3 — Handle the request
+
+### Access — "what do you hold about me?"
+
+The requester is entitled to a copy of their data **and** to supporting information: why you process it, who you share it with, how long you keep it, where it came from, and their remaining rights. A data dump alone does not satisfy the request.
+
+There is currently **no one-click export**. Assemble the response from:
+
+| Source | Where |
+| --- | --- |
+| Account details | Customers → **Users**, search by name or email |
+| Their organization and role | Customers → **Organizations** |
+| Everything they did on the platform | Audit → **[Activity Logs](../other_admin_operations/activity_logs.md)**, search by their name or email |
+| Anything an administrator did to their account | Audit → **[Audit Logs](../other_admin_operations/audit_logs.md)** |
+| Their documents and signing history | Their own **Documents** list and per-document **Audit Report** |
+| Identity verification data, if any | Administration → **[Qualified Certificate Requests](../other_admin_operations/qualified_cert_requests.md)** |
+
+!!! note ""
+    Activity Logs and Audit Logs are viewable and searchable, but cannot be exported from the console. For a large history, ask your database administrator to extract the rows for that user rather than transcribing screens.
+
+**Redact other people.** A document record names other recipients. You must not disclose their details to the requester — remove them unless they are unavoidably part of a document the requester is already a party to.
+
+### Rectification — "this is wrong, fix it"
+
+Most of it is self-service: the user edits their own profile under **Settings → Account Settings**.
+
+If they cannot reach their account, an administrator can view the user under Customers → **Users** and use the **⋮** menu to recover their password or change their status. Note that some identity fields are held in Keycloak rather than the application, and may need to be corrected there.
+
+### Erasure — "delete me"
+
+Preferred route: **the user deletes their own account** from **Settings → Delete Account**. This runs the complete deletion path — it removes their Keycloak login, deletes draft documents, voids documents already sent, and deletes their signature images, certificates and signing keys.
+
+An administrator can also delete a user from Customers → **Users**.
+
+Two things to tell the requester before they proceed:
+
+1. **An organization owner cannot delete their account while other members remain.** They must transfer ownership or remove the other members first.
+2. **Signed documents are not erased.** Their name stays on documents they have already signed, together with the evidence that they signed them.
+
+!!! note ""
+    Refusing to erase signed documents is lawful and expected. Article 17(3) allows retention where it is needed for a legal obligation or for legal claims — a signature that could be erased would not be a signature, and other parties rely on it.
+
+    Explain this to the requester rather than silently keeping the data. Partial erasure is a normal outcome, not a failure, but it has to be disclosed.
+
+!!! warning ""
+    **Deletion does not currently remove everything.** The user's name and email remain on their platform record and in the activity and audit logs, and identity verification data in Qualified Certificate Requests is not touched at all.
+
+    If you receive an erasure request, these need to be handled manually by your database administrator. Raise it with your implementation contact — anonymizing them automatically is a known outstanding item.
+
+### Portability — "give me my data to take elsewhere"
+
+Narrower than access: it covers only data the person gave you, held by consent or contract, in automated form. Their profile, their uploaded documents, the values they typed into fields, their signature images.
+
+It does **not** cover activity logs, inferred location, or data other people provided about them.
+
+Supply it in a structured, machine-readable form — JSON or CSV, plus the document files. A download is a compliant answer; you are not obliged to transfer directly to another provider.
+
+### Objection — "stop analyzing my location"
+
+The [Security & Trust](../other_admin_operations/security_trust.md) dashboard derives approximate locations from users' IP addresses to detect unusual sign-ins. A user may object to this.
+
+!!! warning ""
+    There is currently no switch to exclude a specific user from location analysis. Until there is, an objection has to be handled by clearing that user's stored location data manually and documenting what you did.
+
+Objections to **security logging itself** are normally refused — audit integrity is a compelling legitimate ground. Record your reasoning for each refusal rather than declining as a matter of routine.
+
+### Withdrawing consent
+
+- **Cookies and site storage** — the user clicks **Cookie preferences** at the bottom of the Privacy Policy page.
+- **Mobile telemetry** — **Settings → Privacy** in the app, or **Reset privacy choices**.
+- **Electronic signature consent** — cannot be withdrawn after signing. The consent record is evidence of a completed act, and it is retained for as long as the document.
+
+## Step 4 — Respond
+
+Your response should state:
+
+- What you found and what you are enclosing
+- Why you process each category, and who you share it with
+- How long you keep it
+- **What you refused and under which exemption** — never leave this implicit
+- Their right to complain to a supervisory authority
+
+## Step 5 — Record it
+
+Keep, for each request: a reference, the date received, who asked and how you verified them, which right they invoked, who the controller was, what you did, what you refused and why, and the date you responded.
+
+Retain that log — it is evidence of compliance, and it also contains personal data, so it needs a retention period of its own.
+
+## Known limitations, summarized
+
+Tell requesters the truth about these rather than working around them quietly.
+
+| Limitation | Effect |
+| --- | --- |
+| No self-service data export | Access and portability requests must be assembled by hand |
+| Deletion leaves name, email and log entries | Erasure needs manual database work to complete |
+| Identity verification data is not deleted with the account | Must be handled separately |
+| No per-user opt-out of location analysis | Objections handled manually |
+| No way to freeze processing without deleting | Restriction requests cannot be fully honored |
+
+## Related
+
+- [GDPR Overview](gdpr_overview.md)
+- [Consent Records](consent_records.md)
+- [Data Retention](data_retention.md)
