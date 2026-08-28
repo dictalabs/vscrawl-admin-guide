@@ -29,6 +29,7 @@ nav:
       - Add a new Administrator: configure_rbac/add_admin.md
   - Add and Configure Connectors:
       - Add Connectors: connectors/add_connectors.md
+      - Set Up Google Drive and Dropbox: connectors/storage_provider_setup.md
       - Configure Connectors in Default Settings: connectors/configure_connectors.md
   - Finance:
       - Finance Settings: finance_settings/finance_settings.md

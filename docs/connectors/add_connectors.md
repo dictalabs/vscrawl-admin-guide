@@ -32,6 +32,7 @@ Click on the **Add Connector** button to open the connector creation screen.
   - **Certification Authority**
   - **Auth**
   - **Timestamp**
+  - **Storage**
 
 ![Purpose Dropdown](../images/connector-purpose-dropdown.png)
 
@@ -276,6 +277,63 @@ A Timestamp connector is only used when the signature is timestamped. After addi
    - **Example Configuration Screen**:
 
      ![TSA Timestamp Connector](../images/connector-tsa-timestamp.png)
+
+### **Storage Connectors**
+These connectors decide **where document content is kept**. Select **Storage** as the Purpose, then choose a Provider.
+
+Every storage location is a connector, including the platform's own volume — there is no separate "storage type" setting. After adding one here, select it as the **Default Storage** on the [Storage](../other_admin_operations/storage_settings.md) page.
+
+> Google Drive and Dropbox connectors need an application registered with the provider first. See [Set Up Google Drive and Dropbox](storage_provider_setup.md) for what to create and which exact values to use.
+
+> **Important:** Changing the Default Storage does not only affect new documents. Everything already stored is moved to the new connector in the background. Read [Changing the default moves what is already stored](../other_admin_operations/storage_settings.md#changing-the-default-moves-what-is-already-stored) before switching.
+
+####Server Storage
+   Documents are kept on the volume the platform itself runs on. This connector is created for you when vScrawl is installed, and is the default until you choose otherwise.
+
+   - **Configuration**:
+     - **Storage Location** — the root directory documents are written under. Leave it blank to use the installation's configured path.
+
+   Adding a second Server Storage connector with a different Storage Location lets documents be moved onto a different volume.
+
+####Google Drive
+   Documents are kept in a folder of a connected Google account.
+
+   - **Configuration**:
+     - **Client ID** and **Client Secret** — the OAuth client of this connector's own Google Cloud project. Both are required; there is no shared application to fall back to, so two connectors can sit in two entirely different projects.
+     - **OAuth Redirect URI** — this platform's storage callback endpoint, on the **API host** rather than the admin console's. Register this exact string with the connector's Google application: the provider checks it again during the token exchange, so one character of difference fails.
+     - **Refresh Token** — written by Connect Account. A token only exists once Google has issued one, so it is not typed in.
+     - **Root Folder ID** — appears only after the account is connected. Consent creates the folder and records it here.
+
+   - **Example Configuration Screen**:
+
+     ![Google Drive Storage Connector](../images/storage-google-drive-connector.png)
+
+####Dropbox
+   Documents are kept in a folder of a connected Dropbox account.
+
+   - **Configuration**:
+     - **App Key** and **App Secret** — from this connector's own scoped Dropbox app. Required, for the same reason as above.
+     - **OAuth Redirect URI** — as for Google Drive, registered in the Dropbox App Console.
+     - **Refresh Token** — written by Connect Account.
+     - **Root Path** — appears only after the account is connected. Defaults to `/vscrawl`.
+     - Grant the app the `account_info.read` permission **before** connecting if you want the Storage Usage figures reported. A token issued before that permission was granted cannot read them, and the panel simply omits the figures.
+
+   - **Example Configuration Screen**:
+
+     ![Dropbox Storage Connector](../images/storage-dropbox-connector.png)
+
+---
+
+### Connect Account and Test Connection
+
+Google Drive and Dropbox connectors need two things that credentials alone cannot provide: a **refresh token**, which only exists once the provider has issued one, and the **folder** to store in, which is created during the same consent.
+
+- **Connect Account**, in the configuration section's header, creates or saves the connector, opens the provider's consent screen, and stores what comes back — the refresh token and the folder.
+- Until it has been run, the dialog's **Add**/**Update** button stays disabled and the footer reads *"Connect the account to save these credentials."* A connector holding credentials but no token cannot store anything, and saving one would look successful while being unusable.
+- Editing the Client ID, Client Secret, App Key or App Secret afterwards disables saving again until the account is reconnected: the stored token was issued to the old credentials and no longer belongs to the new ones.
+- **Test Connection** proves the connector works end to end: it writes a small file, reads it back, and deletes it. The result and the time it took are shown, and are also what the Default Storage dropdown uses to decide whether to offer the connector at all.
+
+> **Note:** A storage connector that still holds documents or templates **cannot be deleted**, and neither can the one currently set as the Default Storage. Deleting a connector does not delete the content — it deletes the only record of where the content is, and every read of it fails from that moment with nothing left to point at. Move the content elsewhere first by changing the Default Storage and letting the move finish.
 
 ---
 
