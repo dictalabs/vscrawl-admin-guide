@@ -25,4 +25,19 @@ Click the **eye icon** in the **View Changes** column on any row to see exactly 
 
 ![admin-activity-logs-view-changes.png](../images/admin-activity-logs-view-changes.png)
 
+### Consent at sign-up
+
+One row type carries an extra panel. **Terms and Privacy Policy Accepted** records that a person
+accepted the Terms of Service and Privacy Policy when their account was created, and its details
+panel shows the time they accepted, which screen collected it, and the marks identifying the exact
+wording they were shown. See
+[Consent Records](../compliance/consent_records.md#4-terms-acceptance-at-account-creation).
+
+![admin-activity-logs-consent.png](../images/admin-activity-logs-consent.png)
+
+!!! note ""
+    **Previous** and **Current** are not shown on a consent row. It records something that happened
+    rather than something that changed, so there is no before and after — the panel is the whole
+    record. Every other row type is unchanged.
+
 Click **Close** to return to the log list.

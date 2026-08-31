@@ -61,7 +61,7 @@ The decision is kept in the visitor's own browser, which is what the banner read
 
 For a visitor who never signs in there is no server-side record, and nothing identifies them to hold one against. If you are challenged about that case, what you produce is the banner itself and its disclosure text.
 
-A user can review or withdraw their choice using the **Cookie preferences** button at the bottom of the Privacy Policy page.
+A user reviews their choice under **Settings → Privacy**, which shows what they chose and when. To answer differently they clear the site's stored data in their browser, which brings the banner back on their next visit.
 
 !!! note ""
     If you change the categories or materially change the banner wording, the policy version must be increased so that everyone is asked again. Consent given under an older version does not carry over.
@@ -124,6 +124,28 @@ If a policy has never been published, the mark is empty and the attribute is sim
 
 ### Retrieving it
 
+**Start in the admin console — you no longer need Keycloak for this.**
+
+Every acceptance now writes its own row into [Activity Logs](../other_admin_operations/activity_logs.md), listed as **Terms and Privacy Policy Accepted**. Click the row's **view** icon and the details panel includes a **Consent at sign-up** section:
+
+| Field | Contains |
+| --- | --- |
+| **Accepted On** | When they accepted |
+| **Accepted Through** | Which screen collected it — web sign-up form, invitation setup, prompted after sign-in, mobile app or API |
+| **Terms Version Mark** | The mark identifying the exact Terms wording they accepted |
+| **Privacy Policy Version Mark** | The same for the Privacy Policy |
+
+The row carries these values itself rather than looking them up, so it still answers the question after the account has been deleted and its Keycloak user removed — which is usually when the question arrives.
+
+!!! note ""
+    A mark shown as **—** with "not captured" beneath it means that document had not been published when the person accepted. It is not a fault in the record.
+
+    Only rows of this one type show the panel. Every other log row is unchanged.
+
+#### The copy held in Keycloak
+
+The same acceptance is also written onto the Keycloak account. You should not normally need it, but it is the underlying record and it is what the activity row was built from.
+
 !!! warning ""
     **The Keycloak admin console hides these by default.** Keycloak's user profile ships with its "unmanaged attributes" setting switched off, and while that is off the Users screen shows no Attributes tab and the admin API returns nothing — even though the values are stored correctly.
 
@@ -136,51 +158,49 @@ To make them visible in the console, an administrator enables unmanaged attribut
 3. Set **Unmanaged attributes** to **Enabled** (or **Only administrators can view** if you want them read-only).
 4. Save.
 
-After that: **Users → find the user → Attributes tab**, and the four values are listed.
+After that: **Users → find the user → Attributes tab**, and the five values are listed.
 
 This is a display setting only — it changes nothing about what is stored, and the acceptance record is written whether or not it is switched on.
 
-### Keeping the version numbers meaningful
+### The marks look after themselves
 
-The version numbers come from the login theme, not from the browser — deliberately, so the recorded version cannot be altered by whoever is submitting the form.
+Nothing has to be raised by hand when you publish new wording. The mark is computed from the text,
+so editing either document in **Configurations → Privacy** changes it immediately, and every
+acceptance from that moment carries the new one.
 
-!!! warning ""
-    **When you publish a materially changed Terms of Service or Privacy Policy, increase the matching version number** in the login theme's `theme.properties`:
-
-    ```
-    app.terms.version=2
-    app.privacy.version=2
-    ```
-
-    If you do not, everyone who signs up afterwards is recorded as having accepted the old version number while actually being shown the new text — which makes the whole record misleading rather than merely incomplete.
-
-    Keep a dated copy of the version you are replacing. See [Privacy Policy](../other_admin_operations/privacy_policy.md#keeping-track-of-versions).
+!!! note ""
+    **Still keep a dated copy of each published version** outside the console, as
+    [Privacy Policy](../other_admin_operations/privacy_policy.md) advises. The mark tells you *which*
+    text somebody accepted; only your own copy can show *what it said*.
 
 !!! note ""
     Accounts created **before** this was introduced have none of these attributes. Their absence means "created before acceptance was recorded", not "did not accept" — the checkbox was always present on the sign-up page, it simply was not stored. Say exactly that if you are ever asked.
 
 ### Check the policy links resolve
 
-The consent checkbox links to your Terms and Privacy pages. Those addresses come from two environment variables set on the Keycloak service:
+The consent checkbox links to your Terms and Privacy pages. Both addresses are built from **one** environment variable set on the Keycloak service:
 
 | Variable | Points at |
 | --- | --- |
-| `VSCRAWL_TERMS_URL` | Your public Terms of Service page |
-| `VSCRAWL_PRIVACY_URL` | Your public Privacy Policy page |
+| `VSCRAWL_APP_BASE_URL` | The address of your user-facing application, with no trailing slash |
+
+The theme appends the page paths itself — `/terms-of-services` and `/privacy-policy` — because those are fixed by the application's own routes and never differ between installations. Only the host does.
 
 !!! warning ""
-    **Set both on every installation that is not a local development machine.** If they are not set, the login theme falls back to a `localhost` address — which resolves to the *user's own computer*, so the policy never opens for them.
+    **Set it on every installation that is not a local development machine.** If it is not set, the login theme falls back to a `localhost` address — which resolves to the *user's own computer*, so the policy never opens for them.
 
     That matters beyond broken links: consent has to be informed, and it is hard to argue someone was informed by a page that never loaded.
 
-They are set alongside the other Keycloak settings in the deployment's compose file, for example:
+It is set alongside the other Keycloak settings in the deployment's compose file, for example:
 
 ```
-VSCRAWL_TERMS_URL: "https://app.example.com/terms-of-services"
-VSCRAWL_PRIVACY_URL: "https://app.example.com/privacy-policy"
+VSCRAWL_APP_BASE_URL: "https://app.example.com"
 ```
 
-The same two addresses are used by all three consent screens — sign-up, invited-member setup, and the social sign-in terms page — so setting them once covers every route.
+!!! note ""
+    Earlier releases used two separate variables, `VSCRAWL_TERMS_URL` and `VSCRAWL_PRIVACY_URL`. They no longer do anything. If your compose file still sets them, replace both with the single base address above — otherwise the links fall back to `localhost`.
+
+The same address is used by all three consent screens — sign-up, invited-member setup, and the social sign-in terms page — so setting it once covers every route.
 
 To check they are right, open your sign-up page and click both links. They should open your real published pages.
 
@@ -189,9 +209,10 @@ To check they are right, open your sign-up page and click both links. They shoul
 | Check | Why |
 | --- | --- |
 | Is e-signature consent enabled for organizations that need it? | No setting, no evidence — and it cannot be backfilled |
-| Does the Privacy Policy screen have real content? | It ships empty |
+| Does the Privacy Policy screen have real content? | It ships empty, and an unpublished document records an empty mark |
 | Do the registration page's terms and privacy links resolve? | They ship pointing at a development address |
-| Has the banner wording changed without a version increase? | Old consent would be silently reused for new terms |
+| Is `VSCRAWL_APP_BASE_URL` set, and are the two old URL variables gone? | The old pair is ignored; leaving them set hides the fact that the links point at `localhost` |
+| Has the banner wording changed without a version increase? | Old consent would be silently reused for new terms. This applies to the **cookie banner only** — the Terms and Privacy marks look after themselves |
 
 ## Related
 

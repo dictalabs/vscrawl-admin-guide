@@ -130,7 +130,7 @@ A download is a compliant answer; you are not obliged to transfer directly to an
 
 ### Withdrawing consent
 
-- **Cookies and site storage** — the user clicks **Cookie preferences** at the bottom of the Privacy Policy page.
+- **Cookies and site storage** — the user clears the site's stored data in their browser. That resets the choice and brings the banner back on their next visit. **Settings → Privacy** shows the answer currently on record.
 - **Mobile telemetry** — **Settings → Privacy** in the app, or **Reset privacy choices**.
 - **Electronic signature consent** — cannot be withdrawn after signing. The consent record is evidence of a completed act, and it is retained for as long as the document.
 
