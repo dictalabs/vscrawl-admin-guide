@@ -34,7 +34,7 @@ These ship blank or disabled. The platform cannot fill them in for you.
 | --- | --- | --- |
 | **Privacy Policy** | Configurations → [Privacy Policy](../other_admin_operations/privacy_policy.md) | **Ships empty.** Until you paste your policy, users see "Privacy policy content is not available right now." Articles 13 and 14 require you to tell people what you collect and why. |
 | **Terms of Service** | Same screen | Ships empty. |
-| **Encryption at rest** | Configurations → [Security](../other_admin_operations/security_settings.md) | **Defaults to off.** Turn it on. The database holds identity documents and signature images. |
+| **Encryption at rest** | Configurations → [Security](../other_admin_operations/security_settings.md) | **On by default for new installations only.** A deployment set up before this default changed still has it off and must be switched on by hand. Check it. The database holds identity documents and signature images. |
 | **Email connector** | [Connectors](../connectors/add_connectors.md) | Whichever provider you choose receives your recipients' names and email addresses. You need your own agreement with them. |
 | **Storage connector** | [Storage](../other_admin_operations/storage_settings.md) | If you point storage at Google Drive or Dropbox, **your documents go there.** You need your own agreement with that provider. |
 

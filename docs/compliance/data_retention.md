@@ -5,11 +5,11 @@
 ## The short version
 
 !!! warning ""
-    **The platform does not delete anything automatically.** There is no retention setting, no scheduled cleanup, and no age limit on any table.
+    **Automatic deletion ships switched off.** Until an administrator turns it on, nothing is deleted on a schedule and every IP address, browser user agent, approximate location, name and email ever written to the logs stays where it is.
 
-    Every IP address, browser user agent, approximate location, name and email ever written to the activity and audit logs is still stored, and will remain so until someone removes it.
+    That default is deliberate — an upgrade must never start deleting data on its own — but it does mean **doing nothing leaves you non-compliant**. Storage limitation is not optional under GDPR Art. 5(1)(e).
 
-This is the largest outstanding compliance gap in the product, and it is stated plainly here so you can plan around it rather than discover it during an audit.
+Turn it on at **Configurations → Retention**. The rest of this page explains what it covers and what it deliberately does not.
 
 ## What is deleted, and when
 
@@ -26,47 +26,31 @@ Deletion happens only when a person or an administrator triggers it.
 
 | Survives | Why |
 | --- | --- |
-| The user's name and email on their platform record | **Not intended** — a known gap, see below |
-| Their name and email in Activity Logs and Audit Logs | **Not intended** — a known gap |
-| Identity verification data in Qualified Certificate Requests | **Not intended** — deletion does not reach this table |
-| Their name on documents they have already signed | **Correct and deliberate.** Signed documents are evidence; other parties rely on them. |
+| Their name on documents they have already signed | **Correct and deliberate.** Signed documents are evidence; other parties rely on them, and the law requires them kept. |
 | The consent record for those signatures | **Correct.** Evidence of a signature is worthless without it. |
+| The record that an identity check happened, for an issued certificate | **Correct.** It sits behind every signature made with that certificate — the identifiers themselves are removed. |
 
-## What you must do in the meantime
+Everything else is now handled automatically. Deleting an account:
 
-Until retention settings exist, these are manual tasks. Agree them with your database administrator and put them on a schedule.
-
-### Periodically
-
-| Task | Suggested frequency |
-| --- | --- |
-| Remove activity log rows older than your retention period | Quarterly |
-| Remove audit log rows older than your retention period | Quarterly |
-| Remove read notifications older than a few months | Quarterly |
-| Remove expired session and refresh tokens | Monthly |
-| Remove expired invitation and password-reset codes | Monthly |
-| Review rejected qualified certificate requests and delete the attached identity documents | Monthly |
-| Identify accounts with no sign-in for your inactivity threshold, and close them | Annually |
-
-### On every erasure request
-
-Complete by hand what account deletion misses:
-
-1. Replace the name and email on the user's record with anonymized values.
-2. Remove or hash their name and email in the activity and audit log rows.
-3. Mask the final part of the IP addresses in those rows.
-4. Clear the derived location fields.
-5. Delete any qualified certificate request that did not result in an issued certificate.
+- Replaces the name, username and email on their platform record with anonymized values
+- Removes their name from activity and audit entries, and replaces the email with a code that still shows two entries were the same person without saying who
+- Masks the IP addresses, and clears the city and coordinates while keeping the country
+- Deletes qualified certificate requests that never produced a certificate, and strips the passport number, date and place of birth and mother's maiden name from ones that did
 
 !!! note ""
-    Anonymize rather than delete where a record is referenced elsewhere. Removing a log row outright can break the audit trail's continuity, which is itself a compliance problem. Replacing the identifying fields keeps the trail intact while removing the person from it.
+    Log rows are **anonymized rather than removed**. Deleting them outright would leave holes in the audit trail, and a missing entry cannot be told apart from one that was never written. Taking the person out of the row keeps the trail continuous.
+
+    Entries recording an **administrator's** action keep that administrator's own name and address. They are a different person, and that is the accountability record for privileged actions.
 
 ### Identity documents
 
-!!! warning ""
-    Qualified certificate requests store a **scan of the applicant's identity document** in the database. This is the most damaging single field in the system if it is ever exposed.
+The scan of an applicant's identity document is the most damaging single field the platform holds. It is now **discarded automatically as soon as the request is reviewed** — approved or rejected — keeping only which kind of document was checked and the decision.
 
-    Once a request has been reviewed and the certificate issued or rejected, the scan itself is no longer needed — only the verification outcome. Delete the stored scans as soon as review completes, and do not wait for a general retention policy to arrive.
+!!! note ""
+    A consequence worth knowing: an administrator can no longer re-open the document of an already-reviewed request. That is the intended trade-off, but it means the review has to be done properly the first time.
+
+!!! warning ""
+    Requests reviewed **before this behaviour existed** may still hold their scan. Ask your database administrator to clear the stored images on already-reviewed rows once, as a one-off.
 
 ## Deciding your retention periods
 
@@ -86,14 +70,67 @@ These are business and legal decisions, not technical ones. They depend on your 
 !!! note ""
     Whatever you choose, **write it down and publish it in your Privacy Policy**. Articles 13 and 14 require you to tell people how long you keep their data. "Indefinitely" is not an acceptable answer, and neither is silence.
 
-## When retention settings arrive
+## Turning it on
 
-The planned implementation adds configurable periods per data type, plus a daily job that deletes or anonymizes anything past its window and writes a summary to the audit log.
+When you first open the tab, only the master switch is there — the windows appear
+once it is on, because while it is off they have no effect.
 
-Two things to expect when it ships:
+![Retention, before it is enabled](../images/admin-retention-disabled.png)
 
-- It will be **off by default**. A retention job that switches itself on during an upgrade and starts deleting customer documents is far worse than late compliance. You will have to enable it deliberately.
-- You will need to **set your periods before enabling it**, and confirm them against what you have published in your Privacy Policy.
+1. Open **Configurations → Retention** in the admin console.
+2. Switch on **Enable Automatic Deletion**. A warning appears — read it.
+3. Review each window and set it to match **what your published Privacy Policy says**. If the two disagree, the policy is a claim the platform does not honour.
+4. Click **Save**.
+
+!!! warning ""
+    **The first run clears the entire backlog at once.** On an installation that has been collecting logs for years, that first sweep can be a very large deletion, and none of it can be recovered.
+
+    Do it outside working hours, and take a database backup first.
+
+The sweep then runs once a day at 02:30 UTC — see [Changing when the jobs run](#changing-when-the-jobs-run). Each run writes a summary to the [Audit Logs](../other_admin_operations/audit_logs.md) — the entry type is `RETENTION_PURGE` — including runs that deleted nothing, so you can always confirm the job is still alive.
+
+## What it covers
+
+![The retention windows, once enabled](../images/admin-retention-windows.png)
+
+| Setting | What it deletes |
+| --- | --- |
+| Activity logs | End-user activity records, including IP address and browser |
+| Audit logs | Administrator action records |
+| Notifications | In-app notifications |
+| Rejected certificate requests | Identity verification data from requests that were rejected |
+| Expired tokens and links | Old session tokens, invitation links, password-reset codes |
+| Webhook delivery records | The record of each callback sent to a customer endpoint, including its payload |
+
+!!! note ""
+    **Signed documents are never deleted by this policy.** Deleting a customer's signed document is irreversible, and the product does not yet warn a user before it happens. Document retention stays a manual decision — see the periods discussed above.
+
+## Inactive accounts
+
+An account nobody has used for a long time is closed automatically. This is separate from the row-level cleanup above and runs at 03:00 UTC.
+
+| Setting | What it does |
+| --- | --- |
+| **Warn after** | How long an account can sit unused before its holder is emailed |
+| **Close after** | How long before the account is closed. The gap between the two is the holder's grace period |
+
+![Inactive accounts](../images/admin-retention-inactive-accounts.png)
+
+**An account is never closed without having been warned.** If one reaches the closure threshold but no warning was ever sent — which is what happens the first time you enable this on an installation with years of dormant accounts — the sweep sends the warning and leaves the account alone until a later run.
+
+The warning goes out by **email**, because the only person who needs to see it has not opened the product in over a year and would never notice an in-app message. An in-app notification is written too, and that notification doubles as the record that the warning was sent.
+
+Closing an account runs the same path as a user deleting their own account: the login, drafts, saved signatures and keys go; **documents they have already signed stay**. Every closure is recorded in the [Audit Logs](../other_admin_operations/audit_logs.md) as `ACCOUNT_CLOSED_INACTIVE`.
+
+!!! note ""
+    Two cases are skipped on purpose, and both appear in the log rather than failing silently:
+
+    - **An account with no email address** cannot be warned, so it is never closed either.
+    - **An organization owner with other members** cannot be deleted — their organization would lose its owner. Transfer ownership first if you want the account closed.
+
+Windows must be between **7 and 3650 days**. Anything shorter is refused: a window of zero would mean "delete everything older than right now", which on the activity log is every row you have.
+
+If a setting is somehow missing or unreadable, the platform keeps the data for ten years rather than deleting it. Every failure mode errs towards keeping.
 
 ## Backups
 
@@ -102,6 +139,81 @@ Retention applies to backups too, and this is routinely forgotten.
 - Know your backup schedule, how long each backup is kept, and where it is stored.
 - Backups need the same protection as production: encryption, access control, and a defined destruction point.
 - When you erase someone's data, it will persist in backups until those backups expire. The accepted approach is to say so, guarantee that the data is not restored into production, and re-apply the erasure if a restore ever happens.
+
+## Accounts that are never touched by the schedule
+
+Two things are never deleted by age alone, whatever you set the windows to:
+
+- **A signing link that is still live.** Link codes are cleaned up on the token window, but a recipient's access to a document still waiting for them is left alone however old it is. Deleting it would revoke a signer's access to a live document.
+- **A session whose refresh token has not expired.** Token rows are judged by their own recorded lifetime, not by their age, so shortening the token window cannot sign people out.
+
+## Changing when the jobs run
+
+Both jobs are scheduled from the service configuration, not from this console. The entries are in
+`vscrawl-admin-service/config/application.yml`, written out with their defaults so you can find and
+change them:
+
+| Setting | Environment variable | Default | Controls |
+| --- | --- | --- | --- |
+| `retention.scheduler.cron` | `RETENTION_CRON` | `0 30 2 * * *` | When aged rows are deleted |
+| `retention.scheduler.zone` | `RETENTION_TIMEZONE` | `UTC` | The clock **both** jobs are read against |
+| `retention.inactive-accounts.cron` | `RETENTION_INACTIVE_ACCOUNTS_CRON` | `0 0 3 * * *` | When dormant accounts are warned and closed |
+
+There is **one time zone for both jobs**, on purpose: two retention jobs on the same server running
+against different clocks is a way to be surprised, not a feature.
+
+The format is Spring's six-field cron — `second minute hour day-of-month month day-of-week`:
+
+```
+0 30 2 * * *      02:30 every day  (the default)
+0 0 1 * * *       01:00 every day
+0 0 3 * * SUN     03:00 on Sundays
+```
+
+To run at 01:00 Pakistan time:
+
+```yaml
+retention:
+  scheduler:
+    cron: "0 0 1 * * *"
+    zone: "Asia/Karachi"
+```
+
+A restart is needed for the change to take effect.
+
+!!! note ""
+    **A bad cron expression stops the service starting.** That is deliberate: it fails in front of
+    whoever deployed it, with the offending value named in the log, rather than leaving a job that
+    silently never runs. Check the service comes up after changing it.
+
+    The same applies to the time zone — an unknown zone name stops start-up too.
+
+    Note that a **five-field** cron (the Unix style, `30 2 * * *`) is rejected. Spring uses six
+    fields, seconds first.
+
+!!! warning ""
+    **Two values switch a job off rather than scheduling it.**
+
+    | Value | Effect |
+    | --- | --- |
+    | `-` | Turns that job off. This is Spring's own token for a disabled schedule — use it if you deliberately want no sweep on this installation |
+    | *(empty)* | **Also turns it off — silently.** Nothing is logged, and the service starts normally |
+
+    So leaving `cron:` blank is the same as switching retention off, with nothing to tell you. If you
+    want the default, delete the line rather than emptying it.
+
+!!! warning ""
+    **These are not in the admin console, and that is not an oversight.** A cron expression is a
+    deployment decision — it depends on when your installation is quiet — and a wrong one should be
+    caught at start-up, not saved from a settings screen. An administrator cannot change the
+    schedule; whoever owns the deployment can.
+
+## Account deletion is a separate setting
+
+This page covers data deleted **by age, on a schedule**. How much is erased when somebody deletes
+their own account is a different switch, on a different screen:
+**Configurations → Privacy → Account deletion**. See
+[Privacy Policy](../other_admin_operations/privacy_policy.md#account-deletion).
 
 ## Related
 

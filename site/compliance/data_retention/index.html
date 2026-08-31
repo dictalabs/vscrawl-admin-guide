@@ -1,0 +1,2156 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../data_subject_requests/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../images/vscrawl-favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Data Retention - vScrawl Admin Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#data-retention" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="vScrawl Admin Guide" class="md-header__button md-logo" aria-label="vScrawl Admin Guide" data-md-component="logo">
+      
+  <img src="../../images/vscrawl-logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            vScrawl Admin Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Data Retention
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="vScrawl Admin Guide" class="md-nav__button md-logo" aria-label="vScrawl Admin Guide" data-md-component="logo">
+      
+  <img src="../../images/vscrawl-logo.png" alt="logo">
+
+    </a>
+    vScrawl Admin Guide
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../general_description/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    General Description
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vscrawl_installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Install vScrawl
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vscrawl_uninstall/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Uninstall vScrawl
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../start_using/access_console/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Access the vScrawl Admin Console
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configure Role Based Access Control (RBAC)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Configure Role Based Access Control (RBAC)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configure_rbac/configure_rbac/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Why Start With RBAC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configure_rbac/create_role/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Create a new Role
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configure_rbac/add_admin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Add a new Administrator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Add and Configure Connectors
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Add and Configure Connectors
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../connectors/add_connectors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Add Connectors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../connectors/storage_provider_setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Set Up Google Drive and Dropbox
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../connectors/configure_connectors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configure Connectors in Default Settings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Finance
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Finance
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../finance_settings/finance_settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Finance Settings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../finance_settings/service_plans/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Service Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../finance_settings/package/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Package
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../finance_settings/credit_details/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Credit Details
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Other Administrative Operations
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Other Administrative Operations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other_admin_operations/security_trust/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security & Trust Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other_admin_operations/license_manager/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    License Manager
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other_admin_operations/qualified_cert_requests/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Qualified Certificate Requests
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other_admin_operations/application_settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Application
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other_admin_operations/authentication_settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authentication
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other_admin_operations/storage_settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Storage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other_admin_operations/security_settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other_admin_operations/signature_settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Signature
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other_admin_operations/privacy_policy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Privacy Policy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other_admin_operations/branding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Branding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other_admin_operations/organization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Organization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other_admin_operations/users/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Users
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other_admin_operations/activity_logs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Activity Logs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other_admin_operations/audit_logs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Audit Logs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Compliance
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Compliance
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gdpr_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GDPR Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../consent_records/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Consent Records
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data_subject_requests/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Subject Requests
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Retention
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Retention
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-short-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The short version
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-deleted-and-when" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is deleted, and when
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What is deleted, and when">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-survives-a-deletion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What survives a deletion
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#identity-documents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Identity documents
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deciding-your-retention-periods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deciding your retention periods
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#turning-it-on" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Turning it on
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-it-covers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it covers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inactive-accounts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inactive accounts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Backups
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accounts-that-are-never-touched-by-the-schedule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Accounts that are never touched by the schedule
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changing-when-the-jobs-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changing when the jobs run
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#account-deletion-is-a-separate-setting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Account deletion is a separate setting
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-short-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The short version
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-deleted-and-when" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is deleted, and when
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What is deleted, and when">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-survives-a-deletion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What survives a deletion
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#identity-documents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Identity documents
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deciding-your-retention-periods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deciding your retention periods
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#turning-it-on" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Turning it on
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-it-covers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it covers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inactive-accounts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inactive accounts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Backups
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accounts-that-are-never-touched-by-the-schedule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Accounts that are never touched by the schedule
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changing-when-the-jobs-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changing when the jobs run
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#account-deletion-is-a-separate-setting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Account deletion is a separate setting
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="data-retention">Data Retention</h1>
+<p><strong>GDPR Article 5(1)(e) says personal data may be kept only as long as it is needed.</strong> This page describes what vScrawl keeps, what it deletes, and what you must currently do yourself.</p>
+<h2 id="the-short-version">The short version</h2>
+<div class="admonition warning">
+<p><strong>Automatic deletion ships switched off.</strong> Until an administrator turns it on, nothing is deleted on a schedule and every IP address, browser user agent, approximate location, name and email ever written to the logs stays where it is.</p>
+<p>That default is deliberate — an upgrade must never start deleting data on its own — but it does mean <strong>doing nothing leaves you non-compliant</strong>. Storage limitation is not optional under GDPR Art. 5(1)(e).</p>
+</div>
+<p>Turn it on at <strong>Configurations → Retention</strong>. The rest of this page explains what it covers and what it deliberately does not.</p>
+<h2 id="what-is-deleted-and-when">What is deleted, and when</h2>
+<p>Deletion happens only when a person or an administrator triggers it.</p>
+<table>
+<thead>
+<tr>
+<th>Trigger</th>
+<th>What is removed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A user deletes their account</strong> (Settings → Delete Account)</td>
+<td>Their Keycloak login, draft documents, incomplete self-signed documents, their recipient entries, form fields, inbox items, invitations, signature certificates and signing keys. Documents already sent are set to <strong>Void</strong>.</td>
+</tr>
+<tr>
+<td><strong>An administrator deletes a user</strong> (Customers → Users)</td>
+<td>The same path.</td>
+</tr>
+<tr>
+<td><strong>The last member of an organization leaves</strong></td>
+<td>The organization itself, its templates, its documents and its credit history.</td>
+</tr>
+<tr>
+<td><strong>A user deletes a signature or stamp</strong></td>
+<td>That image only.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="what-survives-a-deletion">What survives a deletion</h3>
+<table>
+<thead>
+<tr>
+<th>Survives</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Their name on documents they have already signed</td>
+<td><strong>Correct and deliberate.</strong> Signed documents are evidence; other parties rely on them, and the law requires them kept.</td>
+</tr>
+<tr>
+<td>The consent record for those signatures</td>
+<td><strong>Correct.</strong> Evidence of a signature is worthless without it.</td>
+</tr>
+<tr>
+<td>The record that an identity check happened, for an issued certificate</td>
+<td><strong>Correct.</strong> It sits behind every signature made with that certificate — the identifiers themselves are removed.</td>
+</tr>
+</tbody>
+</table>
+<p>Everything else is now handled automatically. Deleting an account:</p>
+<ul>
+<li>Replaces the name, username and email on their platform record with anonymized values</li>
+<li>Removes their name from activity and audit entries, and replaces the email with a code that still shows two entries were the same person without saying who</li>
+<li>Masks the IP addresses, and clears the city and coordinates while keeping the country</li>
+<li>Deletes qualified certificate requests that never produced a certificate, and strips the passport number, date and place of birth and mother's maiden name from ones that did</li>
+</ul>
+<div class="admonition note">
+<p>Log rows are <strong>anonymized rather than removed</strong>. Deleting them outright would leave holes in the audit trail, and a missing entry cannot be told apart from one that was never written. Taking the person out of the row keeps the trail continuous.</p>
+<p>Entries recording an <strong>administrator's</strong> action keep that administrator's own name and address. They are a different person, and that is the accountability record for privileged actions.</p>
+</div>
+<h3 id="identity-documents">Identity documents</h3>
+<p>The scan of an applicant's identity document is the most damaging single field the platform holds. It is now <strong>discarded automatically as soon as the request is reviewed</strong> — approved or rejected — keeping only which kind of document was checked and the decision.</p>
+<div class="admonition note">
+<p>A consequence worth knowing: an administrator can no longer re-open the document of an already-reviewed request. That is the intended trade-off, but it means the review has to be done properly the first time.</p>
+</div>
+<div class="admonition warning">
+<p>Requests reviewed <strong>before this behaviour existed</strong> may still hold their scan. Ask your database administrator to clear the stored images on already-reviewed rows once, as a one-off.</p>
+</div>
+<h2 id="deciding-your-retention-periods">Deciding your retention periods</h2>
+<p>These are business and legal decisions, not technical ones. They depend on your jurisdiction and your contracts, so take advice rather than adopting a default. As a starting point for that conversation:</p>
+<table>
+<thead>
+<tr>
+<th>Data</th>
+<th>Typical range</th>
+<th>Consideration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Completed signed documents</td>
+<td>Long — often 10 years</td>
+<td>This is the value your customers paid for. Deleting too early destroys it.</td>
+</tr>
+<tr>
+<td>Draft documents never sent</td>
+<td>Short — months</td>
+<td>Abandoned work</td>
+</tr>
+<tr>
+<td>Documents sent but never completed</td>
+<td>Around a year, then void</td>
+<td>The sender can always resend</td>
+</tr>
+<tr>
+<td>Activity logs</td>
+<td>Around a year</td>
+<td>Long enough to investigate an incident</td>
+</tr>
+<tr>
+<td>Audit logs of administrator actions</td>
+<td>Longer than activity logs</td>
+<td>Privileged actions deserve more scrutiny</td>
+</tr>
+<tr>
+<td>Derived location data</td>
+<td>Much shorter than the log row it sits on</td>
+<td>The most intrusive field, with the weakest justification</td>
+</tr>
+<tr>
+<td>Inactive accounts</td>
+<td>Around two years, with a warning first</td>
+<td>Never close an account silently</td>
+</tr>
+<tr>
+<td>Billing records</td>
+<td>Set by tax law, not by you</td>
+<td>Usually overrides a deletion request</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p>Whatever you choose, <strong>write it down and publish it in your Privacy Policy</strong>. Articles 13 and 14 require you to tell people how long you keep their data. "Indefinitely" is not an acceptable answer, and neither is silence.</p>
+</div>
+<h2 id="turning-it-on">Turning it on</h2>
+<p>When you first open the tab, only the master switch is there — the windows appear
+once it is on, because while it is off they have no effect.</p>
+<p><img alt="Retention, before it is enabled" src="../../images/admin-retention-disabled.png" /></p>
+<ol>
+<li>Open <strong>Configurations → Retention</strong> in the admin console.</li>
+<li>Switch on <strong>Enable Automatic Deletion</strong>. A warning appears — read it.</li>
+<li>Review each window and set it to match <strong>what your published Privacy Policy says</strong>. If the two disagree, the policy is a claim the platform does not honour.</li>
+<li>Click <strong>Save</strong>.</li>
+</ol>
+<div class="admonition warning">
+<p><strong>The first run clears the entire backlog at once.</strong> On an installation that has been collecting logs for years, that first sweep can be a very large deletion, and none of it can be recovered.</p>
+<p>Do it outside working hours, and take a database backup first.</p>
+</div>
+<p>The sweep then runs once a day at 02:30 UTC — see <a href="#changing-when-the-jobs-run">Changing when the jobs run</a>. Each run writes a summary to the <a href="../../other_admin_operations/audit_logs/">Audit Logs</a> — the entry type is <code>RETENTION_PURGE</code> — including runs that deleted nothing, so you can always confirm the job is still alive.</p>
+<h2 id="what-it-covers">What it covers</h2>
+<p><img alt="The retention windows, once enabled" src="../../images/admin-retention-windows.png" /></p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>What it deletes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Activity logs</td>
+<td>End-user activity records, including IP address and browser</td>
+</tr>
+<tr>
+<td>Audit logs</td>
+<td>Administrator action records</td>
+</tr>
+<tr>
+<td>Notifications</td>
+<td>In-app notifications</td>
+</tr>
+<tr>
+<td>Rejected certificate requests</td>
+<td>Identity verification data from requests that were rejected</td>
+</tr>
+<tr>
+<td>Expired tokens and links</td>
+<td>Old session tokens, invitation links, password-reset codes</td>
+</tr>
+<tr>
+<td>Webhook delivery records</td>
+<td>The record of each callback sent to a customer endpoint, including its payload</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p><strong>Signed documents are never deleted by this policy.</strong> Deleting a customer's signed document is irreversible, and the product does not yet warn a user before it happens. Document retention stays a manual decision — see the periods discussed above.</p>
+</div>
+<h2 id="inactive-accounts">Inactive accounts</h2>
+<p>An account nobody has used for a long time is closed automatically. This is separate from the row-level cleanup above and runs at 03:00 UTC.</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Warn after</strong></td>
+<td>How long an account can sit unused before its holder is emailed</td>
+</tr>
+<tr>
+<td><strong>Close after</strong></td>
+<td>How long before the account is closed. The gap between the two is the holder's grace period</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Inactive accounts" src="../../images/admin-retention-inactive-accounts.png" /></p>
+<p><strong>An account is never closed without having been warned.</strong> If one reaches the closure threshold but no warning was ever sent — which is what happens the first time you enable this on an installation with years of dormant accounts — the sweep sends the warning and leaves the account alone until a later run.</p>
+<p>The warning goes out by <strong>email</strong>, because the only person who needs to see it has not opened the product in over a year and would never notice an in-app message. An in-app notification is written too, and that notification doubles as the record that the warning was sent.</p>
+<p>Closing an account runs the same path as a user deleting their own account: the login, drafts, saved signatures and keys go; <strong>documents they have already signed stay</strong>. Every closure is recorded in the <a href="../../other_admin_operations/audit_logs/">Audit Logs</a> as <code>ACCOUNT_CLOSED_INACTIVE</code>.</p>
+<div class="admonition note">
+<p>Two cases are skipped on purpose, and both appear in the log rather than failing silently:</p>
+<ul>
+<li><strong>An account with no email address</strong> cannot be warned, so it is never closed either.</li>
+<li><strong>An organization owner with other members</strong> cannot be deleted — their organization would lose its owner. Transfer ownership first if you want the account closed.</li>
+</ul>
+</div>
+<p>Windows must be between <strong>7 and 3650 days</strong>. Anything shorter is refused: a window of zero would mean "delete everything older than right now", which on the activity log is every row you have.</p>
+<p>If a setting is somehow missing or unreadable, the platform keeps the data for ten years rather than deleting it. Every failure mode errs towards keeping.</p>
+<h2 id="backups">Backups</h2>
+<p>Retention applies to backups too, and this is routinely forgotten.</p>
+<ul>
+<li>Know your backup schedule, how long each backup is kept, and where it is stored.</li>
+<li>Backups need the same protection as production: encryption, access control, and a defined destruction point.</li>
+<li>When you erase someone's data, it will persist in backups until those backups expire. The accepted approach is to say so, guarantee that the data is not restored into production, and re-apply the erasure if a restore ever happens.</li>
+</ul>
+<h2 id="accounts-that-are-never-touched-by-the-schedule">Accounts that are never touched by the schedule</h2>
+<p>Two things are never deleted by age alone, whatever you set the windows to:</p>
+<ul>
+<li><strong>A signing link that is still live.</strong> Link codes are cleaned up on the token window, but a recipient's access to a document still waiting for them is left alone however old it is. Deleting it would revoke a signer's access to a live document.</li>
+<li><strong>A session whose refresh token has not expired.</strong> Token rows are judged by their own recorded lifetime, not by their age, so shortening the token window cannot sign people out.</li>
+</ul>
+<h2 id="changing-when-the-jobs-run">Changing when the jobs run</h2>
+<p>Both jobs are scheduled from the service configuration, not from this console. The entries are in
+<code>vscrawl-admin-service/config/application.yml</code>, written out with their defaults so you can find and
+change them:</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Environment variable</th>
+<th>Default</th>
+<th>Controls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>retention.scheduler.cron</code></td>
+<td><code>RETENTION_CRON</code></td>
+<td><code>0 30 2 * * *</code></td>
+<td>When aged rows are deleted</td>
+</tr>
+<tr>
+<td><code>retention.scheduler.zone</code></td>
+<td><code>RETENTION_TIMEZONE</code></td>
+<td><code>UTC</code></td>
+<td>The clock <strong>both</strong> jobs are read against</td>
+</tr>
+<tr>
+<td><code>retention.inactive-accounts.cron</code></td>
+<td><code>RETENTION_INACTIVE_ACCOUNTS_CRON</code></td>
+<td><code>0 0 3 * * *</code></td>
+<td>When dormant accounts are warned and closed</td>
+</tr>
+</tbody>
+</table>
+<p>There is <strong>one time zone for both jobs</strong>, on purpose: two retention jobs on the same server running
+against different clocks is a way to be surprised, not a feature.</p>
+<p>The format is Spring's six-field cron — <code>second minute hour day-of-month month day-of-week</code>:</p>
+<div class="highlight"><pre><span></span><code>0 30 2 * * *      02:30 every day  (the default)
+0 0 1 * * *       01:00 every day
+0 0 3 * * SUN     03:00 on Sundays
+</code></pre></div>
+<p>To run at 01:00 Pakistan time:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">retention</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">scheduler</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">cron</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0</span><span class="nv"> </span><span class="s">0</span><span class="nv"> </span><span class="s">1</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*&quot;</span>
+<span class="w">    </span><span class="nt">zone</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Asia/Karachi&quot;</span>
+</code></pre></div>
+<p>A restart is needed for the change to take effect.</p>
+<div class="admonition note">
+<p><strong>A bad cron expression stops the service starting.</strong> That is deliberate: it fails in front of
+whoever deployed it, with the offending value named in the log, rather than leaving a job that
+silently never runs. Check the service comes up after changing it.</p>
+<p>The same applies to the time zone — an unknown zone name stops start-up too.</p>
+<p>Note that a <strong>five-field</strong> cron (the Unix style, <code>30 2 * * *</code>) is rejected. Spring uses six
+fields, seconds first.</p>
+</div>
+<div class="admonition warning">
+<p><strong>Two values switch a job off rather than scheduling it.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-</code></td>
+<td>Turns that job off. This is Spring's own token for a disabled schedule — use it if you deliberately want no sweep on this installation</td>
+</tr>
+<tr>
+<td><em>(empty)</em></td>
+<td><strong>Also turns it off — silently.</strong> Nothing is logged, and the service starts normally</td>
+</tr>
+</tbody>
+</table>
+<p>So leaving <code>cron:</code> blank is the same as switching retention off, with nothing to tell you. If you
+want the default, delete the line rather than emptying it.</p>
+</div>
+<div class="admonition warning">
+<p><strong>These are not in the admin console, and that is not an oversight.</strong> A cron expression is a
+deployment decision — it depends on when your installation is quiet — and a wrong one should be
+caught at start-up, not saved from a settings screen. An administrator cannot change the
+schedule; whoever owns the deployment can.</p>
+</div>
+<h2 id="account-deletion-is-a-separate-setting">Account deletion is a separate setting</h2>
+<p>This page covers data deleted <strong>by age, on a schedule</strong>. How much is erased when somebody deletes
+their own account is a different switch, on a different screen:
+<strong>Configurations → Privacy → Account deletion</strong>. See
+<a href="../../other_admin_operations/privacy_policy/#account-deletion">Privacy Policy</a>.</p>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="../gdpr_overview/">GDPR Overview</a></li>
+<li><a href="../data_subject_requests/">Data Subject Requests</a></li>
+<li><a href="../../other_admin_operations/activity_logs/">Activity Logs</a> · <a href="../../other_admin_operations/audit_logs/">Audit Logs</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      © 2025 Dictalabs. All rights reserved.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../extra.js"></script>
+      
+    
+  </body>
+</html>

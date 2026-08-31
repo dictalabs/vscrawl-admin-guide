@@ -1,0 +1,2107 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../consent_records/">
+      
+      
+        <link rel="next" href="../data_retention/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../images/vscrawl-favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Data Subject Requests - vScrawl Admin Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#data-subject-requests" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="vScrawl Admin Guide" class="md-header__button md-logo" aria-label="vScrawl Admin Guide" data-md-component="logo">
+      
+  <img src="../../images/vscrawl-logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            vScrawl Admin Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Data Subject Requests
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="vScrawl Admin Guide" class="md-nav__button md-logo" aria-label="vScrawl Admin Guide" data-md-component="logo">
+      
+  <img src="../../images/vscrawl-logo.png" alt="logo">
+
+    </a>
+    vScrawl Admin Guide
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../general_description/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    General Description
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vscrawl_installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Install vScrawl
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vscrawl_uninstall/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Uninstall vScrawl
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../start_using/access_console/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Access the vScrawl Admin Console
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configure Role Based Access Control (RBAC)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Configure Role Based Access Control (RBAC)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configure_rbac/configure_rbac/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Why Start With RBAC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configure_rbac/create_role/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Create a new Role
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configure_rbac/add_admin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Add a new Administrator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Add and Configure Connectors
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Add and Configure Connectors
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../connectors/add_connectors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Add Connectors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../connectors/storage_provider_setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Set Up Google Drive and Dropbox
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../connectors/configure_connectors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configure Connectors in Default Settings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Finance
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Finance
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../finance_settings/finance_settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Finance Settings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../finance_settings/service_plans/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Service Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../finance_settings/package/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Package
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../finance_settings/credit_details/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Credit Details
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Other Administrative Operations
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Other Administrative Operations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other_admin_operations/security_trust/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security & Trust Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other_admin_operations/license_manager/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    License Manager
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other_admin_operations/qualified_cert_requests/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Qualified Certificate Requests
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other_admin_operations/application_settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Application
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other_admin_operations/authentication_settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authentication
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other_admin_operations/storage_settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Storage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other_admin_operations/security_settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other_admin_operations/signature_settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Signature
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other_admin_operations/privacy_policy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Privacy Policy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other_admin_operations/branding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Branding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other_admin_operations/organization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Organization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other_admin_operations/users/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Users
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other_admin_operations/activity_logs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Activity Logs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other_admin_operations/audit_logs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Audit Logs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Compliance
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Compliance
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gdpr_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GDPR Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../consent_records/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Consent Records
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Subject Requests
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Subject Requests
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-clock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The clock
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-establish-who-is-the-controller" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1 — Establish who is the controller
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-verify-identity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2 — Verify identity
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-handle-the-request" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3 — Handle the request
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 3 — Handle the request">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#access-what-do-you-hold-about-me" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Access — "what do you hold about me?"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rectification-this-is-wrong-fix-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rectification — "this is wrong, fix it"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#erasure-delete-me" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Erasure — "delete me"
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Erasure — &#34;delete me&#34;">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#if-the-same-person-signs-up-again" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        If the same person signs up again
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#portability-give-me-my-data-to-take-elsewhere" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Portability — "give me my data to take elsewhere"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#withdrawing-consent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Withdrawing consent
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-respond" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4 — Respond
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-record-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5 — Record it
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#known-limitations-summarized" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known limitations, summarized
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data_retention/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Retention
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-clock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The clock
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-establish-who-is-the-controller" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1 — Establish who is the controller
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-verify-identity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2 — Verify identity
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-handle-the-request" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3 — Handle the request
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 3 — Handle the request">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#access-what-do-you-hold-about-me" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Access — "what do you hold about me?"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rectification-this-is-wrong-fix-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rectification — "this is wrong, fix it"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#erasure-delete-me" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Erasure — "delete me"
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Erasure — &#34;delete me&#34;">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#if-the-same-person-signs-up-again" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        If the same person signs up again
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#portability-give-me-my-data-to-take-elsewhere" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Portability — "give me my data to take elsewhere"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#withdrawing-consent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Withdrawing consent
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-respond" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4 — Respond
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-record-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5 — Record it
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#known-limitations-summarized" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known limitations, summarized
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="data-subject-requests">Data Subject Requests</h1>
+<p><strong>A data subject request is someone asking what you hold about them, or asking you to change or delete it.</strong> Under GDPR you must respond within <strong>one month</strong>, free of charge. This page is the operational procedure for handling one using the admin console.</p>
+<h2 id="the-clock">The clock</h2>
+<p>One month from <strong>receipt</strong>, not from when you got around to it. You may extend by two further months for genuinely complex requests, but you must tell the requester <strong>within the first month</strong> — the extension notice is itself deadline-bound.</p>
+<p>Record every request: what was asked, what you did, what you refused and why, and when you responded. That record is your evidence of compliance, and a supervisory authority will ask for it.</p>
+<h2 id="step-1-establish-who-is-the-controller">Step 1 — Establish who is the controller</h2>
+<p>This determines whether you answer or forward.</p>
+<table>
+<thead>
+<tr>
+<th>The requester is</th>
+<th>Controller</th>
+<th>Your action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A registered user of your platform</td>
+<td>You</td>
+<td>Answer it</td>
+</tr>
+<tr>
+<td>A recipient who was sent a document to sign, and has no account</td>
+<td><strong>The organization that sent it</strong></td>
+<td>Forward to that organization; tell the requester who they are</td>
+</tr>
+<tr>
+<td>Asking about a document another organization sent them</td>
+<td><strong>That organization</strong></td>
+<td>Forward</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p>Do not delete or alter a document because a recipient asked you to. The sending organization is the controller for that document — acting unilaterally on a recipient's instruction would breach your obligations to the sender.</p>
+<p>The exception is data you hold in your own right, such as log entries about that person's signing session. Answer that part directly.</p>
+</div>
+<h2 id="step-2-verify-identity">Step 2 — Verify identity</h2>
+<p>You must be reasonably sure the requester is who they claim to be — releasing someone's data to an impostor is itself a breach.</p>
+<table>
+<thead>
+<tr>
+<th>Requester</th>
+<th>How to verify</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Signed in already</td>
+<td>The authenticated session is enough</td>
+</tr>
+<tr>
+<td>Emailing from the address on the account</td>
+<td>Send a confirmation link to that address</td>
+</tr>
+<tr>
+<td>Emailing from any other address</td>
+<td>Do not proceed on that alone; contact the address on file</td>
+</tr>
+<tr>
+<td>A lawyer or agent acting for someone</td>
+<td>Written authority, plus verification of the person themselves</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p><strong>Never ask for a passport or ID scan to verify a privacy request.</strong> Collecting a high-risk identity document in order to honor a privacy right is a disproportionate collection and will not be viewed kindly.</p>
+</div>
+<h2 id="step-3-handle-the-request">Step 3 — Handle the request</h2>
+<h3 id="access-what-do-you-hold-about-me">Access — "what do you hold about me?"</h3>
+<p>The requester is entitled to a copy of their data <strong>and</strong> to supporting information: why you process it, who you share it with, how long you keep it, where it came from, and their remaining rights. A data dump alone does not satisfy the request.</p>
+<p><strong>Point them at the self-service export first.</strong> In their own account, the
+requester can go to <strong>Settings → Privacy → Download my data</strong> and get a ZIP of
+their account details, settings, documents, signing activity, signatures,
+certificates, notifications and account history. That is faster than anything
+you can assemble, and it is already redacted of other people's details. Every
+download is recorded in their activity log.</p>
+<p>The archive does <strong>not</strong> carry the supporting information — the purposes,
+recipients, retention periods and their remaining rights. Send those with your
+reply, or point to the published Privacy Policy if it states them.</p>
+<p>Assemble by hand when the requester cannot sign in, when the request arrives by
+email and you must answer it yourself, or when they ask for more than the
+archive holds:</p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Where</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Account details</td>
+<td>Customers → <strong>Users</strong>, search by name or email</td>
+</tr>
+<tr>
+<td>Their organization and role</td>
+<td>Customers → <strong>Organizations</strong></td>
+</tr>
+<tr>
+<td>Everything they did on the platform</td>
+<td>Audit → <strong><a href="../../other_admin_operations/activity_logs/">Activity Logs</a></strong>, search by their name or email</td>
+</tr>
+<tr>
+<td>Anything an administrator did to their account</td>
+<td>Audit → <strong><a href="../../other_admin_operations/audit_logs/">Audit Logs</a></strong></td>
+</tr>
+<tr>
+<td>Their documents and signing history</td>
+<td>Their own <strong>Documents</strong> list and per-document <strong>Audit Report</strong></td>
+</tr>
+<tr>
+<td>Identity verification data, if any</td>
+<td>Administration → <strong><a href="../../other_admin_operations/qualified_cert_requests/">Qualified Certificate Requests</a></strong></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p>Activity Logs and Audit Logs are viewable and searchable, but cannot be exported from the console. For a large history, ask your database administrator to extract the rows for that user rather than transcribing screens.</p>
+</div>
+<p><strong>Redact other people.</strong> A document record names other recipients. You must not disclose their details to the requester — remove them unless they are unavoidably part of a document the requester is already a party to.</p>
+<h3 id="rectification-this-is-wrong-fix-it">Rectification — "this is wrong, fix it"</h3>
+<p>Most of it is self-service: the user edits their own profile under <strong>Settings → Account Settings</strong>.</p>
+<p>If they cannot reach their account, an administrator can view the user under Customers → <strong>Users</strong> and use the <strong>⋮</strong> menu to recover their password or change their status. Note that some identity fields are held in Keycloak rather than the application, and may need to be corrected there.</p>
+<h3 id="erasure-delete-me">Erasure — "delete me"</h3>
+<p>Preferred route: <strong>the user deletes their own account</strong> from <strong>Settings → Delete Account</strong>. This runs the complete deletion path — it removes their Keycloak login, deletes draft documents, voids documents already sent, and deletes their signature images, certificates and signing keys.</p>
+<p>An administrator can also delete a user from Customers → <strong>Users</strong>.</p>
+<p>Two things to tell the requester before they proceed:</p>
+<ol>
+<li><strong>An organization owner cannot delete their account while other members remain.</strong> They must transfer ownership or remove the other members first.</li>
+<li><strong>Signed documents are not erased.</strong> Their name stays on documents they have already signed, together with the evidence that they signed them.</li>
+</ol>
+<div class="admonition note">
+<p>Refusing to erase signed documents is lawful and expected. Article 17(3) allows retention where it is needed for a legal obligation or for legal claims — a signature that could be erased would not be a signature, and other parties rely on it.</p>
+<p>Explain this to the requester rather than silently keeping the data. Partial erasure is a normal outcome, not a failure, but it has to be disclosed.</p>
+</div>
+<div class="admonition note">
+<p><strong>Deletion anonymizes as well as deletes, on both paths.</strong> Whether the user deletes their own account or an administrator deletes it, their platform record is replaced with a placeholder, their name and email are removed from the activity and audit logs, IP addresses are masked, and their Qualified Certificate Request is removed if it was never approved or anonymized if it was.</p>
+<p>No manual database work is needed for an ordinary erasure request. What is kept is kept deliberately — see the note above on signed documents.</p>
+</div>
+<div class="admonition warning">
+<p><strong>This depends on a setting, and you should check it.</strong> <strong>Configurations → Privacy → Account deletion</strong> carries a switch, <em>Erase personal data on deletion</em>.</p>
+<ul>
+<li><strong>On</strong> (the default) — the behaviour described above.</li>
+<li><strong>Off</strong> — deleting an account only stops the sign-in and marks it closed. The name, email address and every log entry stay in the database.</li>
+</ul>
+<p>With it off you can still fulfil an erasure request, but not from the product: it becomes manual database work. If your installation has it off, know that before you promise a requester anything.</p>
+</div>
+<h4 id="if-the-same-person-signs-up-again">If the same person signs up again</h4>
+<p>Worth knowing, because the two settings behave differently:</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Signing up again with the same email</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>On</strong></td>
+<td>The old email is gone from the record, so this is a <strong>brand-new account</strong>. Nothing from before carries over</td>
+</tr>
+<tr>
+<td><strong>Off</strong></td>
+<td>The old email is still on the closed record, and the platform <strong>reuses that same record</strong>. The person returns to their previous account with a new name and password — old activity history, completed documents and usage records still attached to it</td>
+</tr>
+</tbody>
+</table>
+<p>In both cases the Keycloak login is deleted, so a new password must be set. Draft documents, saved signatures and tokens are removed either way.</p>
+<h3 id="portability-give-me-my-data-to-take-elsewhere">Portability — "give me my data to take elsewhere"</h3>
+<p>Narrower than access: it covers only data the person gave you, held by consent or contract, in automated form. Their profile, their uploaded documents, the values they typed into fields, their signature images.</p>
+<p>It does <strong>not</strong> cover activity logs, inferred location, or data other people provided about them.</p>
+<p>The requester serves this themselves: <strong>Settings → Privacy → Download my data</strong> returns JSON, which is structured and machine-readable. The document files sit outside the archive, but they are downloadable one by one from the Documents screen, which meets the same obligation.</p>
+<p>A download is a compliant answer; you are not obliged to transfer directly to another provider.</p>
+<h3 id="withdrawing-consent">Withdrawing consent</h3>
+<ul>
+<li><strong>Cookies and site storage</strong> — the user clicks <strong>Cookie preferences</strong> at the bottom of the Privacy Policy page.</li>
+<li><strong>Mobile telemetry</strong> — <strong>Settings → Privacy</strong> in the app, or <strong>Reset privacy choices</strong>.</li>
+<li><strong>Electronic signature consent</strong> — cannot be withdrawn after signing. The consent record is evidence of a completed act, and it is retained for as long as the document.</li>
+</ul>
+<h2 id="step-4-respond">Step 4 — Respond</h2>
+<p>Your response should state:</p>
+<ul>
+<li>What you found and what you are enclosing</li>
+<li>Why you process each category, and who you share it with</li>
+<li>How long you keep it</li>
+<li><strong>What you refused and under which exemption</strong> — never leave this implicit</li>
+<li>Their right to complain to a supervisory authority</li>
+</ul>
+<h2 id="step-5-record-it">Step 5 — Record it</h2>
+<p>Keep, for each request: a reference, the date received, who asked and how you verified them, which right they invoked, who the controller was, what you did, what you refused and why, and the date you responded.</p>
+<p>Retain that log — it is evidence of compliance, and it also contains personal data, so it needs a retention period of its own.</p>
+<h2 id="known-limitations-summarized">Known limitations, summarized</h2>
+<p>Tell requesters the truth about these rather than working around them quietly.</p>
+<table>
+<thead>
+<tr>
+<th>Limitation</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The archive omits the Art. 15 supporting information</td>
+<td>Send the purposes, recipients and retention periods with your reply</td>
+</tr>
+<tr>
+<td>Activity and Audit Logs cannot be exported from the console</td>
+<td>A large history needs a database extract</td>
+</tr>
+<tr>
+<td>Erasure can be switched off</td>
+<td><strong>Configurations → Privacy → Account deletion</strong>. Off means an erasure request has to be handled by hand</td>
+</tr>
+</tbody>
+</table>
+<p>Fixed since this guide was first written, and no longer limitations:</p>
+<table>
+<thead>
+<tr>
+<th>Was a limitation</th>
+<th>Now</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No self-service data export</td>
+<td><strong>Settings → Privacy → Download my data</strong> returns a ZIP of readable JSON</td>
+</tr>
+<tr>
+<td>Deletion leaves name, email and log entries</td>
+<td>Deletion anonymizes the account row and both log tables, empties the signature and initials images, the two-factor seed and the security answer, and removes the saved-signature library — on the self-service and administrator paths alike</td>
+</tr>
+<tr>
+<td>Identity verification data is not deleted with the account</td>
+<td>Deleted with the account — unapproved requests removed, approved ones anonymized</td>
+</tr>
+</tbody>
+</table>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="../gdpr_overview/">GDPR Overview</a></li>
+<li><a href="../consent_records/">Consent Records</a></li>
+<li><a href="../data_retention/">Data Retention</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      © 2025 Dictalabs. All rights reserved.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../extra.js"></script>
+      
+    
+  </body>
+</html>

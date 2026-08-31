@@ -43,7 +43,20 @@ You must be reasonably sure the requester is who they claim to be — releasing 
 
 The requester is entitled to a copy of their data **and** to supporting information: why you process it, who you share it with, how long you keep it, where it came from, and their remaining rights. A data dump alone does not satisfy the request.
 
-There is currently **no one-click export**. Assemble the response from:
+**Point them at the self-service export first.** In their own account, the
+requester can go to **Settings → Privacy → Download my data** and get a ZIP of
+their account details, settings, documents, signing activity, signatures,
+certificates, notifications and account history. That is faster than anything
+you can assemble, and it is already redacted of other people's details. Every
+download is recorded in their activity log.
+
+The archive does **not** carry the supporting information — the purposes,
+recipients, retention periods and their remaining rights. Send those with your
+reply, or point to the published Privacy Policy if it states them.
+
+Assemble by hand when the requester cannot sign in, when the request arrives by
+email and you must answer it yourself, or when they ask for more than the
+archive holds:
 
 | Source | Where |
 | --- | --- |
@@ -81,10 +94,29 @@ Two things to tell the requester before they proceed:
 
     Explain this to the requester rather than silently keeping the data. Partial erasure is a normal outcome, not a failure, but it has to be disclosed.
 
-!!! warning ""
-    **Deletion does not currently remove everything.** The user's name and email remain on their platform record and in the activity and audit logs, and identity verification data in Qualified Certificate Requests is not touched at all.
+!!! note ""
+    **Deletion anonymizes as well as deletes, on both paths.** Whether the user deletes their own account or an administrator deletes it, their platform record is replaced with a placeholder, their name and email are removed from the activity and audit logs, IP addresses are masked, and their Qualified Certificate Request is removed if it was never approved or anonymized if it was.
 
-    If you receive an erasure request, these need to be handled manually by your database administrator. Raise it with your implementation contact — anonymizing them automatically is a known outstanding item.
+    No manual database work is needed for an ordinary erasure request. What is kept is kept deliberately — see the note above on signed documents.
+
+!!! warning ""
+    **This depends on a setting, and you should check it.** **Configurations → Privacy → Account deletion** carries a switch, *Erase personal data on deletion*.
+
+    - **On** (the default) — the behaviour described above.
+    - **Off** — deleting an account only stops the sign-in and marks it closed. The name, email address and every log entry stay in the database.
+
+    With it off you can still fulfil an erasure request, but not from the product: it becomes manual database work. If your installation has it off, know that before you promise a requester anything.
+
+#### If the same person signs up again
+
+Worth knowing, because the two settings behave differently:
+
+| Setting | Signing up again with the same email |
+| --- | --- |
+| **On** | The old email is gone from the record, so this is a **brand-new account**. Nothing from before carries over |
+| **Off** | The old email is still on the closed record, and the platform **reuses that same record**. The person returns to their previous account with a new name and password — old activity history, completed documents and usage records still attached to it |
+
+In both cases the Keycloak login is deleted, so a new password must be set. Draft documents, saved signatures and tokens are removed either way.
 
 ### Portability — "give me my data to take elsewhere"
 
@@ -92,16 +124,9 @@ Narrower than access: it covers only data the person gave you, held by consent o
 
 It does **not** cover activity logs, inferred location, or data other people provided about them.
 
-Supply it in a structured, machine-readable form — JSON or CSV, plus the document files. A download is a compliant answer; you are not obliged to transfer directly to another provider.
+The requester serves this themselves: **Settings → Privacy → Download my data** returns JSON, which is structured and machine-readable. The document files sit outside the archive, but they are downloadable one by one from the Documents screen, which meets the same obligation.
 
-### Objection — "stop analyzing my location"
-
-The [Security & Trust](../other_admin_operations/security_trust.md) dashboard derives approximate locations from users' IP addresses to detect unusual sign-ins. A user may object to this.
-
-!!! warning ""
-    There is currently no switch to exclude a specific user from location analysis. Until there is, an objection has to be handled by clearing that user's stored location data manually and documenting what you did.
-
-Objections to **security logging itself** are normally refused — audit integrity is a compelling legitimate ground. Record your reasoning for each refusal rather than declining as a matter of routine.
+A download is a compliant answer; you are not obliged to transfer directly to another provider.
 
 ### Withdrawing consent
 
@@ -131,11 +156,17 @@ Tell requesters the truth about these rather than working around them quietly.
 
 | Limitation | Effect |
 | --- | --- |
-| No self-service data export | Access and portability requests must be assembled by hand |
-| Deletion leaves name, email and log entries | Erasure needs manual database work to complete |
-| Identity verification data is not deleted with the account | Must be handled separately |
-| No per-user opt-out of location analysis | Objections handled manually |
-| No way to freeze processing without deleting | Restriction requests cannot be fully honored |
+| The archive omits the Art. 15 supporting information | Send the purposes, recipients and retention periods with your reply |
+| Activity and Audit Logs cannot be exported from the console | A large history needs a database extract |
+| Erasure can be switched off | **Configurations → Privacy → Account deletion**. Off means an erasure request has to be handled by hand |
+
+Fixed since this guide was first written, and no longer limitations:
+
+| Was a limitation | Now |
+| --- | --- |
+| No self-service data export | **Settings → Privacy → Download my data** returns a ZIP of readable JSON |
+| Deletion leaves name, email and log entries | Deletion anonymizes the account row and both log tables, empties the signature and initials images, the two-factor seed and the security answer, and removes the saved-signature library — on the self-service and administrator paths alike |
+| Identity verification data is not deleted with the account | Deleted with the account — unapproved requests removed, approved ones anonymized |
 
 ## Related
 

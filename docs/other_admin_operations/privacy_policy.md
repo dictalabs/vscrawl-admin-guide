@@ -20,12 +20,44 @@ This matters because you may later need to show which version a particular user 
 !!! note ""
     Put the effective date at the top of the policy text itself. It is the only part of the version history that users can see, and the only part that travels with the document if someone saves or prints it.
 
+## What the editor will not publish
+
+The editor accepts formatting — headings, lists, tables, links, images, colour —
+and refuses anything that could **run** in a reader's browser. Scripts, embedded
+frames and event handlers are stripped when the policy is saved, when it is loaded
+back into this screen, and again when a visitor's browser renders it.
+
+You do not need to do anything to enable this, and there is no way to switch it
+off. If you paste content from a page that carried scripts, the text and its
+formatting survive and the scripts silently do not.
+
+!!! note ""
+    Link buttons accept `http`, `https`, `mailto` and `tel` addresses only. A link
+    of any other kind is dropped rather than published.
+
 ## Before you publish
 
 - Replace every placeholder. A policy containing unfilled fields is worse than none — it is a documented failure to inform.
 - Check that the retention periods you state match what you actually do. See [Data Retention](../compliance/data_retention.md).
 - List the third-party providers you have configured — your email connector, and your storage connector if it is not local.
 - Have it reviewed by someone qualified. This screen publishes a legal document.
+
+## Account deletion
+
+Below the editor, **Account deletion** carries one switch: *Erase personal data on deletion*.
+
+| Setting | What deleting an account does |
+| --- | --- |
+| **On** (default) | Removes the person's name, email address and IP from the account record, from the activity and audit logs, and from any identity-verification data. Documents they already signed keep their name — other parties rely on those signatures |
+| **Off** | Stops the sign-in and marks the account closed. Name, email address and every log entry remain in the database. This is how the product behaved before erasure was added |
+
+It sits on this screen rather than under Retention because Retention is about aged data being swept
+away on a schedule, while this decides how completely a deletion **somebody has already asked for**
+is carried out — a promise the policy above makes on the platform's behalf.
+
+Leave it on unless you have a specific reason not to. With it off, an erasure request has to be
+answered by hand in the database. See
+[Data Subject Requests](../compliance/data_subject_requests.md#erasure--delete-me).
 
 ## Related
 
