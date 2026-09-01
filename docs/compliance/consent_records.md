@@ -37,21 +37,25 @@ The same evidence is included in the document's downloadable **evidence report**
 
 ## 2. Cookie and storage consent — web
 
-The web application shows a consent banner on first visit, offering **Accept all**, **Reject all** and **Customize**.
+The web application shows a cookie **notice** on first visit, with a single **Accept** button.
 
 What is stored, in the visitor's own browser:
 
-- Which categories they allowed — functional, analytics
-- The **time** they decided
-- **How** they decided — accept all, reject all, or a custom selection
+- Which categories are in use — strictly necessary only
+- The **time** they acknowledged it
+- **How** — recorded as `accept_all`, the button they pressed
 - The **policy version** in force at the time
 
-Two behaviors are deliberate and worth knowing if you are asked to justify the banner:
+Three things are deliberate, and worth knowing if you are asked to justify it:
 
-- Optional categories start **switched off**. Pre-ticked boxes are not valid consent.
-- **Accept all** and **Reject all** are the same size and prominence. A prominent accept next to a buried reject is not a free choice.
+- **One button, because there is nothing to refuse.** This deployment sets only strictly necessary storage — the sign-in session cookie, the security protections and the language selection — which ePrivacy Art. 5(3) exempts from consent. **The web application contains no third-party trackers**: no analytics, advertising or session-recording scripts of any kind.
+- **The notice does not block the page.** There is no backdrop and no focus trap; the visitor can read and use the application while it is on screen. A blocking panel would be asking for a decision, and no decision is being asked for.
+- **The record says necessary-only.** Even though the button is Accept, the stored categories are `functional: false, analytics: false`, because that is what is actually set. Nothing records consent to a purpose nobody was asked about.
 
-Only strictly necessary storage runs before a decision: the sign-in session cookie and the language selection. **The web application contains no third-party trackers** — no analytics, advertising or session-recording scripts of any kind.
+!!! warning ""
+    **If an optional purpose is ever added — analytics above all — the choice has to come back with it.** Consent must be specific to processing that actually happens, so a single Accept stops being lawful the moment anything non-essential is stored. That means a real Accept/Reject of equal prominence, with every optional toggle starting off (CJEU C-673/17, *Planet49*). The category machinery is still in the code for exactly that.
+
+Records written by the earlier three-button banner are kept and still displayed as they were, so a visitor who chose "Reject all" or a custom selection still sees that answer.
 
 ### Retrieving it
 
