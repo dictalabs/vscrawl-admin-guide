@@ -48,8 +48,16 @@ Below the editor, **Account deletion** carries one switch: *Erase personal data 
 
 | Setting | What deleting an account does |
 | --- | --- |
-| **On** (default) | Removes the person's name, email address and IP from the account record, from the activity and audit logs, and from any identity-verification data. Documents they already signed keep their name — other parties rely on those signatures |
-| **Off** | Stops the sign-in and marks the account closed. Name, email address and every log entry remain in the database. This is how the product behaved before erasure was added |
+| **On** (default) | Removes the person's name, email address and IP from the account record and from any identity-verification data, and empties their settings, saved signatures and credentials. Documents they already signed keep their name — other parties rely on those signatures |
+| **Off** | Stops the sign-in and marks the account closed. Name, email address and identity-verification data remain in the database |
+
+!!! note ""
+    **The logs are left as recorded either way.** Neither Activity Logs nor Audit Logs is altered by
+    a deletion. Both are the record of what happened, and rewriting the person out of them produced
+    entries nobody could attribute — which is the one question a log exists to answer.
+
+    Treat that as a stated limit on erasure: a deleted account's name, address and IP remain in both
+    tables. If an erasure request has to reach them, that part is handled by hand.
 
 It sits on this screen rather than under Retention because Retention is about aged data being swept
 away on a schedule, while this decides how completely a deletion **somebody has already asked for**

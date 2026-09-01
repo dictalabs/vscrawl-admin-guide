@@ -95,15 +95,17 @@ Two things to tell the requester before they proceed:
     Explain this to the requester rather than silently keeping the data. Partial erasure is a normal outcome, not a failure, but it has to be disclosed.
 
 !!! note ""
-    **Deletion anonymizes as well as deletes, on both paths.** Whether the user deletes their own account or an administrator deletes it, their platform record is replaced with a placeholder, their name and email are removed from the activity and audit logs, IP addresses are masked, and their Qualified Certificate Request is removed if it was never approved or anonymized if it was.
+    **Deletion anonymizes as well as deletes, on both paths.** Whether the user deletes their own account or an administrator deletes it, their platform record is replaced with a placeholder, their settings, saved signatures and credentials are emptied, and their Qualified Certificate Request is removed if it was never approved or anonymized if it was.
+
+    **The logs keep their name and address.** Neither Activity Logs nor Audit Logs is altered — they are the record of what happened, and they stay legible after the account is gone. If an erasure request has to reach those tables, that is the part you handle by hand.
 
     No manual database work is needed for an ordinary erasure request. What is kept is kept deliberately — see the note above on signed documents.
 
 !!! warning ""
-    **This depends on a setting, and you should check it.** **Configurations → Privacy → Account deletion** carries a switch, *Erase personal data on deletion*.
+    **This depends on a setting, and you should check it.** **Configurations → Application → Account deletion** carries a switch, *Erase personal data on deletion*.
 
     - **On** (the default) — the behaviour described above.
-    - **Off** — deleting an account only stops the sign-in and marks it closed. The name, email address and every log entry stay in the database.
+    - **Off** — deletion only *closes* the account. The Keycloak login is removed, so the person cannot sign in and the address is free again, but **nothing else is touched**: their documents, their organization and everything in it, their saved signatures, certificates, name, email address and log entries all stay exactly where they were.
 
     With it off you can still fulfil an erasure request, but not from the product: it becomes manual database work. If your installation has it off, know that before you promise a requester anything.
 
@@ -114,9 +116,12 @@ Worth knowing, because the two settings behave differently:
 | Setting | Signing up again with the same email |
 | --- | --- |
 | **On** | The old email is gone from the record, so this is a **brand-new account**. Nothing from before carries over |
-| **Off** | The old email is still on the closed record, and the platform **reuses that same record**. The person returns to their previous account with a new name and password — old activity history, completed documents and usage records still attached to it |
+| **Off** | The old email is still on the closed record, and the platform **reuses that same record** — the same organization included. The person returns to the account they closed: documents, templates, saved signatures, credits, activity history, all of it still attached |
 
-In both cases the Keycloak login is deleted, so a new password must be set. Draft documents, saved signatures and tokens are removed either way.
+In both cases the Keycloak login is deleted, so a new password must be set. What goes with it depends on the setting: with it **on**, the drafts, the saved signatures, the certificates and the organization are all removed, so signing up again starts an empty account; with it **off**, none of them are, and signing up again is how the person gets back in.
+
+!!! warning ""
+    **Off means the address is a key to that account.** Anyone who registers it later lands in it, with the previous holder's documents in front of them. That is fine for a person coming back to their own account, and it is a disclosure risk for an address that could pass to somebody else — a shared or company mailbox, most obviously. Leave the setting on unless you have a reason not to.
 
 ### Portability — "give me my data to take elsewhere"
 
@@ -158,14 +163,14 @@ Tell requesters the truth about these rather than working around them quietly.
 | --- | --- |
 | The archive omits the Art. 15 supporting information | Send the purposes, recipients and retention periods with your reply |
 | Activity and Audit Logs cannot be exported from the console | A large history needs a database extract |
-| Erasure can be switched off | **Configurations → Privacy → Account deletion**. Off means an erasure request has to be handled by hand |
+| Erasure can be switched off | **Configurations → Application → Account deletion**. Off means an erasure request has to be handled by hand |
 
 Fixed since this guide was first written, and no longer limitations:
 
 | Was a limitation | Now |
 | --- | --- |
 | No self-service data export | **Settings → Privacy → Download my data** returns a ZIP of readable JSON |
-| Deletion leaves name, email and log entries | Deletion anonymizes the account row and both log tables, empties the signature and initials images, the two-factor seed and the security answer, and removes the saved-signature library — on the self-service and administrator paths alike |
+| Deletion leaves name, email and identity data | Deletion anonymizes the account row, empties the signature and initials images, the two-factor seed and the security answer, and removes the saved-signature library — on the self-service and administrator paths alike. **Both log tables are kept as recorded** |
 | Identity verification data is not deleted with the account | Deleted with the account — unapproved requests removed, approved ones anonymized |
 
 ## Related

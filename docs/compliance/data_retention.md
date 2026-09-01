@@ -212,7 +212,7 @@ A restart is needed for the change to take effect.
 
 This page covers data deleted **by age, on a schedule**. How much is erased when somebody deletes
 their own account is a different switch, on a different screen:
-**Configurations → Privacy → Account deletion**. See
+**Configurations → Application → Account deletion**. See
 [Privacy Policy](../other_admin_operations/privacy_policy.md#account-deletion).
 
 ## Related
