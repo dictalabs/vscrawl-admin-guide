@@ -27,17 +27,22 @@ Click the **eye icon** in the **View Changes** column on any row to see exactly 
 
 ### Consent at sign-up
 
-One row type carries an extra panel. **Terms and Privacy Policy Accepted** records that a person
-accepted the Terms of Service and Privacy Policy when their account was created, and its details
-panel shows the time they accepted, which screen collected it, and the marks identifying the exact
-wording they were shown. See
+Two row types carry an extra panel.
+
+**Signup** is an account being created. Creating one used to leave two entries — the acceptance and the verification email — which a reader had to put back together; it is now one row, and the panel carries both. It shows when the person accepted the Terms and Privacy Policy, which screen collected it, the marks identifying the exact wording they were shown, and when their first verification email went out.
+
+**Terms and Privacy Policy Accepted** is the same acceptance without a sign-up around it — an invited member finishing their setup, or somebody asked once after a social sign-in. See
 [Consent Records](../compliance/consent_records.md#4-terms-acceptance-at-account-creation).
 
 ![admin-activity-logs-consent.png](../images/admin-activity-logs-consent.png)
 
 !!! note ""
-    **Previous** and **Current** are not shown on a consent row. It records something that happened
-    rather than something that changed, so there is no before and after — the panel is the whole
-    record. Every other row type is unchanged.
+    **Previous** and **Current** are not shown on these two rows. They record something that
+    happened rather than something that changed, so there is no before and after — the panel is the
+    whole record. Every other row type is unchanged.
+
+    A **later** verification email — one the person asks for from the "check your email" screen —
+    still gets its own **Email Verification Sent** row. Only the first, the one that belongs to the
+    sign-up, is folded in.
 
 Click **Close** to return to the log list.

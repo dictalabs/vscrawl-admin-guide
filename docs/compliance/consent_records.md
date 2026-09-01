@@ -126,7 +126,7 @@ If a policy has never been published, the mark is empty and the attribute is sim
 
 **Start in the admin console — you no longer need Keycloak for this.**
 
-Every acceptance now writes its own row into [Activity Logs](../other_admin_operations/activity_logs.md), listed as **Terms and Privacy Policy Accepted**. Click the row's **view** icon and the details panel includes a **Consent at sign-up** section:
+Every acceptance writes a row into [Activity Logs](../other_admin_operations/activity_logs.md). Creating an account is listed as **Signup**; accepting during an invitation setup or after a social sign-in is listed as **Terms and Privacy Policy Accepted**. Click the row's **view** icon and the details panel includes a **Consent at sign-up** section:
 
 | Field | Contains |
 | --- | --- |
@@ -134,6 +134,7 @@ Every acceptance now writes its own row into [Activity Logs](../other_admin_oper
 | **Accepted Through** | Which screen collected it — web sign-up form, invitation setup, prompted after sign-in, mobile app or API |
 | **Terms Version Mark** | The mark identifying the exact Terms wording they accepted |
 | **Privacy Policy Version Mark** | The same for the Privacy Policy |
+| **Verification Email Sent** | When the account's first verification email went out. On a **Signup** row only |
 
 The row carries these values itself rather than looking them up, so it still answers the question after the account has been deleted and its Keycloak user removed — which is usually when the question arrives.
 
