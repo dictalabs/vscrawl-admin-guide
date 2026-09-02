@@ -42,19 +42,3 @@ formatting survive and the scripts silently do not.
 - List the third-party providers you have configured — your email connector, and your storage connector if it is not local.
 - Have it reviewed by someone qualified. This screen publishes a legal document.
 
-## Account deletion
-
-**This switch is not on this screen.** *Erase personal data on deletion* lives at the foot of
-**Configurations → Application** — see
-[Application → Account deletion](application_settings.md#account-deletion) for what each position
-does.
-
-It is worth knowing about from here, though, because the two are a pair: the policy text above is a
-promise about what happens to somebody's data, and that switch decides whether the platform keeps
-it. With it **off** a deletion closes the account and removes nothing, so a policy promising erasure
-is a promise the platform will not be keeping. Read them together before publishing either.
-
-## Related
-
-- [GDPR Overview](../compliance/gdpr_overview.md)
-- [Consent Records](../compliance/consent_records.md)
