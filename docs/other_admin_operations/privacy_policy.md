@@ -44,28 +44,15 @@ formatting survive and the scripts silently do not.
 
 ## Account deletion
 
-Below the editor, **Account deletion** carries one switch: *Erase personal data on deletion*.
+**This switch is not on this screen.** *Erase personal data on deletion* lives at the foot of
+**Configurations → Application** — see
+[Application → Account deletion](application_settings.md#account-deletion) for what each position
+does.
 
-| Setting | What deleting an account does |
-| --- | --- |
-| **On** (default) | Removes the person's name, email address and IP from the account record and from any identity-verification data, and empties their settings, saved signatures and credentials. Documents they already signed keep their name — other parties rely on those signatures |
-| **Off** | Stops the sign-in and marks the account closed. Name, email address and identity-verification data remain in the database |
-
-!!! note ""
-    **The logs are left as recorded either way.** Neither Activity Logs nor Audit Logs is altered by
-    a deletion. Both are the record of what happened, and rewriting the person out of them produced
-    entries nobody could attribute — which is the one question a log exists to answer.
-
-    Treat that as a stated limit on erasure: a deleted account's name, address and IP remain in both
-    tables. If an erasure request has to reach them, that part is handled by hand.
-
-It sits on this screen rather than under Retention because Retention is about aged data being swept
-away on a schedule, while this decides how completely a deletion **somebody has already asked for**
-is carried out — a promise the policy above makes on the platform's behalf.
-
-Leave it on unless you have a specific reason not to. With it off, an erasure request has to be
-answered by hand in the database. See
-[Data Subject Requests](../compliance/data_subject_requests.md#erasure--delete-me).
+It is worth knowing about from here, though, because the two are a pair: the policy text above is a
+promise about what happens to somebody's data, and that switch decides whether the platform keeps
+it. With it **off** a deletion closes the account and removes nothing, so a policy promising erasure
+is a promise the platform will not be keeping. Read them together before publishing either.
 
 ## Related
 

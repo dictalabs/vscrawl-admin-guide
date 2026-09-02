@@ -37,7 +37,7 @@ The same evidence is included in the document's downloadable **evidence report**
 
 ## 2. Cookie and storage consent — web
 
-The web application shows a cookie **notice** on first visit, with a single **Accept** button.
+The web application shows a cookie **notice** on a visitor's first sign-in, with a single **Accept** button. Not before: a signed-out visitor — someone reading the Privacy Policy from the sign-up screen's own link, say — has no cookies set at all, and the ones the notice describes begin with the session.
 
 What is stored, in the visitor's own browser:
 
@@ -50,6 +50,7 @@ Three things are deliberate, and worth knowing if you are asked to justify it:
 
 - **One button, because there is nothing to refuse.** This deployment sets only strictly necessary storage — the sign-in session cookie, the security protections and the language selection — which ePrivacy Art. 5(3) exempts from consent. **The web application contains no third-party trackers**: no analytics, advertising or session-recording scripts of any kind.
 - **The notice does not block the page.** There is no backdrop and no focus trap; the visitor can read and use the application while it is on screen. A blocking panel would be asking for a decision, and no decision is being asked for.
+- **It waits for sign-in.** Nothing is stored before then, so there is nothing to disclose; the Privacy Policy page, which a signed-out visitor can read in full, carries the same information at length.
 - **The record says necessary-only.** Even though the button is Accept, the stored categories are `functional: false, analytics: false`, because that is what is actually set. Nothing records consent to a purpose nobody was asked about.
 
 !!! warning ""

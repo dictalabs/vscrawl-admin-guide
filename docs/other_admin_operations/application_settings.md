@@ -27,3 +27,12 @@ Activity and audit entries keep the name and address under **either** setting. T
     **With it off, the email address is a key to that account.** Whoever registers it next lands inside it, looking at the previous holder's documents. That is what you want for somebody returning to their own account, and it is a disclosure risk for an address that could pass to a different person — a shared or company mailbox being the obvious case.
 
     Leave it on unless you have a specific reason not to. Off also means storage is never reclaimed.
+
+!!! note ""
+    **This switch also governs automatic closures.** An account closed by the inactive-account
+    retention job runs the same deletion path, so whatever this setting does to a deletion somebody
+    asked for, it does to one the schedule performs — see
+    [Data Retention → Inactive accounts](../compliance/data_retention.md#inactive-accounts).
+
+    Unlike the retention windows, this value is read **once when the service starts**. Change it and
+    the scheduled job keeps using the old setting until admin-service is restarted.

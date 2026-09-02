@@ -44,10 +44,14 @@ Everything else is now handled automatically. Deleting an account:
 
 ### Identity documents
 
-The scan of an applicant's identity document is the most damaging single field the platform holds. It is now **discarded automatically as soon as the request is reviewed** — approved or rejected — keeping only which kind of document was checked and the decision.
+The scan of an applicant's identity document is the most damaging single field the platform holds.
 
-!!! note ""
-    A consequence worth knowing: an administrator can no longer re-open the document of an already-reviewed request. That is the intended trade-off, but it means the review has to be done properly the first time.
+!!! warning ""
+    **It is kept until the applicant's account is deleted.** Reviewing a request — approving it or rejecting it — records the decision and does not remove the scan, and there is no scheduled job that removes it either. An applicant who was turned down a year ago still has their passport or national ID image on the platform for as long as their account exists.
+
+    Deleting the account does clear it: every unapproved request is deleted outright and approved ones lose the identity fields. Until then, the only way to remove one is by hand.
+
+    If your installation needs these cleared on a timetable, that is a gap to raise — it is not something the console can do today.
 
 !!! warning ""
     Requests reviewed **before this behaviour existed** may still hold their scan. Ask your database administrator to clear the stored images on already-reviewed rows once, as a one-off.
@@ -98,7 +102,6 @@ The sweep then runs once a day at 02:30 UTC — see [Changing when the jobs run]
 | Activity logs | End-user activity records, including IP address and browser |
 | Audit logs | Administrator action records |
 | Notifications | In-app notifications |
-| Rejected certificate requests | Identity verification data from requests that were rejected |
 | Expired tokens and links | Old session tokens, invitation links, password-reset codes |
 | Webhook delivery records | The record of each callback sent to a customer endpoint, including its payload |
 
@@ -120,17 +123,97 @@ An account nobody has used for a long time is closed automatically. This is sepa
 
 The warning goes out by **email**, because the only person who needs to see it has not opened the product in over a year and would never notice an in-app message. An in-app notification is written too, and that notification doubles as the record that the warning was sent.
 
+### What the warning email says
+
+It carries the same branding as every other message the platform sends — the recipient's own organization's logo and colours where that organization has set them, falling back to the platform's. Two numbers appear in it, and both come from this screen:
+
+- **"You have not signed in for N days"** — this is your **Warn after** value, not **Close after**. It is a floor rather than a measurement: an account dormant far longer is still described by the threshold it crossed.
+- **"Sign in within the next N days"** — the gap between your two windows.
+
+The **Sign in** button points at the address in `FRONTEND_HOST_URL`, the same setting every other product email builds its links from, so a message sent from staging lands on staging and one sent from production lands on production.
+
+!!! note ""
+    **The logo needs one deployment setting.** An organization's uploaded logo is served from `{api.host}user/v1/logo?orgId={id}`, so admin-service needs `api.host` (environment variable `API_HOST`) pointing at the API gateway — the same value workflow-service uses. Without it the header falls back to the product name set as a wordmark, which is tidy but not your customer's brand.
+
 Closing an account runs the same path as a user deleting their own account: the login, drafts, saved signatures and keys go; **documents they have already signed stay**. Every closure is recorded in the [Audit Logs](../other_admin_operations/audit_logs.md) as `ACCOUNT_CLOSED_INACTIVE`.
 
 !!! note ""
     Two cases are skipped on purpose, and both appear in the log rather than failing silently:
 
     - **An account with no email address** cannot be warned, so it is never closed either.
-    - **An organization owner with other members** cannot be deleted — their organization would lose its owner. Transfer ownership first if you want the account closed.
+    - **An organization owner with other members** cannot be deleted — their organization would lose its owner. Transfer ownership first if you want the account closed. The refusal names the organization and its member count in the log, so you can see which account it was and why.
 
-Windows must be between **7 and 3650 days**. Anything shorter is refused: a window of zero would mean "delete everything older than right now", which on the activity log is every row you have.
+!!! warning "The first run closes nothing, however dormant the accounts are"
+    This is the single most misread part of the feature. The two stages never happen on the same run: a sweep that finds an account past **Close after** but never warned **sends the warning and stops there**. The closure comes on the sweep after the grace period has elapsed — so with a 3-day gap, roughly three days later.
+
+    Switch this on for the first time and the first night's result is `warned=N, closed=0`, even for accounts untouched for years. That is correct, not a fault.
+
+Windows must be between **7 and 3650 days**. Anything shorter is refused: a window of zero would mean "delete everything older than right now", which on the activity log is every row you have. **Warn after must also be strictly less than Close after** — the console will not save them equal, and the service refuses the job if they ever end up that way (see [Two windows the job refuses to work with](#two-windows-the-job-refuses-to-work-with)).
 
 If a setting is somehow missing or unreadable, the platform keeps the data for ten years rather than deleting it. Every failure mode errs towards keeping.
+
+## Checking that it ran
+
+Both jobs say what they did in the **service log**, every night, including the nights they did
+nothing. That last part is the point: a job that was switched off and a job that never ran look
+identical from the outside, so each writes its own line.
+
+**The row sweep:**
+
+```
+Retention: sweep skipped — RETENTION_ENABLED is not true
+Retention: sweep starting
+Retention: sweep finished — {activityLogs=283, auditLogs=0, notifications=0, userTokens=0, userLinks=0, webhookDeliveries=0}
+```
+
+**The inactive-account job:**
+
+```
+Inactive accounts: sweep skipped — RETENTION_ENABLED is not true
+Inactive accounts: sweep skipped — the configured windows are unusable
+Inactive accounts: sweep starting — warn after 300 days, close after 301 days, so a warned holder has 1 day to sign in
+Inactive accounts: {warned=1, closed=0, deferredPendingWarning=1}
+```
+
+### What the counters mean
+
+| Counter | Meaning |
+| --- | --- |
+| `warned` | Holders emailed on this run |
+| `closed` | Accounts actually closed |
+| `deferredPendingWarning` | Past **Close after** but never warned, so warned now and left alone. **They become due one grace period later** |
+| `awaitingGracePeriod` | Already warned, grace not yet elapsed. Nothing to do but wait |
+| `couldNotClose` | Due, but the deletion refused them — almost always an organization owner with other members |
+
+When nothing was closed, the job also says **why**, in words, on the following line:
+
+```
+Inactive accounts: nothing was closed because 1 account(s) were only warned just now.
+No account is ever closed on the run that warns it — they become due in 1 day, on the
+sweep after their grace period ends.
+```
+
+```
+Inactive accounts: 3 account(s) were due but the deletion path refused them — see the
+'could not close userId=' lines above for each reason.
+```
+
+!!! tip "`warned=N, closed=0` is the normal first result"
+    If you switched retention on today and the row counts dropped but no account was closed, the
+    feature is working. Look for `deferredPendingWarning` in the same line — it is telling you those
+    accounts were warned on this run and are due after the grace period, not that closure is broken.
+
+### Two windows the job refuses to work with
+
+Both refusals are logged with the offending values, and in both cases **the whole inactive-account
+job is skipped** — no warnings, no closures:
+
+- **Warn after is not before Close after.** Equal values count. Setting both the same does not close
+  an account together with its warning; it stops the job entirely.
+- **The notification window is not longer than the grace period.** The warning is recorded as an
+  in-app notification, and that row is both the proof the holder was told and the clock the grace
+  period runs from. Purge it before the account is due and the holder is warned again and again
+  while nothing ever closes, so the job refuses instead.
 
 ## Backups
 
