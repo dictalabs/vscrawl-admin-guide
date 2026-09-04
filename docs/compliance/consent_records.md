@@ -66,10 +66,7 @@ The decision is kept in the visitor's own browser, which is what the banner read
 
 For a visitor who never signs in there is no server-side record, and nothing identifies them to hold one against. If you are challenged about that case, what you produce is the banner itself and its disclosure text.
 
-A user reviews their choice under **Settings → Privacy**, which shows what they chose and when. To answer differently they clear the site's stored data in their browser, which brings the banner back on their next visit.
 
-!!! note ""
-    If you change the categories or materially change the banner wording, the policy version must be increased so that everyone is asked again. Consent given under an older version does not carry over.
 
 ## 3. Telemetry consent — mobile
 
