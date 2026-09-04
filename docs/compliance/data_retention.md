@@ -32,14 +32,13 @@ Deletion happens only when a person or an administrator triggers it.
 
 Everything else is now handled automatically. Deleting an account:
 
-- Replaces the name, username and email on their platform record with anonymized values
-- Removes their name from activity and audit entries, and replaces the email with a code that still shows two entries were the same person without saying who
+- Deletes the user completely from the Users table, which means you can no longer search for this user
+- In the Activity and Audit entries, the user's name and email will remain unchanged.
 - Masks the IP addresses, and clears the city and coordinates while keeping the country
 - Deletes qualified certificate requests that never produced a certificate, and strips the passport number, date and place of birth and mother's maiden name from ones that did
 
 !!! note ""
-    Log rows are **anonymized rather than removed**. Deleting them outright would leave holes in the audit trail, and a missing entry cannot be told apart from one that was never written. Taking the person out of the row keeps the trail continuous.
-
+    
     Entries recording an **administrator's** action keep that administrator's own name and address. They are a different person, and that is the accountability record for privileged actions.
 
 ### Identity documents
@@ -140,7 +139,7 @@ Closing an account runs the same path as a user deleting their own account: the 
 !!! note ""
     Two cases are skipped on purpose, and both appear in the log rather than failing silently:
 
-    - **An account with no email address** cannot be warned, so it is never closed either.
+    - **Guest User**  cannot be warned, so it is never closed either.
     - **An organization owner with other members** cannot be deleted — their organization would lose its owner. Transfer ownership first if you want the account closed. The refusal names the organization and its member count in the log, so you can see which account it was and why.
 
 !!! warning "The first run closes nothing, however dormant the accounts are"
