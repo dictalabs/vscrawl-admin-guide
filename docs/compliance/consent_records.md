@@ -87,10 +87,11 @@ Every new account must accept the Terms of Service and Privacy Policy. This is e
 - **Social sign-in (Google)** — a one-time "Before you continue" page shown at login
 - **The mobile app** — the tick box on the app's own sign-up screen
 
-The third case works differently because a social sign-up never passes through the sign-up form, so there is no checkbox to put on it. Instead, the platform checks at every login: if an account is linked to an identity provider and has no acceptance on record, it shows the terms page once and will not let the user past it until they accept.
+The third case follows the same sign-up flow as other registration methods. When a user signs up using a social identity provider such as Google, the sign-up form includes the Terms and Conditions acceptance checkbox. The user must select the checkbox to confirm acceptance before completing registration.
+
 
 !!! note ""
-    Accounts created with an email and password are **not** affected by that check, even if they predate this feature. They were shown the checkbox at sign-up and did tick it — it simply was not being stored at the time. Only social accounts, which were never asked at all, are prompted.
+    Accounts created with an email and password are **not** affected by that check, even if they predate this feature. They were shown the checkbox at sign-up and did tick it — it simply was not being stored at the time.
 
 The acceptance is checked on the server, not only in the browser, so it cannot be skipped by submitting the form directly. If the box is not ticked, the account is not created.
 
