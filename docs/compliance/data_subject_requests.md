@@ -44,7 +44,7 @@ You must be reasonably sure the requester is who they claim to be — releasing 
 The requester is entitled to a copy of their data **and** to supporting information: why you process it, who you share it with, how long you keep it, where it came from, and their remaining rights. A data dump alone does not satisfy the request.
 
 **Point them at the self-service export first.** In their own account, the
-requester can go to **Settings → Privacy → Download my data** and get a ZIP of
+requester can go to **Settings → Account Settings → Download my data** and get a ZIP of
 their account details, settings, documents, signing activity, signatures,
 certificates, notifications and account history. That is faster than anything
 you can assemble, and it is already redacted of other people's details. Every
@@ -129,14 +129,14 @@ Narrower than access: it covers only data the person gave you, held by consent o
 
 It does **not** cover activity logs, inferred location, or data other people provided about them.
 
-The requester serves this themselves: **Settings → Privacy → Download my data** returns JSON, which is structured and machine-readable. The document files sit outside the archive, but they are downloadable one by one from the Documents screen, which meets the same obligation.
+The requester serves this themselves: **Settings → Account Settings → Download my data** returns JSON, which is structured and machine-readable. The document files sit outside the archive, but they are downloadable one by one from the Documents screen, which meets the same obligation.
 
 A download is a compliant answer; you are not obliged to transfer directly to another provider.
 
 ### Withdrawing consent
 
-- **Cookies and site storage** — the user clears the site's stored data in their browser. That resets the choice and brings the banner back on their next visit. **Settings → Privacy** shows the answer currently on record.
-- **Mobile telemetry** — **Settings → Privacy** in the app, or **Reset privacy choices**.
+- **Cookies and site storage** — the user clears the site's stored data in their browser. That resets the choice and brings the banner back on their next visit. 
+- **Mobile telemetry** — **Settings → Privacy & Notifications → Reset privacy choices** in the app.
 - **Electronic signature consent** — cannot be withdrawn after signing. The consent record is evidence of a completed act, and it is retained for as long as the document.
 
 ## Step 4 — Respond
@@ -169,7 +169,7 @@ Fixed since this guide was first written, and no longer limitations:
 
 | Was a limitation | Now |
 | --- | --- |
-| No self-service data export | **Settings → Privacy → Download my data** returns a ZIP of readable JSON |
+| No self-service data export | **Settings → Account Settings → Download my data** returns a ZIP of readable JSON |
 | Deletion leaves name, email and identity data | Deletion anonymizes the account row, empties the signature and initials images, the two-factor seed and the security answer, and removes the saved-signature library — on the self-service and administrator paths alike. **Both log tables are kept as recorded** |
 | Identity verification data is not deleted with the account | Deleted with the account — unapproved requests removed, approved ones anonymized |
 
