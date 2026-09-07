@@ -24,6 +24,35 @@ To add a new service plan, provide:
     - **eIDAS (EU)** – Advanced & Qualified Electronic Signatures.
     - **ESIGN + UETA (US)** – Simple Electronic Signatures with consent disclosure.
     - These toggles only appear when the corresponding mode is enabled on the license. When eIDAS mode is on, at least one AES/QES connector must be selected above.
+- **Cloud Source** – Choose whether organizations on this plan may import documents from **Google Drive** or **Dropbox**, and which connector each provider uses. See [Cloud Source](#cloud-source) below.
 - **Custom Email Connector** – Toggle **Allow custom email connector** to let organizations on this plan use their own email connector(s) instead of the system default, then select which connectors they may use from **Available email connectors**. This option is only available when the license permits custom SMTP.
 
 ![Compliance Mode and Custom Email Connector](../images/admin-service-plan-compliance-custom-email.png)
+
+---
+
+## Cloud Source
+
+A signer can bring a document in from their own Google Drive or Dropbox instead of browsing their computer. Whether that is offered is decided **per service plan**, so it can be granted to some organizations and withheld from others on the same installation.
+
+Two things are set for each provider, and both are required:
+
+- **Import from Google Drive** / **Import from Dropbox** – whether the provider is offered at all.
+- **Connector** – which [Cloud Source connector](../connectors/add_connectors.md#cloud-source-connectors) supplies the credentials. The plan cannot be saved with a provider switched on and no connector chosen.
+
+The connector is named explicitly rather than picked automatically because more than one can exist. An installation may keep a separate Google project or Dropbox app per environment, per customer, or per brand, and "the newest active one" would be a guess at which of those an organization consented to.
+
+Only **Active** connectors of that provider are listed. If a plan points at a connector that has since been deactivated, deleted or changed to another purpose, the dropdown shows it as *no longer available* so the stale choice is visible rather than silently kept.
+
+### What a signer sees
+
+- The provider appears on the upload screen only when the plan grants it **and** the named connector is still usable. Anything missing means the button is simply not shown — a signer has no use for the difference between "your plan does not include this" and "an administrator misconfigured it", and a half-configured provider would put a button on screen that cannot work.
+- Switching a provider off removes it at the users' next sign-in. Documents already imported are unaffected: an imported file is an ordinary uploaded document from the moment it arrives.
+
+### Swapping the connector
+
+Because the plan records the connector's **id**, moving to a different connector is a change to every plan that offers the provider — not only to the connector list.
+
+Add the new connector, select it on each plan, and **only then** deactivate the old one. Nothing prevents the old connector from being deleted while a plan still names it: the delete succeeds, the plan is left holding an id that resolves to nothing, and the provider stops being offered with no error shown anywhere.
+
+> **Note:** The connector itself is added under [Connectors](../connectors/add_connectors.md#cloud-source-connectors), and the provider-side application it needs is described in [Set Up Cloud Source Providers](../connectors/cloud_source_setup.md).

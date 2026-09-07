@@ -23,7 +23,7 @@
     
     
       
-        <title>Set Up Google Drive and Dropbox - vScrawl Admin Guide</title>
+        <title>Set Up Cloud Source Providers - vScrawl Admin Guide</title>
       
     
     
@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#set-up-google-drive-and-dropbox" class="md-skip">
+        <a href="#set-up-cloud-source-providers" class="md-skip">
           Skip to content
         </a>
       
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Set Up Google Drive and Dropbox
+              Set Up Cloud Source Providers
             
           </span>
         </div>
@@ -562,7 +562,7 @@
   <span class="md-ellipsis">
     
   
-    Set Up Google Drive and Dropbox
+    Set Up Cloud Source Providers
   
 
     
@@ -580,7 +580,7 @@
   <span class="md-ellipsis">
     
   
-    Set Up Google Drive and Dropbox
+    Set Up Cloud Source Providers
   
 
     
@@ -606,10 +606,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#work-out-your-redirect-uri-first" class="md-nav__link">
+  <a href="#what-a-cloud-source-connector-is-and-is-not" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Work out your Redirect URI first
+        What a Cloud Source connector is, and is not
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-the-values-are-registered" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where the values are registered
       
     </span>
   </a>
@@ -629,10 +640,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-create-an-oauth-client" class="md-nav__link">
+  <a href="#1-create-the-project-and-enable-the-apis" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Create an OAuth client
+        1. Create the project and enable the APIs
       
     </span>
   </a>
@@ -640,10 +651,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-scope-and-verification" class="md-nav__link">
+  <a href="#2-configure-the-consent-screen-and-scope" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Scope and verification
+        2. Configure the consent screen and scope
       
     </span>
   </a>
@@ -651,10 +662,32 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-add-the-connector" class="md-nav__link">
+  <a href="#3-create-the-oauth-client" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Add the connector
+        3. Create the OAuth client
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-create-the-api-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Create the API key
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-add-the-connector" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Add the connector
       
     </span>
   </a>
@@ -679,10 +712,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-create-an-app" class="md-nav__link">
+  <a href="#1-create-the-app" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Create an app
+        1. Create the app
       
     </span>
   </a>
@@ -690,10 +723,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-enable-permissions" class="md-nav__link">
+  <a href="#2-register-the-domain" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Enable permissions
+        2. Register the domain
       
     </span>
   </a>
@@ -701,7 +734,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-add-the-connector_1" class="md-nav__link">
+  <a href="#3-add-the-connector" class="md-nav__link">
     <span class="md-ellipsis">
       
         3. Add the connector
@@ -717,10 +750,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#after-connecting" class="md-nav__link">
+  <a href="#offering-it-to-organizations" class="md-nav__link">
     <span class="md-ellipsis">
       
-        After connecting
+        Offering it to organizations
       
     </span>
   </a>
@@ -732,6 +765,34 @@
     <span class="md-ellipsis">
       
         If something fails
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="If something fails">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#telling-those-three-apart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Telling those three apart
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#replacing-a-key-or-replacing-a-connector" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Replacing a key, or replacing a connector
       
     </span>
   </a>
@@ -1587,10 +1648,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#work-out-your-redirect-uri-first" class="md-nav__link">
+  <a href="#what-a-cloud-source-connector-is-and-is-not" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Work out your Redirect URI first
+        What a Cloud Source connector is, and is not
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-the-values-are-registered" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where the values are registered
       
     </span>
   </a>
@@ -1610,10 +1682,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-create-an-oauth-client" class="md-nav__link">
+  <a href="#1-create-the-project-and-enable-the-apis" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Create an OAuth client
+        1. Create the project and enable the APIs
       
     </span>
   </a>
@@ -1621,10 +1693,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-scope-and-verification" class="md-nav__link">
+  <a href="#2-configure-the-consent-screen-and-scope" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Scope and verification
+        2. Configure the consent screen and scope
       
     </span>
   </a>
@@ -1632,10 +1704,32 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-add-the-connector" class="md-nav__link">
+  <a href="#3-create-the-oauth-client" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Add the connector
+        3. Create the OAuth client
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-create-the-api-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Create the API key
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-add-the-connector" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Add the connector
       
     </span>
   </a>
@@ -1660,10 +1754,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-create-an-app" class="md-nav__link">
+  <a href="#1-create-the-app" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Create an app
+        1. Create the app
       
     </span>
   </a>
@@ -1671,10 +1765,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-enable-permissions" class="md-nav__link">
+  <a href="#2-register-the-domain" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Enable permissions
+        2. Register the domain
       
     </span>
   </a>
@@ -1682,7 +1776,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-add-the-connector_1" class="md-nav__link">
+  <a href="#3-add-the-connector" class="md-nav__link">
     <span class="md-ellipsis">
       
         3. Add the connector
@@ -1698,10 +1792,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#after-connecting" class="md-nav__link">
+  <a href="#offering-it-to-organizations" class="md-nav__link">
     <span class="md-ellipsis">
       
-        After connecting
+        Offering it to organizations
       
     </span>
   </a>
@@ -1713,6 +1807,34 @@
     <span class="md-ellipsis">
       
         If something fails
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="If something fails">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#telling-those-three-apart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Telling those three apart
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#replacing-a-key-or-replacing-a-connector" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Replacing a key, or replacing a connector
       
     </span>
   </a>
@@ -1736,81 +1858,130 @@
 
 
 
-<h1 id="set-up-google-drive-and-dropbox">Set Up Google Drive and Dropbox</h1>
-<p>Before a Google Drive or Dropbox storage connector can be added, an application has to exist on the provider's side for vScrawl to authorise against. This page covers the parts that are specific to vScrawl — which options matter and which exact values to enter. Creating the account or project itself is the provider's own process, and is linked where it starts.</p>
-<p>Each connector carries its own application. There is no shared, installation-wide one, so two connectors can sit in two entirely different Google projects or Dropbox apps.</p>
+<h1 id="set-up-cloud-source-providers">Set Up Cloud Source Providers</h1>
+<p>A <strong>Cloud Source</strong> connector lets a signer bring one of their own files in from Google Drive or Dropbox. Before one can be added, an application has to exist on the provider's side for the picker to load under. This page covers the parts that are specific to vScrawl — which options matter and which exact values to enter. Creating the account or project itself is the provider's own process, and is linked where it starts.</p>
+<p>Each connector carries its own application, so two connectors can sit in two entirely different Google projects or Dropbox apps. That is what lets one installation offer a different application per environment, or per group of organizations.</p>
 <hr />
-<h2 id="work-out-your-redirect-uri-first">Work out your Redirect URI first</h2>
-<p>Both providers need to be told, in advance, exactly where to send the browser back to after consent. Get this wrong and consent fails at the very last step, after the user has already approved.</p>
-<div class="highlight"><pre><span></span><code>https://&lt;your-api-host&gt;/admin/v1/storage/oauth/callback
-</code></pre></div>
-<p>Two things to check:</p>
-<ul>
-<li>It is the <strong>API host</strong>, not the admin console's. The console and the API are usually different hostnames — the callback belongs to the API.</li>
-<li>It must match <strong>character for character</strong> on both sides: what you register with the provider, and what you type into the connector's <strong>OAuth Redirect URI</strong> field. The provider checks it once when consent starts and again during the token exchange, so a trailing slash or <code>http</code> instead of <code>https</code> is enough to fail.</li>
-</ul>
-<hr />
-<h2 id="google-drive">Google Drive</h2>
-<h3 id="1-create-an-oauth-client">1. Create an OAuth client</h3>
-<p>In the <a href="https://console.cloud.google.com/">Google Cloud console</a>, select or create a project, then:</p>
-<ol>
-<li>Enable the <strong>Google Drive API</strong> for the project.</li>
-<li>Configure the <strong>OAuth consent screen</strong>. Choose <strong>Internal</strong> if everyone using it belongs to your Google Workspace organisation; otherwise <strong>External</strong>.</li>
-<li>Under <strong>Credentials</strong>, create an <strong>OAuth client ID</strong> of type <strong>Web application</strong>.</li>
-<li>Add your Redirect URI under <strong>Authorised redirect URIs</strong>.</li>
-</ol>
-<p>Copy the <strong>Client ID</strong> and <strong>Client secret</strong>.</p>
-<h3 id="2-scope-and-verification">2. Scope and verification</h3>
-<p>vScrawl asks for one scope only:</p>
-<div class="highlight"><pre><span></span><code>https://www.googleapis.com/auth/drive.file
-</code></pre></div>
-<p>This reaches <strong>only the files the application itself created</strong> — nothing else in the connected account is visible to vScrawl. It is deliberately narrow: the full Drive scope is a restricted scope and would require Google's security assessment before the application could be published.</p>
-<p>A consequence worth knowing: because the application can only see what it made, the folder vScrawl stores in is <strong>created during consent</strong>. You cannot point a connector at a folder that already exists in the account.</p>
-<h3 id="3-add-the-connector">3. Add the connector</h3>
-<p>In vScrawl, add a Storage connector with Provider <strong>Google Drive</strong>, fill in Client ID, Client Secret and the OAuth Redirect URI, then press <strong>Connect Account</strong> and sign in as the account that should hold the documents.</p>
-<p>Consent returns a refresh token and the created folder's id, and both are filled in for you.</p>
-<hr />
-<h2 id="dropbox">Dropbox</h2>
-<h3 id="1-create-an-app">1. Create an app</h3>
-<p>In the <a href="https://www.dropbox.com/developers/apps">Dropbox App Console</a>, <strong>Create app</strong>:</p>
-<ol>
-<li>Choose <strong>Scoped access</strong>.</li>
-<li>For access type, choose <strong>App folder</strong> — the app is then confined to its own folder under <code>/Apps</code> and cannot see the rest of the account. Choose <strong>Full Dropbox</strong> only if you have a reason to.</li>
-<li>Name the app.</li>
-</ol>
-<p>Copy the <strong>App key</strong> and <strong>App secret</strong> from the app's Settings tab, and add your Redirect URI under <strong>OAuth 2 → Redirect URIs</strong>.</p>
-<h3 id="2-enable-permissions">2. Enable permissions</h3>
-<p>On the app's <strong>Permissions</strong> tab, enable at least:</p>
+<h2 id="what-a-cloud-source-connector-is-and-is-not">What a Cloud Source connector is, and is not</h2>
+<p>This is the <strong>signer bringing a file in</strong>, not the platform writing documents out. The distinction decides every field on the form.</p>
 <table>
 <thead>
 <tr>
-<th>Permission</th>
-<th>Why</th>
+<th></th>
+<th>Cloud Source</th>
+<th>Storage</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>files.content.write</code></td>
-<td>Storing documents</td>
+<td>Direction</td>
+<td>The signer's own file is copied <strong>into</strong> vScrawl, once</td>
+<td>Documents vScrawl holds are written <strong>out</strong> to a provider</td>
 </tr>
 <tr>
-<td><code>files.content.read</code></td>
-<td>Reading them back</td>
+<td>Who consents</td>
+<td>The signer, in the provider's own window, for that one file</td>
+<td>An administrator, once, for the whole installation</td>
 </tr>
 <tr>
-<td><code>account_info.read</code></td>
-<td>Reporting space used on the Storage screen</td>
+<td>Credentials stored</td>
+<td>A client id and an API key, or an app key — <strong>public values</strong></td>
+<td>A client secret and a long-lived refresh token</td>
+</tr>
+<tr>
+<td>Available providers</td>
+<td>Google Drive, Dropbox</td>
+<td>Server Storage only</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Enable them before connecting the account.</strong> vScrawl deliberately sends no <code>scope</code> parameter when it authorises, so Dropbox grants exactly what the app has enabled at that moment — which means nothing breaks when you change permissions later, but a token issued before a permission was enabled does not carry it.</p>
-<p>If you enable <code>account_info.read</code> after connecting, press <strong>Connect Account</strong> again to re-authorise. Until you do, the Storage screen simply omits the usage figures rather than showing zero.</p>
-<h3 id="3-add-the-connector_1">3. Add the connector</h3>
-<p>Add a Storage connector with Provider <strong>Dropbox</strong>, fill in App Key, App Secret and the OAuth Redirect URI, then press <strong>Connect Account</strong>.</p>
-<p>After connecting, the <strong>Root Path</strong> field appears, defaulting to <code>/vscrawl</code>. With an App folder app, that path sits inside the app's own folder.</p>
+<p>Storage no longer offers Google Drive or Dropbox. Documents stay on the platform's own volume; see <a href="../../other_admin_operations/storage_settings/">Storage</a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Never enter a client secret or an app secret here</p>
+<p>A Cloud Source connector's values are read by the signing app in the browser, which means they ship in the page source and are visible to anyone who opens the page. That is by design — Google and Dropbox both intend these particular values to be public, and neither picker can work without them. A client secret is not such a value. Import is never issued one and never needs one, which is why the form has no field for it.</p>
+</div>
 <hr />
-<h2 id="after-connecting">After connecting</h2>
-<p>Press <strong>Test Connection</strong> on the connector. It writes a small file, reads it back and deletes it, and reports the outcome and how long it took. The same check decides whether the connector is offered as a <strong>Default Storage</strong> at all, so a connector that fails here will not appear in that dropdown.</p>
+<h2 id="where-the-values-are-registered">Where the values are registered</h2>
+<p>Neither provider redirects anywhere during import — everything happens in the browser, in the provider's own window. So there is <strong>no redirect URI to register</strong>. What each provider checks instead is <em>which page asked</em>, and each wants that written differently:</p>
+<table>
+<thead>
+<tr>
+<th>Provider</th>
+<th>What to register</th>
+<th>Shape</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Google Drive</td>
+<td>Authorised JavaScript origin, on the OAuth client</td>
+<td>Full origin, with scheme and port: <code>https://sign.example.com</code></td>
+</tr>
+<tr>
+<td>Google Drive</td>
+<td>HTTP referrer, on the API key</td>
+<td>The same origin <strong>plus <code>/*</code></strong>: <code>https://sign.example.com/*</code></td>
+</tr>
+<tr>
+<td>Dropbox</td>
+<td>Chooser / Saver / Embedder domain</td>
+<td>Bare domain, <strong>no scheme and no port</strong>: <code>sign.example.com</code></td>
+</tr>
+</tbody>
+</table>
+<p>The exact strings for your installation are printed inside the connector form itself, under <strong>How to set up the provider account</strong>, with a copy button on each. They are built from the signing app's address as configured in <strong>Configurations</strong>, so they are already correct for the environment you are working in — use those rather than typing them from this page.</p>
+<div class="admonition note">
+<p class="admonition-title">Every environment needs its own entry</p>
+<p>Staging and production are different origins, so each one has to be added to the provider's application separately. An origin that has not been registered fails at the moment the signer clicks the provider, with an error naming an address they were never told to add.</p>
+</div>
+<hr />
+<h2 id="google-drive">Google Drive</h2>
+<h3 id="1-create-the-project-and-enable-the-apis">1. Create the project and enable the APIs</h3>
+<p>In the <a href="https://console.cloud.google.com/apis/credentials">Google Cloud console</a>, select or create a project, then enable <strong>both</strong>:</p>
+<ul>
+<li><strong>Google Drive API</strong></li>
+<li><strong>Google Picker API</strong></li>
+</ul>
+<p>The Picker API is the one that is easy to miss. Without it sign-in succeeds and the file window then fails to load.</p>
+<h3 id="2-configure-the-consent-screen-and-scope">2. Configure the consent screen and scope</h3>
+<p>Add one scope only:</p>
+<div class="highlight"><pre><span></span><code>https://www.googleapis.com/auth/drive.file
+</code></pre></div>
+<p>It grants access to <strong>only the files a signer actually picks</strong> — nothing else in their Drive is visible to vScrawl, before or after. It is also what keeps the project out of Google's <strong>restricted-scope tier</strong>, which would otherwise require a paid third-party security assessment, repeated every year for as long as the application is published.</p>
+<h3 id="3-create-the-oauth-client">3. Create the OAuth client</h3>
+<p>Under <strong>Credentials</strong>, create an <strong>OAuth client ID</strong> of type <strong>Web application</strong>.</p>
+<p>Add the origin shown in the connector form under <strong>Authorised JavaScript origins</strong> — <strong>not</strong> under <em>Authorised redirect URIs</em>. A value placed in the redirect list has no effect on import, because import never redirects.</p>
+<h3 id="4-create-the-api-key">4. Create the API key</h3>
+<p>Still under <strong>Credentials</strong>, create an <strong>API key</strong> and:</p>
+<ul>
+<li>Under <strong>API restrictions</strong>, restrict it to the <strong>Picker API</strong>.</li>
+<li>Under <strong>Application restrictions</strong>, choose <strong>Websites</strong> and add the referrer shown in the connector form — the one ending in <code>/*</code>.</li>
+</ul>
+<p>The trailing <code>/*</code> is required, and is the whole difference between this value and the origin above. A website restriction is matched against the entire address including its path, so an entry without the wildcard rejects every call the Picker makes and import fails with <em>"The API developer key is invalid"</em>.</p>
+<h3 id="5-add-the-connector">5. Add the connector</h3>
+<p>In vScrawl, add a connector with Purpose <strong>Cloud Source</strong> and Provider <strong>Google Drive</strong>, then fill in:</p>
+<ul>
+<li><strong>Client ID</strong> — from the OAuth client.</li>
+<li><strong>API Key</strong> — from the API key.</li>
+</ul>
+<p>Both are required. Set <strong>Status</strong> to <strong>Active</strong> and save. There is no consent step and no Test Connection here: nothing is connected until a signer opens the picker themselves.</p>
+<hr />
+<h2 id="dropbox">Dropbox</h2>
+<h3 id="1-create-the-app">1. Create the app</h3>
+<p>In the <a href="https://www.dropbox.com/developers/apps">Dropbox App Console</a>, <strong>Create app</strong> and choose <strong>Scoped access</strong>.</p>
+<p>The access type does not matter for import. The Chooser hands back a link to the single file a signer selects, and the application is never granted the account itself — so the choice between <em>App folder</em> and <em>Full Dropbox</em> has no effect on what vScrawl can reach.</p>
+<p>No permissions need to be enabled either. Import does not call the Dropbox API on the account's behalf.</p>
+<h3 id="2-register-the-domain">2. Register the domain</h3>
+<p>On the app's <strong>Settings</strong> tab, add the domain shown in the connector form under <strong>Chooser / Saver / Embedder domains</strong>.</p>
+<p>Enter it exactly as shown: <strong>no scheme, no port</strong>. Dropbox supplies those itself and rejects a value that carries them — which is what produces the <em>"This app is misconfigured"</em> page instead of the file list.</p>
+<h3 id="3-add-the-connector">3. Add the connector</h3>
+<p>Add a connector with Purpose <strong>Cloud Source</strong> and Provider <strong>Dropbox</strong>, and fill in the <strong>App key</strong> from the app's Settings tab.</p>
+<p>The <strong>app secret is not used and must not be entered.</strong> The app key is public by design and ships in the page source; the secret is not, and would be exposed there too.</p>
+<hr />
+<h2 id="offering-it-to-organizations">Offering it to organizations</h2>
+<p>Adding the connector does not by itself put anything on a signer's screen. A Cloud Source is offered only where a <strong>service plan</strong> grants it, and every plan names <strong>which connector</strong> it uses.</p>
+<p>Switch the provider on for a plan under <strong>Finance → Service Plan</strong>, then choose the connector. See <a href="../../finance_settings/service_plans/">Service Plan</a>.</p>
+<p>Both halves must be in place. A plan with the provider switched on but no connector chosen cannot be saved; a connector that is deactivated or repurposed later stops being offered, without the plan itself changing.</p>
 <hr />
 <h2 id="if-something-fails">If something fails</h2>
 <table>
@@ -1822,23 +1993,59 @@
 </thead>
 <tbody>
 <tr>
-<td><code>redirect_uri_mismatch</code>, or consent fails on return</td>
-<td>The Redirect URI registered with the provider is not identical to the one on the connector. Compare them character for character, including scheme and any trailing slash.</td>
+<td><code>Not a valid origin for the client</code>, or sign-in refuses immediately</td>
+<td>The signing app's origin is not registered under <strong>Authorised JavaScript origins</strong> on the OAuth client — or it was added under <em>Authorised redirect URIs</em>, which import never uses. Check it is this environment's origin, exactly, including the port.</td>
 </tr>
 <tr>
-<td>Consent succeeds but the connector still will not save</td>
-<td>Consent did not return a refresh token. For Google this happens when the account has consented before; vScrawl sends <code>prompt=consent</code> to force a fresh one, so retry Connect Account.</td>
+<td><code>The API developer key is invalid</code></td>
+<td>Three different causes, in the order worth checking. (1) The key stored on the connector is <strong>not the key that exists in the console any more</strong> — it was rotated, deleted and recreated, or copied from another project. (2) The key's website restriction is missing the trailing <code>/*</code>. (3) The key is not permitted to call the Picker API. See <a href="#telling-those-three-apart">Telling those three apart</a> below.</td>
 </tr>
 <tr>
-<td>Storage Usage shows no figures for Dropbox</td>
-<td>The token was issued before <code>account_info.read</code> was enabled. Enable it, then Connect Account again.</td>
+<td>Google sign-in works, then the file window never appears</td>
+<td>The <strong>Google Picker API</strong> is not enabled on the project. Enabling the Drive API alone is not enough.</td>
 </tr>
 <tr>
-<td>Test Connection fails with an authorisation error</td>
-<td>The App Key or Client ID was changed after connecting. The stored token belongs to the old credentials — reconnect the account.</td>
+<td>Dropbox shows <em>"This app is misconfigured"</em></td>
+<td>The domain under Chooser / Saver / Embedder domains does not match, or was entered with <code>https://</code> or a port. Enter the bare hostname.</td>
+</tr>
+<tr>
+<td>The provider is not offered on the upload screen at all</td>
+<td>Something upstream of the provider: the organization's service plan does not have it switched on, no connector is chosen on the plan, the chosen connector is Inactive, or one of its required fields is empty. Google Drive needs <strong>both</strong> the Client ID and the API Key — with either one missing it is not offered at all, rather than being offered and then failing.</td>
+</tr>
+<tr>
+<td>The <strong>API Key</strong> field is empty on a connector that was working before</td>
+<td>Expected once, after upgrading to the release that corrected how this key is stored. The old value was unreadable and has been cleared rather than left in place looking like a setting. Paste the key in again and save; it does not recur.</td>
 </tr>
 </tbody>
 </table>
+<h3 id="telling-those-three-apart">Telling those three apart</h3>
+<p>The restrictions are visible in the Google console, but the <strong>key the platform actually sends</strong> is not — and a key that was replaced in the console looks perfectly valid there while the connector still holds the old one.</p>
+<p>To see what is being sent: sign in to the signing app with the browser's developer tools open, find the <code>profile</code> response on the Network tab, and read <code>googleDriveApiKey</code>. Then compare it with <strong>Show key</strong> on the API key in the Google console.</p>
+<ul>
+<li><strong>The two differ</strong> → the connector holds a stale key. Paste the console's key into the connector and save. This is the common case after anyone regenerates or recreates a key, because nothing in Google tells this platform that happened.</li>
+<li><strong>The two match</strong> → the key is right and the restrictions are wrong. Check the website entry ends in <code>/*</code>, and that <strong>Google Picker API</strong> is among the key's permitted APIs. Restriction changes take <strong>up to five minutes</strong> to take effect, so retry after a wait and a hard reload rather than immediately.</li>
+<li><strong>The value starts with <code>v2.</code></strong> → it is stored encrypted and cannot work. Re-enter it; see the last row of the table above.</li>
+</ul>
+<p>More than one API key in the project is worth ruling out first. Editing the restrictions of a key the connector does not use produces exactly the same error, and no amount of correcting it helps.</p>
+<hr />
+<h2 id="replacing-a-key-or-replacing-a-connector">Replacing a key, or replacing a connector</h2>
+<p><strong>To change a key</strong>, edit the connector and save. Signers pick the new value up at their next sign-in, because the credentials travel on the profile.</p>
+<p><strong>To move to a different connector</strong> — a new Google project, say — the order matters, because a service plan records the connector's <strong>id</strong>:</p>
+<ol>
+<li>Add the new connector and make it <strong>Active</strong>.</li>
+<li>Open every service plan that offers the provider and select the new connector there. Nothing switches by itself; a new connector is ignored until a plan names it.</li>
+<li>Only then deactivate or delete the old one.</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Deleting first breaks it silently</p>
+<p>Nothing stops a Cloud Source connector from being deleted while a service plan still points at it. The delete succeeds, the plan is left holding an id that resolves to nothing, and the provider stops being offered — with no error anywhere, because a missing connector is indistinguishable from one that was never configured.</p>
+<p>Prefer setting the old connector <strong>Inactive</strong> over deleting it. An inactive connector is neither offered to signers nor listed in the plan's dropdown, and the decision stays reversible.</p>
+</div>
+<hr />
+<div class="admonition note">
+<p class="admonition-title">Nothing here is per signer</p>
+<p>These values belong to the installation, not to any account. vScrawl holds no token, no password and no session for a signer's Drive or Dropbox — the consent lives in the provider's own window and lasts for that one file. There is nothing to revoke on this side, and nothing to disconnect.</p>
+</div>
 
 
 

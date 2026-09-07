@@ -36,10 +36,11 @@ These ship blank or disabled. The platform cannot fill them in for you.
 | **Terms of Service** | Same screen | Ships empty. |
 | **Encryption at rest** | Configurations → [Security](../other_admin_operations/security_settings.md) | **On by default for new installations only.** A deployment set up before this default changed still has it off and must be switched on by hand. Check it. The database holds identity documents and signature images. |
 | **Email connector** | [Connectors](../connectors/add_connectors.md) | Whichever provider you choose receives your recipients' names and email addresses. You need your own agreement with them. |
-| **Storage connector** | [Storage](../other_admin_operations/storage_settings.md) | If you point storage at Google Drive or Dropbox, **your documents go there.** You need your own agreement with that provider. |
+| **Storage connector** | [Storage](../other_admin_operations/storage_settings.md) | Documents are kept on the platform's own volume, and only a **Server Storage** connector can be the default. Nothing this platform holds is written out to a third-party account. |
+| **Cloud Source connector** | [Connectors](../connectors/cloud_source_setup.md) | Lets a signer import one of *their own* files from Google Drive or Dropbox. The provider is not a processor of your data: it holds the signer's file, the signer consents in the provider's own window, and vScrawl receives a copy of the one file they pick. |
 
-!!! warning ""
-    Enabling a remote storage connector sends document content to a third party. Do not enable one until you have a data processing agreement with that provider in place.
+!!! note ""
+    Cloud Source is an inbound copy, not an export: once a document is imported it lives on this installation's own storage like any uploaded file, and the provider is not sent anything. Tell users which providers you offer, though — the file they pick leaves their account at their own instruction, and the pickers run in the provider's own window.
 
 ## What remains your responsibility
 

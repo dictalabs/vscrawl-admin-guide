@@ -544,14 +544,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../connectors/storage_provider_setup/" class="md-nav__link">
+      <a href="../../connectors/cloud_source_setup/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Set Up Google Drive and Dropbox
+    Set Up Cloud Source Providers
   
 
     
@@ -1471,13 +1471,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Retrieving it">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-copy-held-in-keycloak" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The copy held in Keycloak
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
-  <a href="#keeping-the-version-numbers-meaningful" class="md-nav__link">
+  <a href="#the-marks-look-after-themselves" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Keeping the version numbers meaningful
+        The marks look after themselves
       
     </span>
   </a>
@@ -1736,13 +1753,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Retrieving it">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-copy-held-in-keycloak" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The copy held in Keycloak
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
-  <a href="#keeping-the-version-numbers-meaningful" class="md-nav__link">
+  <a href="#the-marks-look-after-themselves" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Keeping the version numbers meaningful
+        The marks look after themselves
       
     </span>
   </a>
@@ -1833,25 +1867,30 @@
 <p>Consent evidence is only recorded when the organization has e-signature consent turned on. If it was off at the time of signing, there is no record to produce and none can be reconstructed afterwards. Check this setting before you need it.</p>
 </div>
 <h2 id="2-cookie-and-storage-consent-web">2. Cookie and storage consent — web</h2>
-<p>The web application shows a consent banner on first visit, offering <strong>Accept all</strong>, <strong>Reject all</strong> and <strong>Customize</strong>.</p>
+<p>The web application shows a cookie <strong>notice</strong> on a visitor's first sign-in, with a single <strong>Accept</strong> button. Not before: a signed-out visitor — someone reading the Privacy Policy from the sign-up screen's own link, say — has no cookies set at all, and the ones the notice describes begin with the session.</p>
 <p>What is stored, in the visitor's own browser:</p>
 <ul>
-<li>Which categories they allowed — functional, analytics</li>
-<li>The <strong>time</strong> they decided</li>
-<li><strong>How</strong> they decided — accept all, reject all, or a custom selection</li>
+<li>Which categories are in use — strictly necessary only</li>
+<li>The <strong>time</strong> they acknowledged it</li>
+<li><strong>How</strong> — recorded as <code>accept_all</code>, the button they pressed</li>
 <li>The <strong>policy version</strong> in force at the time</li>
 </ul>
-<p>Two behaviors are deliberate and worth knowing if you are asked to justify the banner:</p>
+<p>Three things are deliberate, and worth knowing if you are asked to justify it:</p>
 <ul>
-<li>Optional categories start <strong>switched off</strong>. Pre-ticked boxes are not valid consent.</li>
-<li><strong>Accept all</strong> and <strong>Reject all</strong> are the same size and prominence. A prominent accept next to a buried reject is not a free choice.</li>
+<li><strong>One button, because there is nothing to refuse.</strong> This deployment sets only strictly necessary storage — the sign-in session cookie, the security protections and the language selection — which ePrivacy Art. 5(3) exempts from consent. <strong>The web application contains no third-party trackers</strong>: no analytics, advertising or session-recording scripts of any kind.</li>
+<li><strong>The notice does not block the page.</strong> There is no backdrop and no focus trap; the visitor can read and use the application while it is on screen. A blocking panel would be asking for a decision, and no decision is being asked for.</li>
+<li><strong>It waits for sign-in.</strong> Nothing is stored before then, so there is nothing to disclose; the Privacy Policy page, which a signed-out visitor can read in full, carries the same information at length.</li>
+<li><strong>The record says necessary-only.</strong> Even though the button is Accept, the stored categories are <code>functional: false, analytics: false</code>, because that is what is actually set. Nothing records consent to a purpose nobody was asked about.</li>
 </ul>
-<p>Only strictly necessary storage runs before a decision: the sign-in session cookie and the language selection. <strong>The web application contains no third-party trackers</strong> — no analytics, advertising or session-recording scripts of any kind.</p>
+<div class="admonition warning">
+<p><strong>If an optional purpose is ever added — analytics above all — the choice has to come back with it.</strong> Consent must be specific to processing that actually happens, so a single Accept stops being lawful the moment anything non-essential is stored. That means a real Accept/Reject of equal prominence, with every optional toggle starting off (CJEU C-673/17, <em>Planet49</em>). The category machinery is still in the code for exactly that.</p>
+</div>
+<p>Records written by the earlier three-button banner are kept and still displayed as they were, so a visitor who chose "Reject all" or a custom selection still sees that answer.</p>
 <h3 id="retrieving-it_1">Retrieving it</h3>
 <p>The decision is kept in the visitor's own browser, which is what the banner reads to know whether to appear again.</p>
 <p><strong>For a signed-in user it is also recorded on the server</strong>, as a <code>COOKIE_CONSENT_RECORDED</code> entry in <a href="../../other_admin_operations/activity_logs/">Activity Logs</a> naming the categories allowed, the method and the time. That is the copy you can produce: a record only the visitor can clear demonstrates nothing under Article 7(1).</p>
 <p>For a visitor who never signs in there is no server-side record, and nothing identifies them to hold one against. If you are challenged about that case, what you produce is the banner itself and its disclosure text.</p>
-<p>A user can review or withdraw their choice using the <strong>Cookie preferences</strong> button at the bottom of the Privacy Policy page.</p>
+<p>A user reviews their choice under <strong>Settings → Privacy</strong>, which shows what they chose and when. To answer differently they clear the site's stored data in their browser, which brings the banner back on their next visit.</p>
 <div class="admonition note">
 <p>If you change the categories or materially change the banner wording, the policy version must be increased so that everyone is asked again. Consent given under an older version does not carry over.</p>
 </div>
@@ -1921,6 +1960,45 @@ who accepted materially different documents would both be recorded as having acc
 </ul>
 <p>If a policy has never been published, the mark is empty and the attribute is simply not written.</p>
 <h3 id="retrieving-it_2">Retrieving it</h3>
+<p><strong>Start in the admin console — you no longer need Keycloak for this.</strong></p>
+<p>Every acceptance writes a row into <a href="../../other_admin_operations/activity_logs/">Activity Logs</a>. Creating an account is listed as <strong>Signup</strong>; accepting during an invitation setup or after a social sign-in is listed as <strong>Terms and Privacy Policy Accepted</strong>. Click the row's <strong>view</strong> icon and the details panel includes a <strong>Consent at sign-up</strong> section:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Contains</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Accepted On</strong></td>
+<td>When they accepted</td>
+</tr>
+<tr>
+<td><strong>Accepted Through</strong></td>
+<td>Which screen collected it — web sign-up form, invitation setup, prompted after sign-in, mobile app or API</td>
+</tr>
+<tr>
+<td><strong>Terms Version Mark</strong></td>
+<td>The mark identifying the exact Terms wording they accepted</td>
+</tr>
+<tr>
+<td><strong>Privacy Policy Version Mark</strong></td>
+<td>The same for the Privacy Policy</td>
+</tr>
+<tr>
+<td><strong>Verification Email Sent</strong></td>
+<td>When the account's first verification email went out. On a <strong>Signup</strong> row only</td>
+</tr>
+</tbody>
+</table>
+<p>The row carries these values itself rather than looking them up, so it still answers the question after the account has been deleted and its Keycloak user removed — which is usually when the question arrives.</p>
+<div class="admonition note">
+<p>A mark shown as <strong>—</strong> with "not captured" beneath it means that document had not been published when the person accepted. It is not a fault in the record.</p>
+<p>Only rows of this one type show the panel. Every other log row is unchanged.</p>
+</div>
+<h4 id="the-copy-held-in-keycloak">The copy held in Keycloak</h4>
+<p>The same acceptance is also written onto the Keycloak account. You should not normally need it, but it is the underlying record and it is what the activity row was built from.</p>
 <div class="admonition warning">
 <p><strong>The Keycloak admin console hides these by default.</strong> Keycloak's user profile ships with its "unmanaged attributes" setting switched off, and while that is off the Users screen shows no Attributes tab and the admin API returns nothing — even though the values are stored correctly.</p>
 <p>This has caught people out: the attributes look missing when they are simply not being displayed.</p>
@@ -1932,23 +2010,22 @@ who accepted materially different documents would both be recorded as having acc
 <li>Set <strong>Unmanaged attributes</strong> to <strong>Enabled</strong> (or <strong>Only administrators can view</strong> if you want them read-only).</li>
 <li>Save.</li>
 </ol>
-<p>After that: <strong>Users → find the user → Attributes tab</strong>, and the four values are listed.</p>
+<p>After that: <strong>Users → find the user → Attributes tab</strong>, and the five values are listed.</p>
 <p>This is a display setting only — it changes nothing about what is stored, and the acceptance record is written whether or not it is switched on.</p>
-<h3 id="keeping-the-version-numbers-meaningful">Keeping the version numbers meaningful</h3>
-<p>The version numbers come from the login theme, not from the browser — deliberately, so the recorded version cannot be altered by whoever is submitting the form.</p>
-<div class="admonition warning">
-<p><strong>When you publish a materially changed Terms of Service or Privacy Policy, increase the matching version number</strong> in the login theme's <code>theme.properties</code>:</p>
-<div class="highlight"><pre><span></span><code>app.terms.version=2
-app.privacy.version=2
-</code></pre></div>
-<p>If you do not, everyone who signs up afterwards is recorded as having accepted the old version number while actually being shown the new text — which makes the whole record misleading rather than merely incomplete.</p>
-<p>Keep a dated copy of the version you are replacing. See <a href="../../other_admin_operations/privacy_policy/#keeping-track-of-versions">Privacy Policy</a>.</p>
+<h3 id="the-marks-look-after-themselves">The marks look after themselves</h3>
+<p>Nothing has to be raised by hand when you publish new wording. The mark is computed from the text,
+so editing either document in <strong>Configurations → Privacy</strong> changes it immediately, and every
+acceptance from that moment carries the new one.</p>
+<div class="admonition note">
+<p><strong>Still keep a dated copy of each published version</strong> outside the console, as
+<a href="../../other_admin_operations/privacy_policy/">Privacy Policy</a> advises. The mark tells you <em>which</em>
+text somebody accepted; only your own copy can show <em>what it said</em>.</p>
 </div>
 <div class="admonition note">
 <p>Accounts created <strong>before</strong> this was introduced have none of these attributes. Their absence means "created before acceptance was recorded", not "did not accept" — the checkbox was always present on the sign-up page, it simply was not stored. Say exactly that if you are ever asked.</p>
 </div>
 <h3 id="check-the-policy-links-resolve">Check the policy links resolve</h3>
-<p>The consent checkbox links to your Terms and Privacy pages. Those addresses come from two environment variables set on the Keycloak service:</p>
+<p>The consent checkbox links to your Terms and Privacy pages. Both addresses are built from <strong>one</strong> environment variable set on the Keycloak service:</p>
 <table>
 <thead>
 <tr>
@@ -1958,24 +2035,23 @@ app.privacy.version=2
 </thead>
 <tbody>
 <tr>
-<td><code>VSCRAWL_TERMS_URL</code></td>
-<td>Your public Terms of Service page</td>
-</tr>
-<tr>
-<td><code>VSCRAWL_PRIVACY_URL</code></td>
-<td>Your public Privacy Policy page</td>
+<td><code>VSCRAWL_APP_BASE_URL</code></td>
+<td>The address of your user-facing application, with no trailing slash</td>
 </tr>
 </tbody>
 </table>
+<p>The theme appends the page paths itself — <code>/terms-of-services</code> and <code>/privacy-policy</code> — because those are fixed by the application's own routes and never differ between installations. Only the host does.</p>
 <div class="admonition warning">
-<p><strong>Set both on every installation that is not a local development machine.</strong> If they are not set, the login theme falls back to a <code>localhost</code> address — which resolves to the <em>user's own computer</em>, so the policy never opens for them.</p>
+<p><strong>Set it on every installation that is not a local development machine.</strong> If it is not set, the login theme falls back to a <code>localhost</code> address — which resolves to the <em>user's own computer</em>, so the policy never opens for them.</p>
 <p>That matters beyond broken links: consent has to be informed, and it is hard to argue someone was informed by a page that never loaded.</p>
 </div>
-<p>They are set alongside the other Keycloak settings in the deployment's compose file, for example:</p>
-<div class="highlight"><pre><span></span><code>VSCRAWL_TERMS_URL: &quot;https://app.example.com/terms-of-services&quot;
-VSCRAWL_PRIVACY_URL: &quot;https://app.example.com/privacy-policy&quot;
+<p>It is set alongside the other Keycloak settings in the deployment's compose file, for example:</p>
+<div class="highlight"><pre><span></span><code>VSCRAWL_APP_BASE_URL: &quot;https://app.example.com&quot;
 </code></pre></div>
-<p>The same two addresses are used by all three consent screens — sign-up, invited-member setup, and the social sign-in terms page — so setting them once covers every route.</p>
+<div class="admonition note">
+<p>Earlier releases used two separate variables, <code>VSCRAWL_TERMS_URL</code> and <code>VSCRAWL_PRIVACY_URL</code>. They no longer do anything. If your compose file still sets them, replace both with the single base address above — otherwise the links fall back to <code>localhost</code>.</p>
+</div>
+<p>The same address is used by all three consent screens — sign-up, invited-member setup, and the social sign-in terms page — so setting it once covers every route.</p>
 <p>To check they are right, open your sign-up page and click both links. They should open your real published pages.</p>
 <h2 id="what-to-check-periodically">What to check periodically</h2>
 <table>
@@ -1992,15 +2068,19 @@ VSCRAWL_PRIVACY_URL: &quot;https://app.example.com/privacy-policy&quot;
 </tr>
 <tr>
 <td>Does the Privacy Policy screen have real content?</td>
-<td>It ships empty</td>
+<td>It ships empty, and an unpublished document records an empty mark</td>
 </tr>
 <tr>
 <td>Do the registration page's terms and privacy links resolve?</td>
 <td>They ship pointing at a development address</td>
 </tr>
 <tr>
+<td>Is <code>VSCRAWL_APP_BASE_URL</code> set, and are the two old URL variables gone?</td>
+<td>The old pair is ignored; leaving them set hides the fact that the links point at <code>localhost</code></td>
+</tr>
+<tr>
 <td>Has the banner wording changed without a version increase?</td>
-<td>Old consent would be silently reused for new terms</td>
+<td>Old consent would be silently reused for new terms. This applies to the <strong>cookie banner only</strong> — the Terms and Privacy marks look after themselves</td>
 </tr>
 </tbody>
 </table>

@@ -544,14 +544,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../connectors/storage_provider_setup/" class="md-nav__link">
+      <a href="../../connectors/cloud_source_setup/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Set Up Google Drive and Dropbox
+    Set Up Cloud Source Providers
   
 
     
@@ -1138,28 +1138,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#account-deletion" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Account deletion
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#related" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Related
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1541,28 +1519,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#account-deletion" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Account deletion
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#related" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Related
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1612,37 +1568,6 @@ of any other kind is dropped rather than published.</p>
 <li>Check that the retention periods you state match what you actually do. See <a href="../../compliance/data_retention/">Data Retention</a>.</li>
 <li>List the third-party providers you have configured — your email connector, and your storage connector if it is not local.</li>
 <li>Have it reviewed by someone qualified. This screen publishes a legal document.</li>
-</ul>
-<h2 id="account-deletion">Account deletion</h2>
-<p>Below the editor, <strong>Account deletion</strong> carries one switch: <em>Erase personal data on deletion</em>.</p>
-<table>
-<thead>
-<tr>
-<th>Setting</th>
-<th>What deleting an account does</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>On</strong> (default)</td>
-<td>Removes the person's name, email address and IP from the account record, from the activity and audit logs, and from any identity-verification data. Documents they already signed keep their name — other parties rely on those signatures</td>
-</tr>
-<tr>
-<td><strong>Off</strong></td>
-<td>Stops the sign-in and marks the account closed. Name, email address and every log entry remain in the database. This is how the product behaved before erasure was added</td>
-</tr>
-</tbody>
-</table>
-<p>It sits on this screen rather than under Retention because Retention is about aged data being swept
-away on a schedule, while this decides how completely a deletion <strong>somebody has already asked for</strong>
-is carried out — a promise the policy above makes on the platform's behalf.</p>
-<p>Leave it on unless you have a specific reason not to. With it off, an erasure request has to be
-answered by hand in the database. See
-<a href="../../compliance/data_subject_requests/#erasure--delete-me">Data Subject Requests</a>.</p>
-<h2 id="related">Related</h2>
-<ul>
-<li><a href="../../compliance/gdpr_overview/">GDPR Overview</a></li>
-<li><a href="../../compliance/consent_records/">Consent Records</a></li>
 </ul>
 
 

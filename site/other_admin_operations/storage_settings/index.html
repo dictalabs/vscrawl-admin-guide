@@ -544,14 +544,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../connectors/storage_provider_setup/" class="md-nav__link">
+      <a href="../../connectors/cloud_source_setup/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Set Up Google Drive and Dropbox
+    Set Up Cloud Source Providers
   
 
     
@@ -1034,38 +1034,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#changing-the-default-moves-what-is-already-stored" class="md-nav__link">
+  <a href="#only-the-platforms-own-volume-can-be-the-default" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Changing the default moves what is already stored
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#while-content-is-being-moved" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        While content is being moved
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="While content is being moved">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pause-and-resume" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Pause and Resume
+        Only the platform's own volume can be the default
       
     </span>
   </a>
@@ -1073,10 +1045,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#choosing-a-different-connector-after-pausing" class="md-nav__link">
+  <a href="#changing-the-default" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Choosing a different connector after pausing
+        Changing the default
       
     </span>
   </a>
@@ -1544,38 +1516,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#changing-the-default-moves-what-is-already-stored" class="md-nav__link">
+  <a href="#only-the-platforms-own-volume-can-be-the-default" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Changing the default moves what is already stored
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#while-content-is-being-moved" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        While content is being moved
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="While content is being moved">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pause-and-resume" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Pause and Resume
+        Only the platform's own volume can be the default
       
     </span>
   </a>
@@ -1583,10 +1527,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#choosing-a-different-connector-after-pausing" class="md-nav__link">
+  <a href="#changing-the-default" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Choosing a different connector after pausing
+        Changing the default
       
     </span>
   </a>
@@ -1633,39 +1577,23 @@
 <ul>
 <li><strong>Default Storage</strong> – the connector documents are written to.</li>
 </ul>
-<p>Every option in this dropdown is a <strong>Storage connector</strong>, including the platform's own volume, which is seeded as a connector named <strong>Server Storage</strong>. There is no separate storage type or path on this screen any more: where a place is and how it is reached — its directory, its OAuth application, its folder — all belong to the connector. See <a href="../../connectors/add_connectors/#storage-connectors">Add Connectors</a> for how to add one.</p>
+<p>Every option in this dropdown is a <strong>Storage connector</strong>, including the platform's own volume, which is seeded as a connector named <strong>Server Storage</strong>. There is no separate storage type or path on this screen: where a place is and how it is reached — its directory — belongs to the connector. See <a href="../../connectors/add_connectors/#storage-connectors">Add Connectors</a> for how to add one.</p>
 <p>Only connectors that are <strong>Active</strong> and whose last health check passed are offered. A connector that has been switched off, or that failed its last check, is not something documents should be sent to.</p>
-<h3 id="changing-the-default-moves-what-is-already-stored">Changing the default moves what is already stored</h3>
-<p>Changing this setting does two things, not one:</p>
-<ol>
-<li>New documents are written to the connector you chose.</li>
-<li><strong>Everything already stored — documents and templates — is moved to it in the background.</strong></li>
-</ol>
-<p>A default that only applied to future documents would leave the installation reading from two places indefinitely, which is never what choosing a new storage was meant to mean.</p>
-<p>Because this is a large operation, the screen asks first:</p>
+<h3 id="only-the-platforms-own-volume-can-be-the-default">Only the platform's own volume can be the default</h3>
+<p>The dropdown lists <strong>Server Storage</strong> connectors and nothing else. Documents this installation holds are not written out to a Google Drive or Dropbox account.</p>
+<p>The rule is enforced by the server as well as by the screen, so it cannot be worked around by calling the API directly.</p>
+<div class="admonition note">
+<p class="admonition-title">Cloud Source is the other direction, and is unaffected</p>
+<p>Google Drive and Dropbox are still available under the <strong>Cloud Source</strong> purpose, where a signer brings one of their own files <em>in</em>. What is withdrawn here is the opposite — this platform pushing the documents it holds <em>out</em> to an account outside the installation. See <a href="../../connectors/cloud_source_setup/">Set Up Cloud Source Providers</a>.</p>
+</div>
+<h3 id="changing-the-default">Changing the default</h3>
+<p>A new default applies to <strong>documents written from that point on</strong>. Content already stored stays where it is and stays readable from the connector that holds it — changing this setting never moves, copies or deletes anything.</p>
+<p>Adding a second Server Storage connector with a different Storage Location is therefore how you move onto a new volume for new content, not how you empty the old one.</p>
 <blockquote>
-<p><strong>Move everything to Google Drive?</strong>
-New documents will be stored there, and everything already stored — documents and templates — will be moved across in the background. On a large installation this can take a while. The default storage cannot be changed again until the move finishes.</p>
+<p><strong>Note:</strong> A connector that still holds documents or templates cannot be deleted, and neither can the one currently set as the default. Deleting a connector does not delete the content — it deletes the only record of where that content is.</p>
 </blockquote>
-<p>Select <strong>Change and move</strong> to start, or <strong>Cancel</strong> to leave the setting as it was.</p>
-<h2 id="while-content-is-being-moved">While content is being moved</h2>
-<p>A progress panel appears under the selector and stays until the move finishes.</p>
-<ul>
-<li><strong>How far along</strong> – items completed out of the total, as a percentage, and the same figure in <strong>size</strong>: <code>1,508 / 31,455 (5%) · 684.9 MB / 3.4 GB</code>. Item counts alone can mislead — an installation with many records but little content reads as far bigger than it is.</li>
-<li><strong>moved</strong> – content copied to the new connector, verified, and removed from the old one.</li>
-<li><strong>skipped (no content found)</strong> – the record exists but there is no file behind it on the old connector. Nothing was lost and nothing was moved. A large number here is worth investigating: it means that many records point at content that is not there, and it was true before the move started.</li>
-<li><strong>retrying</strong> – the item failed for a reason that was not its own, such as a service restarting mid-move, and will be tried again shortly. It is not counted as finished, so the bar cannot reach 100% while work is outstanding.</li>
-<li><strong>failed</strong> – tried the maximum number of times and could not be moved. The content is untouched and still on the old connector.</li>
-</ul>
-<h3 id="pause-and-resume">Pause and Resume</h3>
-<p>Use <strong>Pause</strong> to stop the move — during a busy period, or because the wrong connector was chosen. Pausing is safe at any moment: each document is copied, verified, and only then removed from the old place, so a document is always in one place or the other and never in neither.</p>
-<p><strong>Resume</strong> starts it again from where it stopped.</p>
-<h3 id="choosing-a-different-connector-after-pausing">Choosing a different connector after pausing</h3>
-<p>While the move is paused, the <strong>Default Storage</strong> selector is unlocked so a different connector can be chosen. The paused move is discarded and a new one starts <strong>from wherever the content is now</strong> — including anything already moved to the connector you are moving away from, which is emptied first.</p>
-<p>This is the way out of a wrong choice. It can be done more than once.</p>
-<p>While the move is <strong>running</strong>, the selector is locked. The rule is enforced by the server as well as the screen, so it cannot be worked around by calling the API directly: a move carrying documents to one connector while new documents start going to a third leaves nobody able to say where anything is meant to be.</p>
 <h2 id="storage-usage">Storage Usage</h2>
-<p>The <strong>Storage Usage</strong> panel reports space where the <strong>currently selected connector</strong> keeps documents, so the figures change when the default storage changes.</p>
+<p>The <strong>Storage Usage</strong> panel reports space on the volume the <strong>currently selected connector</strong> keeps documents on, so the figures change when the default storage changes.</p>
 <ul>
 <li>A <strong>donut chart</strong> with the proportion in use.</li>
 <li><strong>Used</strong>, <strong>Free</strong> and <strong>Total</strong> space, scaled to a sensible unit — MB for a fraction of a gigabyte, TB for a large volume.</li>
@@ -1694,8 +1622,7 @@ New documents will be stored there, and everything already stored — documents 
 </tbody>
 </table>
 <blockquote>
-<p><strong>Note:</strong> What the figures describe depends on the connector. For <strong>Server Storage</strong> it is the volume the platform runs on. For <strong>Google Drive</strong> or <strong>Dropbox</strong> it is the whole connected account — including whatever else lives in that account, not only the documents vScrawl put there. The panel says which account it is reporting on.</p>
-<p>Some providers cannot report usage at all. A Dropbox connector authorised before the <code>account_info.read</code> permission was granted to its application is one such case; the panel simply omits the figures rather than showing zero.</p>
+<p>A volume that holds something but too little to round to a whole percent reads as <strong>&lt;1%</strong>, not <code>0%</code>. Zero would say nothing is stored, which is a different and wrong answer.</p>
 </blockquote>
 
 

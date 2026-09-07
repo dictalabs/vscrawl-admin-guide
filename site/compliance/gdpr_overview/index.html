@@ -544,14 +544,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../connectors/storage_provider_setup/" class="md-nav__link">
+      <a href="../../connectors/cloud_source_setup/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Set Up Google Drive and Dropbox
+    Set Up Cloud Source Providers
   
 
     
@@ -1677,12 +1677,17 @@
 <tr>
 <td><strong>Storage connector</strong></td>
 <td><a href="../../other_admin_operations/storage_settings/">Storage</a></td>
-<td>If you point storage at Google Drive or Dropbox, <strong>your documents go there.</strong> You need your own agreement with that provider.</td>
+<td>Documents are kept on the platform's own volume, and only a <strong>Server Storage</strong> connector can be the default. Nothing this platform holds is written out to a third-party account.</td>
+</tr>
+<tr>
+<td><strong>Cloud Source connector</strong></td>
+<td><a href="../../connectors/cloud_source_setup/">Connectors</a></td>
+<td>Lets a signer import one of <em>their own</em> files from Google Drive or Dropbox. The provider is not a processor of your data: it holds the signer's file, the signer consents in the provider's own window, and vScrawl receives a copy of the one file they pick.</td>
 </tr>
 </tbody>
 </table>
-<div class="admonition warning">
-<p>Enabling a remote storage connector sends document content to a third party. Do not enable one until you have a data processing agreement with that provider in place.</p>
+<div class="admonition note">
+<p>Cloud Source is an inbound copy, not an export: once a document is imported it lives on this installation's own storage like any uploaded file, and the provider is not sent anything. Tell users which providers you offer, though — the file they pick leaves their account at their own instruction, and the pickers run in the provider's own window.</p>
 </div>
 <h2 id="what-remains-your-responsibility">What remains your responsibility</h2>
 <p>The platform cannot do these for you.</p>

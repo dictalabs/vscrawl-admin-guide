@@ -544,14 +544,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../connectors/storage_provider_setup/" class="md-nav__link">
+      <a href="../../connectors/cloud_source_setup/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Set Up Google Drive and Dropbox
+    Set Up Cloud Source Providers
   
 
     
@@ -915,6 +915,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Application
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -931,6 +949,36 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#account-deletion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Account deletion
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1410,6 +1458,25 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#account-deletion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Account deletion
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1436,6 +1503,47 @@
 <li>Enabling registration of new users through Sign Up.</li>
 <li>Configuring the <strong>Global Date Format</strong> to define how dates are displayed across the application (e.g., <code>MM/DD/YYYY</code>, <code>DD/MM/YYYY</code>, <code>YYYY-MM-DD</code>, etc.).</li>
 </ul>
+<h2 id="account-deletion">Account deletion</h2>
+<p>At the foot of the screen sits <strong>Erase personal data on deletion</strong>, which decides how much is actually removed when somebody deletes their own account — or when you delete it for them.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>On</strong> (ships this way)</th>
+<th><strong>Off</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>What happens</td>
+<td>The account closes and its data goes with it: documents, the organization and everything in it, saved signatures, certificates and identity-verification records. The account row is anonymised</td>
+<td>The account closes and <strong>nothing else is touched</strong>. Every one of those things stays exactly where it was</td>
+</tr>
+<tr>
+<td>Signing up again with the same address</td>
+<td>Starts a new, empty account</td>
+<td>Returns the person to the account they closed, with everything still attached</td>
+</tr>
+<tr>
+<td>An erasure request</td>
+<td>The product fulfils it</td>
+<td>Has to be carried out by hand, in the database</td>
+</tr>
+</tbody>
+</table>
+<p>Activity and audit entries keep the name and address under <strong>either</strong> setting. They are the record of what happened, and an entry nobody can be attributed to is not a record.</p>
+<div class="admonition warning">
+<p><strong>With it off, the email address is a key to that account.</strong> Whoever registers it next lands inside it, looking at the previous holder's documents. That is what you want for somebody returning to their own account, and it is a disclosure risk for an address that could pass to a different person — a shared or company mailbox being the obvious case.</p>
+<p>Leave it on unless you have a specific reason not to. Off also means storage is never reclaimed.</p>
+</div>
+<div class="admonition note">
+<p><strong>This switch also governs automatic closures.</strong> An account closed by the inactive-account
+retention job runs the same deletion path, so whatever this setting does to a deletion somebody
+asked for, it does to one the schedule performs — see
+<a href="../../compliance/data_retention/#inactive-accounts">Data Retention → Inactive accounts</a>.</p>
+<p>Unlike the retention windows, this value is read <strong>once when the service starts</strong>. Change it and
+the scheduled job keeps using the old setting until admin-service is restarted.</p>
+</div>
 
 
 

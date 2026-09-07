@@ -33,6 +33,7 @@ Click on the **Add Connector** button to open the connector creation screen.
   - **Auth**
   - **Timestamp**
   - **Storage**
+  - **Cloud Source**
 
 ![Purpose Dropdown](../images/connector-purpose-dropdown.png)
 
@@ -279,13 +280,11 @@ A Timestamp connector is only used when the signature is timestamped. After addi
      ![TSA Timestamp Connector](../images/connector-tsa-timestamp.png)
 
 ### **Storage Connectors**
-These connectors decide **where document content is kept**. Select **Storage** as the Purpose, then choose a Provider.
+These connectors decide **where document content is kept**. Select **Storage** as the Purpose, then choose the **Server Storage** Provider.
 
-Every storage location is a connector, including the platform's own volume — there is no separate "storage type" setting. After adding one here, select it as the **Default Storage** on the [Storage](../other_admin_operations/storage_settings.md) page.
+Storage is the platform's own volume. Google Drive and Dropbox are **not** storage providers: the documents vScrawl holds are never written out to an account outside the installation. Those two appear under the **Cloud Source** purpose below, which is the opposite direction — a signer bringing one of their own files in.
 
-> Google Drive and Dropbox connectors need an application registered with the provider first. See [Set Up Google Drive and Dropbox](storage_provider_setup.md) for what to create and which exact values to use.
-
-> **Important:** Changing the Default Storage does not only affect new documents. Everything already stored is moved to the new connector in the background. Read [Changing the default moves what is already stored](../other_admin_operations/storage_settings.md#changing-the-default-moves-what-is-already-stored) before switching.
+After adding a Storage connector here, select it as the **Default Storage** on the [Storage](../other_admin_operations/storage_settings.md) page. Only connectors that are **Active** and whose last health check passed are offered there, and the same rule is enforced by the API, not only by the screen.
 
 ####Server Storage
    Documents are kept on the volume the platform itself runs on. This connector is created for you when vScrawl is installed, and is the default until you choose otherwise.
@@ -293,47 +292,50 @@ Every storage location is a connector, including the platform's own volume — t
    - **Configuration**:
      - **Storage Location** — the root directory documents are written under. Leave it blank to use the installation's configured path.
 
-   Adding a second Server Storage connector with a different Storage Location lets documents be moved onto a different volume.
+   Adding a second Server Storage connector with a different Storage Location lets new documents be written to a different volume.
 
-####Google Drive
-   Documents are kept in a folder of a connected Google account.
-
-   - **Configuration**:
-     - **Client ID** and **Client Secret** — the OAuth client of this connector's own Google Cloud project. Both are required; there is no shared application to fall back to, so two connectors can sit in two entirely different projects.
-     - **OAuth Redirect URI** — this platform's storage callback endpoint, on the **API host** rather than the admin console's. Register this exact string with the connector's Google application: the provider checks it again during the token exchange, so one character of difference fails.
-     - **Refresh Token** — written by Connect Account. A token only exists once Google has issued one, so it is not typed in.
-     - **Root Folder ID** — appears only after the account is connected. Consent creates the folder and records it here.
-
-   - **Example Configuration Screen**:
-
-     ![Google Drive Storage Connector](../images/storage-google-drive-connector.png)
-
-####Dropbox
-   Documents are kept in a folder of a connected Dropbox account.
-
-   - **Configuration**:
-     - **App Key** and **App Secret** — from this connector's own scoped Dropbox app. Required, for the same reason as above.
-     - **OAuth Redirect URI** — as for Google Drive, registered in the Dropbox App Console.
-     - **Refresh Token** — written by Connect Account.
-     - **Root Path** — appears only after the account is connected. Defaults to `/vscrawl`.
-     - Grant the app the `account_info.read` permission **before** connecting if you want the Storage Usage figures reported. A token issued before that permission was granted cannot read them, and the panel simply omits the figures.
-
-   - **Example Configuration Screen**:
-
-     ![Dropbox Storage Connector](../images/storage-dropbox-connector.png)
+> **Note:** A storage connector that still holds documents or templates **cannot be deleted**, and neither can the one currently set as the Default Storage. Deleting a connector does not delete the content — it deletes the only record of where the content is, and every read of it fails from that moment with nothing left to point at.
 
 ---
 
-### Connect Account and Test Connection
+### **Cloud Source Connectors**
+These connectors let a signer **import one of their own documents** from Google Drive or Dropbox instead of browsing their computer. Select **Cloud Source** as the Purpose, then choose a Provider.
 
-Google Drive and Dropbox connectors need two things that credentials alone cannot provide: a **refresh token**, which only exists once the provider has issued one, and the **folder** to store in, which is created during the same consent.
+No account is connected here. The signer consents in the provider's own window, for the single file they pick, and that file is copied in exactly as if they had uploaded it. vScrawl stores no password, token or session for their account, and can see nothing else they keep there.
 
-- **Connect Account**, in the configuration section's header, creates or saves the connector, opens the provider's consent screen, and stores what comes back — the refresh token and the folder.
-- Until it has been run, the dialog's **Add**/**Update** button stays disabled and the footer reads *"Connect the account to save these credentials."* A connector holding credentials but no token cannot store anything, and saving one would look successful while being unusable.
-- Editing the Client ID, Client Secret, App Key or App Secret afterwards disables saving again until the account is reconnected: the stored token was issued to the old credentials and no longer belongs to the new ones.
-- **Test Connection** proves the connector works end to end: it writes a small file, reads it back, and deletes it. The result and the time it took are shown, and are also what the Default Storage dropdown uses to decide whether to offer the connector at all.
+> These connectors need an application registered with the provider first — a Google Cloud project, or a Dropbox app. See [Set Up Cloud Source Providers](cloud_source_setup.md) for what to create and which exact values to register.
 
-> **Note:** A storage connector that still holds documents or templates **cannot be deleted**, and neither can the one currently set as the Default Storage. Deleting a connector does not delete the content — it deletes the only record of where the content is, and every read of it fails from that moment with nothing left to point at. Move the content elsewhere first by changing the Default Storage and letting the move finish.
+> **Important:** Adding the connector alone changes nothing on the upload screen. A Cloud Source is offered only where a **service plan** switches the provider on *and* names this connector. See [Service Plan](../finance_settings/service_plans.md).
+
+!!! warning "These values are public — never enter a secret here"
+    A Cloud Source connector's values are read by the signing app in the browser and ship in its page source. Google and Dropbox intend these particular values to be public and neither picker works without them. A client secret or app secret is not such a value, is never needed for import, and has no field on this form.
+
+####Google Drive
+   A signer picks a file from their own Google Drive, through the Google Picker.
+
+   - **Configuration**:
+     - **Client ID** — the OAuth Web-application client of this connector's own Google Cloud project. Each environment's origin is registered under *Authorised JavaScript origins*. Import never redirects, so there is no redirect URI to add — and a value put in the redirect list has no effect.
+     - **API Key** — the key the Picker loads with, restricted to the Picker API. Its website restriction takes the origin **plus a trailing `/*`**; without the wildcard every Picker call is rejected.
+
+   Both fields are required. With either one missing the provider is not offered at all, rather than offered and then failing when a signer clicks it.
+
+   ![GoogleDrive](../images/connector-google-drive.png)
+
+####Dropbox
+   A signer picks a file from their own Dropbox, through the Dropbox Chooser.
+
+   - **Configuration**:
+     - **App key** — from a scoped app in the Dropbox App Console. Each environment's address is added under the app's *Chooser / Saver / Embedder domains*, as a bare domain with no scheme and no port.
+
+   The app secret is not used and must not be entered. No Dropbox permissions need to be enabled either: the Chooser returns a link to the one file selected, and the application is never granted the account.
+
+   ![Dropbox](../images/connector-dropbox.png)
+
+### How to set up the provider account
+
+Above the credential fields, the connector form carries a collapsible **How to set up the provider account** panel. It lists the steps for the provider you chose and prints the exact values to register — the JavaScript origin, the API-key referrer, or the Dropbox domain — built from this installation's own configured addresses, each with a copy button.
+
+Use those rather than typing the values from a document. They are the two things that cannot be guessed, and the mistake they invite is invisible: the connector saves cleanly, and the failure only appears later, in the signer's browser.
 
 ---
 

@@ -542,14 +542,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../connectors/storage_provider_setup/" class="md-nav__link">
+      <a href="../../connectors/cloud_source_setup/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Set Up Google Drive and Dropbox
+    Set Up Cloud Source Providers
   
 
     
@@ -1501,6 +1501,62 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Inactive accounts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-the-warning-email-says" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What the warning email says
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checking-that-it-ran" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checking that it ran
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Checking that it ran">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-the-counters-mean" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What the counters mean
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#two-windows-the-job-refuses-to-work-with" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Two windows the job refuses to work with
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1692,6 +1748,62 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Inactive accounts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-the-warning-email-says" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What the warning email says
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checking-that-it-ran" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checking that it ran
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Checking that it ran">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-the-counters-mean" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What the counters mean
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#two-windows-the-job-refuses-to-work-with" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Two windows the job refuses to work with
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1837,9 +1949,11 @@
 <p>Entries recording an <strong>administrator's</strong> action keep that administrator's own name and address. They are a different person, and that is the accountability record for privileged actions.</p>
 </div>
 <h3 id="identity-documents">Identity documents</h3>
-<p>The scan of an applicant's identity document is the most damaging single field the platform holds. It is now <strong>discarded automatically as soon as the request is reviewed</strong> — approved or rejected — keeping only which kind of document was checked and the decision.</p>
-<div class="admonition note">
-<p>A consequence worth knowing: an administrator can no longer re-open the document of an already-reviewed request. That is the intended trade-off, but it means the review has to be done properly the first time.</p>
+<p>The scan of an applicant's identity document is the most damaging single field the platform holds.</p>
+<div class="admonition warning">
+<p><strong>It is kept until the applicant's account is deleted.</strong> Reviewing a request — approving it or rejecting it — records the decision and does not remove the scan, and there is no scheduled job that removes it either. An applicant who was turned down a year ago still has their passport or national ID image on the platform for as long as their account exists.</p>
+<p>Deleting the account does clear it: every unapproved request is deleted outright and approved ones lose the identity fields. Until then, the only way to remove one is by hand.</p>
+<p>If your installation needs these cleared on a timetable, that is a gap to raise — it is not something the console can do today.</p>
 </div>
 <div class="admonition warning">
 <p>Requests reviewed <strong>before this behaviour existed</strong> may still hold their scan. Ask your database administrator to clear the stored images on already-reviewed rows once, as a one-off.</p>
@@ -1938,10 +2052,6 @@ once it is on, because while it is off they have no effect.</p>
 <td>In-app notifications</td>
 </tr>
 <tr>
-<td>Rejected certificate requests</td>
-<td>Identity verification data from requests that were rejected</td>
-</tr>
-<tr>
 <td>Expired tokens and links</td>
 <td>Old session tokens, invitation links, password-reset codes</td>
 </tr>
@@ -1977,16 +2087,102 @@ once it is on, because while it is off they have no effect.</p>
 <p><img alt="Inactive accounts" src="../../images/admin-retention-inactive-accounts.png" /></p>
 <p><strong>An account is never closed without having been warned.</strong> If one reaches the closure threshold but no warning was ever sent — which is what happens the first time you enable this on an installation with years of dormant accounts — the sweep sends the warning and leaves the account alone until a later run.</p>
 <p>The warning goes out by <strong>email</strong>, because the only person who needs to see it has not opened the product in over a year and would never notice an in-app message. An in-app notification is written too, and that notification doubles as the record that the warning was sent.</p>
+<h3 id="what-the-warning-email-says">What the warning email says</h3>
+<p>It carries the same branding as every other message the platform sends — the recipient's own organization's logo and colours where that organization has set them, falling back to the platform's. Two numbers appear in it, and both come from this screen:</p>
+<ul>
+<li><strong>"You have not signed in for N days"</strong> — this is your <strong>Warn after</strong> value, not <strong>Close after</strong>. It is a floor rather than a measurement: an account dormant far longer is still described by the threshold it crossed.</li>
+<li><strong>"Sign in within the next N days"</strong> — the gap between your two windows.</li>
+</ul>
+<p>The <strong>Sign in</strong> button points at the address in <code>FRONTEND_HOST_URL</code>, the same setting every other product email builds its links from, so a message sent from staging lands on staging and one sent from production lands on production.</p>
+<div class="admonition note">
+<p><strong>The logo needs one deployment setting.</strong> An organization's uploaded logo is served from <code>{api.host}user/v1/logo?orgId={id}</code>, so admin-service needs <code>api.host</code> (environment variable <code>API_HOST</code>) pointing at the API gateway — the same value workflow-service uses. Without it the header falls back to the product name set as a wordmark, which is tidy but not your customer's brand.</p>
+</div>
 <p>Closing an account runs the same path as a user deleting their own account: the login, drafts, saved signatures and keys go; <strong>documents they have already signed stay</strong>. Every closure is recorded in the <a href="../../other_admin_operations/audit_logs/">Audit Logs</a> as <code>ACCOUNT_CLOSED_INACTIVE</code>.</p>
 <div class="admonition note">
 <p>Two cases are skipped on purpose, and both appear in the log rather than failing silently:</p>
 <ul>
 <li><strong>An account with no email address</strong> cannot be warned, so it is never closed either.</li>
-<li><strong>An organization owner with other members</strong> cannot be deleted — their organization would lose its owner. Transfer ownership first if you want the account closed.</li>
+<li><strong>An organization owner with other members</strong> cannot be deleted — their organization would lose its owner. Transfer ownership first if you want the account closed. The refusal names the organization and its member count in the log, so you can see which account it was and why.</li>
 </ul>
 </div>
-<p>Windows must be between <strong>7 and 3650 days</strong>. Anything shorter is refused: a window of zero would mean "delete everything older than right now", which on the activity log is every row you have.</p>
+<div class="admonition warning">
+<p class="admonition-title">The first run closes nothing, however dormant the accounts are</p>
+<p>This is the single most misread part of the feature. The two stages never happen on the same run: a sweep that finds an account past <strong>Close after</strong> but never warned <strong>sends the warning and stops there</strong>. The closure comes on the sweep after the grace period has elapsed — so with a 3-day gap, roughly three days later.</p>
+<p>Switch this on for the first time and the first night's result is <code>warned=N, closed=0</code>, even for accounts untouched for years. That is correct, not a fault.</p>
+</div>
+<p>Windows must be between <strong>7 and 3650 days</strong>. Anything shorter is refused: a window of zero would mean "delete everything older than right now", which on the activity log is every row you have. <strong>Warn after must also be strictly less than Close after</strong> — the console will not save them equal, and the service refuses the job if they ever end up that way (see <a href="#two-windows-the-job-refuses-to-work-with">Two windows the job refuses to work with</a>).</p>
 <p>If a setting is somehow missing or unreadable, the platform keeps the data for ten years rather than deleting it. Every failure mode errs towards keeping.</p>
+<h2 id="checking-that-it-ran">Checking that it ran</h2>
+<p>Both jobs say what they did in the <strong>service log</strong>, every night, including the nights they did
+nothing. That last part is the point: a job that was switched off and a job that never ran look
+identical from the outside, so each writes its own line.</p>
+<p><strong>The row sweep:</strong></p>
+<div class="highlight"><pre><span></span><code>Retention: sweep skipped — RETENTION_ENABLED is not true
+Retention: sweep starting
+Retention: sweep finished — {activityLogs=283, auditLogs=0, notifications=0, userTokens=0, userLinks=0, webhookDeliveries=0}
+</code></pre></div>
+<p><strong>The inactive-account job:</strong></p>
+<div class="highlight"><pre><span></span><code>Inactive accounts: sweep skipped — RETENTION_ENABLED is not true
+Inactive accounts: sweep skipped — the configured windows are unusable
+Inactive accounts: sweep starting — warn after 300 days, close after 301 days, so a warned holder has 1 day to sign in
+Inactive accounts: {warned=1, closed=0, deferredPendingWarning=1}
+</code></pre></div>
+<h3 id="what-the-counters-mean">What the counters mean</h3>
+<table>
+<thead>
+<tr>
+<th>Counter</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>warned</code></td>
+<td>Holders emailed on this run</td>
+</tr>
+<tr>
+<td><code>closed</code></td>
+<td>Accounts actually closed</td>
+</tr>
+<tr>
+<td><code>deferredPendingWarning</code></td>
+<td>Past <strong>Close after</strong> but never warned, so warned now and left alone. <strong>They become due one grace period later</strong></td>
+</tr>
+<tr>
+<td><code>awaitingGracePeriod</code></td>
+<td>Already warned, grace not yet elapsed. Nothing to do but wait</td>
+</tr>
+<tr>
+<td><code>couldNotClose</code></td>
+<td>Due, but the deletion refused them — almost always an organization owner with other members</td>
+</tr>
+</tbody>
+</table>
+<p>When nothing was closed, the job also says <strong>why</strong>, in words, on the following line:</p>
+<div class="highlight"><pre><span></span><code>Inactive accounts: nothing was closed because 1 account(s) were only warned just now.
+No account is ever closed on the run that warns it — they become due in 1 day, on the
+sweep after their grace period ends.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Inactive accounts: 3 account(s) were due but the deletion path refused them — see the
+&#39;could not close userId=&#39; lines above for each reason.
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title"><code>warned=N, closed=0</code> is the normal first result</p>
+<p>If you switched retention on today and the row counts dropped but no account was closed, the
+feature is working. Look for <code>deferredPendingWarning</code> in the same line — it is telling you those
+accounts were warned on this run and are due after the grace period, not that closure is broken.</p>
+</div>
+<h3 id="two-windows-the-job-refuses-to-work-with">Two windows the job refuses to work with</h3>
+<p>Both refusals are logged with the offending values, and in both cases <strong>the whole inactive-account
+job is skipped</strong> — no warnings, no closures:</p>
+<ul>
+<li><strong>Warn after is not before Close after.</strong> Equal values count. Setting both the same does not close
+  an account together with its warning; it stops the job entirely.</li>
+<li><strong>The notification window is not longer than the grace period.</strong> The warning is recorded as an
+  in-app notification, and that row is both the proof the holder was told and the clock the grace
+  period runs from. Purge it before the account is due and the holder is warned again and again
+  while nothing ever closes, so the job refuses instead.</li>
+</ul>
 <h2 id="backups">Backups</h2>
 <p>Retention applies to backups too, and this is routinely forgotten.</p>
 <ul>
@@ -2088,7 +2284,7 @@ schedule; whoever owns the deployment can.</p>
 <h2 id="account-deletion-is-a-separate-setting">Account deletion is a separate setting</h2>
 <p>This page covers data deleted <strong>by age, on a schedule</strong>. How much is erased when somebody deletes
 their own account is a different switch, on a different screen:
-<strong>Configurations → Privacy → Account deletion</strong>. See
+<strong>Configurations → Application → Account deletion</strong>. See
 <a href="../../other_admin_operations/privacy_policy/#account-deletion">Privacy Policy</a>.</p>
 <h2 id="related">Related</h2>
 <ul>

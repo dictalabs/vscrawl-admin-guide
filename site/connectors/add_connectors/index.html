@@ -12,7 +12,7 @@
         <link rel="prev" href="../../configure_rbac/add_admin/">
       
       
-        <link rel="next" href="../storage_provider_setup/">
+        <link rel="next" href="../cloud_source_setup/">
       
       
         
@@ -873,6 +873,23 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cloud-source-connectors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cloud Source Connectors
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cloud Source Connectors">
+      <ul class="md-nav__list">
+        
           <li class="md-nav__item">
   <a href="#google-drive" class="md-nav__link">
     <span class="md-ellipsis">
@@ -901,10 +918,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#connect-account-and-test-connection" class="md-nav__link">
+  <a href="#how-to-set-up-the-provider-account" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Connect Account and Test Connection
+        How to set up the provider account
       
     </span>
   </a>
@@ -932,14 +949,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../storage_provider_setup/" class="md-nav__link">
+      <a href="../cloud_source_setup/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Set Up Google Drive and Dropbox
+    Set Up Cloud Source Providers
   
 
     
@@ -2088,6 +2105,23 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cloud-source-connectors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cloud Source Connectors
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cloud Source Connectors">
+      <ul class="md-nav__list">
+        
           <li class="md-nav__item">
   <a href="#google-drive" class="md-nav__link">
     <span class="md-ellipsis">
@@ -2116,10 +2150,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#connect-account-and-test-connection" class="md-nav__link">
+  <a href="#how-to-set-up-the-provider-account" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Connect Account and Test Connection
+        How to set up the provider account
       
     </span>
   </a>
@@ -2173,6 +2207,7 @@
 <li><strong>Auth</strong></li>
 <li><strong>Timestamp</strong></li>
 <li><strong>Storage</strong></li>
+<li><strong>Cloud Source</strong></li>
 </ul>
 <p><img alt="Purpose Dropdown" src="../../images/connector-purpose-dropdown.png" /></p>
 <p>The <strong>Provider</strong> dropdown only lists the providers that belong to the purpose you selected, so always choose the Purpose first.</p>
@@ -2460,12 +2495,9 @@
 </li>
 </ul>
 <h3 id="storage-connectors"><strong>Storage Connectors</strong></h3>
-<p>These connectors decide <strong>where document content is kept</strong>. Select <strong>Storage</strong> as the Purpose, then choose a Provider.</p>
-<p>Every storage location is a connector, including the platform's own volume — there is no separate "storage type" setting. After adding one here, select it as the <strong>Default Storage</strong> on the <a href="../../other_admin_operations/storage_settings/">Storage</a> page.</p>
-<blockquote>
-<p>Google Drive and Dropbox connectors need an application registered with the provider first. See <a href="../storage_provider_setup/">Set Up Google Drive and Dropbox</a> for what to create and which exact values to use.</p>
-<p><strong>Important:</strong> Changing the Default Storage does not only affect new documents. Everything already stored is moved to the new connector in the background. Read <a href="../../other_admin_operations/storage_settings/#changing-the-default-moves-what-is-already-stored">Changing the default moves what is already stored</a> before switching.</p>
-</blockquote>
+<p>These connectors decide <strong>where document content is kept</strong>. Select <strong>Storage</strong> as the Purpose, then choose the <strong>Server Storage</strong> Provider.</p>
+<p>Storage is the platform's own volume. Google Drive and Dropbox are <strong>not</strong> storage providers: the documents vScrawl holds are never written out to an account outside the installation. Those two appear under the <strong>Cloud Source</strong> purpose below, which is the opposite direction — a signer bringing one of their own files in.</p>
+<p>After adding a Storage connector here, select it as the <strong>Default Storage</strong> on the <a href="../../other_admin_operations/storage_settings/">Storage</a> page. Only connectors that are <strong>Active</strong> and whose last health check passed are offered there, and the same rule is enforced by the API, not only by the screen.</p>
 <h4 id="server-storage">Server Storage</h4>
 <p>Documents are kept on the volume the platform itself runs on. This connector is created for you when vScrawl is installed, and is the default until you choose otherwise.</p>
 <ul>
@@ -2474,54 +2506,44 @@
 </ul>
 </li>
 </ul>
-<p>Adding a second Server Storage connector with a different Storage Location lets documents be moved onto a different volume.</p>
-<h4 id="google-drive">Google Drive</h4>
-<p>Documents are kept in a folder of a connected Google account.</p>
-<ul>
-<li>
-<p><strong>Configuration</strong>:</p>
-<ul>
-<li><strong>Client ID</strong> and <strong>Client Secret</strong> — the OAuth client of this connector's own Google Cloud project. Both are required; there is no shared application to fall back to, so two connectors can sit in two entirely different projects.</li>
-<li><strong>OAuth Redirect URI</strong> — this platform's storage callback endpoint, on the <strong>API host</strong> rather than the admin console's. Register this exact string with the connector's Google application: the provider checks it again during the token exchange, so one character of difference fails.</li>
-<li><strong>Refresh Token</strong> — written by Connect Account. A token only exists once Google has issued one, so it is not typed in.</li>
-<li><strong>Root Folder ID</strong> — appears only after the account is connected. Consent creates the folder and records it here.</li>
-</ul>
-</li>
-<li>
-<p><strong>Example Configuration Screen</strong>:</p>
-<p><img alt="Google Drive Storage Connector" src="../../images/storage-google-drive-connector.png" /></p>
-</li>
-</ul>
-<h4 id="dropbox">Dropbox</h4>
-<p>Documents are kept in a folder of a connected Dropbox account.</p>
-<ul>
-<li>
-<p><strong>Configuration</strong>:</p>
-<ul>
-<li><strong>App Key</strong> and <strong>App Secret</strong> — from this connector's own scoped Dropbox app. Required, for the same reason as above.</li>
-<li><strong>OAuth Redirect URI</strong> — as for Google Drive, registered in the Dropbox App Console.</li>
-<li><strong>Refresh Token</strong> — written by Connect Account.</li>
-<li><strong>Root Path</strong> — appears only after the account is connected. Defaults to <code>/vscrawl</code>.</li>
-<li>Grant the app the <code>account_info.read</code> permission <strong>before</strong> connecting if you want the Storage Usage figures reported. A token issued before that permission was granted cannot read them, and the panel simply omits the figures.</li>
-</ul>
-</li>
-<li>
-<p><strong>Example Configuration Screen</strong>:</p>
-<p><img alt="Dropbox Storage Connector" src="../../images/storage-dropbox-connector.png" /></p>
-</li>
-</ul>
-<hr />
-<h3 id="connect-account-and-test-connection">Connect Account and Test Connection</h3>
-<p>Google Drive and Dropbox connectors need two things that credentials alone cannot provide: a <strong>refresh token</strong>, which only exists once the provider has issued one, and the <strong>folder</strong> to store in, which is created during the same consent.</p>
-<ul>
-<li><strong>Connect Account</strong>, in the configuration section's header, creates or saves the connector, opens the provider's consent screen, and stores what comes back — the refresh token and the folder.</li>
-<li>Until it has been run, the dialog's <strong>Add</strong>/<strong>Update</strong> button stays disabled and the footer reads <em>"Connect the account to save these credentials."</em> A connector holding credentials but no token cannot store anything, and saving one would look successful while being unusable.</li>
-<li>Editing the Client ID, Client Secret, App Key or App Secret afterwards disables saving again until the account is reconnected: the stored token was issued to the old credentials and no longer belongs to the new ones.</li>
-<li><strong>Test Connection</strong> proves the connector works end to end: it writes a small file, reads it back, and deletes it. The result and the time it took are shown, and are also what the Default Storage dropdown uses to decide whether to offer the connector at all.</li>
-</ul>
+<p>Adding a second Server Storage connector with a different Storage Location lets new documents be written to a different volume.</p>
 <blockquote>
-<p><strong>Note:</strong> A storage connector that still holds documents or templates <strong>cannot be deleted</strong>, and neither can the one currently set as the Default Storage. Deleting a connector does not delete the content — it deletes the only record of where the content is, and every read of it fails from that moment with nothing left to point at. Move the content elsewhere first by changing the Default Storage and letting the move finish.</p>
+<p><strong>Note:</strong> A storage connector that still holds documents or templates <strong>cannot be deleted</strong>, and neither can the one currently set as the Default Storage. Deleting a connector does not delete the content — it deletes the only record of where the content is, and every read of it fails from that moment with nothing left to point at.</p>
 </blockquote>
+<hr />
+<h3 id="cloud-source-connectors"><strong>Cloud Source Connectors</strong></h3>
+<p>These connectors let a signer <strong>import one of their own documents</strong> from Google Drive or Dropbox instead of browsing their computer. Select <strong>Cloud Source</strong> as the Purpose, then choose a Provider.</p>
+<p>No account is connected here. The signer consents in the provider's own window, for the single file they pick, and that file is copied in exactly as if they had uploaded it. vScrawl stores no password, token or session for their account, and can see nothing else they keep there.</p>
+<blockquote>
+<p>These connectors need an application registered with the provider first — a Google Cloud project, or a Dropbox app. See <a href="../cloud_source_setup/">Set Up Cloud Source Providers</a> for what to create and which exact values to register.</p>
+<p><strong>Important:</strong> Adding the connector alone changes nothing on the upload screen. A Cloud Source is offered only where a <strong>service plan</strong> switches the provider on <em>and</em> names this connector. See <a href="../../finance_settings/service_plans/">Service Plan</a>.</p>
+</blockquote>
+<div class="admonition warning">
+<p class="admonition-title">These values are public — never enter a secret here</p>
+<p>A Cloud Source connector's values are read by the signing app in the browser and ship in its page source. Google and Dropbox intend these particular values to be public and neither picker works without them. A client secret or app secret is not such a value, is never needed for import, and has no field on this form.</p>
+</div>
+<h4 id="google-drive">Google Drive</h4>
+<p>A signer picks a file from their own Google Drive, through the Google Picker.</p>
+<ul>
+<li><strong>Configuration</strong>:<ul>
+<li><strong>Client ID</strong> — the OAuth Web-application client of this connector's own Google Cloud project. Each environment's origin is registered under <em>Authorised JavaScript origins</em>. Import never redirects, so there is no redirect URI to add — and a value put in the redirect list has no effect.</li>
+<li><strong>API Key</strong> — the key the Picker loads with, restricted to the Picker API. Its website restriction takes the origin <strong>plus a trailing <code>/*</code></strong>; without the wildcard every Picker call is rejected.</li>
+</ul>
+</li>
+</ul>
+<p>Both fields are required. With either one missing the provider is not offered at all, rather than offered and then failing when a signer clicks it.</p>
+<h4 id="dropbox">Dropbox</h4>
+<p>A signer picks a file from their own Dropbox, through the Dropbox Chooser.</p>
+<ul>
+<li><strong>Configuration</strong>:<ul>
+<li><strong>App key</strong> — from a scoped app in the Dropbox App Console. Each environment's address is added under the app's <em>Chooser / Saver / Embedder domains</em>, as a bare domain with no scheme and no port.</li>
+</ul>
+</li>
+</ul>
+<p>The app secret is not used and must not be entered. No Dropbox permissions need to be enabled either: the Chooser returns a link to the one file selected, and the application is never granted the account.</p>
+<h3 id="how-to-set-up-the-provider-account">How to set up the provider account</h3>
+<p>Above the credential fields, the connector form carries a collapsible <strong>How to set up the provider account</strong> panel. It lists the steps for the provider you chose and prints the exact values to register — the JavaScript origin, the API-key referrer, or the Dropbox domain — built from this installation's own configured addresses, each with a copy button.</p>
+<p>Use those rather than typing the values from a document. They are the two things that cannot be guessed, and the mistake they invite is invisible: the connector saves cleanly, and the failure only appears later, in the signer's browser.</p>
 <hr />
 <blockquote>
 <p><strong>Note:</strong> Carefully select the connector type and configuration that best meets your organizational requirements for optimal operation.</p>
