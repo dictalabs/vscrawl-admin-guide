@@ -10,17 +10,17 @@ The **Qualified Certificate Requests** screen lets administrators review the ide
 1. Log in to the admin console.
 2. From the left navigation menu, under **Administration**, click **Qualified Certificate Requests**.
 
-The list shows every request with **Name**, **Email**, **Mobile**, **Nationality**, **Status** (Pending / Approved / Rejected), **Meeting**, and **Created On**,  **Action**. Use the search box to filter by name or email.
+The list shows every request with **Name**, **Email**, **Mobile**, **Nationality**, **Status** (Pending / Approved / Rejected), **Meeting**, **Created On** and **Actions**. Use the search box to filter by name or email.
 
 ![admin-qualified-cert-requests-list.png](../images/admin-qualified-cert-requests-list.png)
 
 ## Reviewing a Request
 
-Click a request row (or use the **⋮** Options menu) to open its details:
+Click the **eye icon** (**View details**) in the **Actions** column to open the request's details:
 
 - **Personal Information** – First/Middle/Last Name, Date of Birth, Place of Birth, Gender, Nationality, Mother's Maiden Name.
-- **Contact Information** – Email, Mobile Phone, Country of Residence, National ID / Passport number.
-- **Document Information** – The submitted ID document, downloadable from the details page.
+- **Contact Information** – Email, Mobile, Country of Residence, National ID / Passport.
+- **Document Information** – ID Document Type, Document MIME Type and the submitted **ID Document**, which can be downloaded from the dialog.
 - **Meeting Information** – Scheduled Meeting Date and Time.
 - **Review Information** – Reviewed At timestamp and any Admin Remarks left when the request was resolved.
 
@@ -28,7 +28,9 @@ Click a request row (or use the **⋮** Options menu) to open its details:
 
 ## Approving or Rejecting
 
-From a pending request, use the row's **⋮** Options menu (or the details page) to:
+Only a **Pending** request can be approved or rejected. Use the row's **⋮** menu (or the buttons in the details dialog) to:
 
 - **Approve** – Grants the user's QES certificate request.
-- **Reject** – Opens a remarks dialog; enter a reason before confirming the rejection. The reason is saved as the request's **Admin Remarks**.
+- **Reject** – Opens the **Reject Certificate Request** dialog; enter a reason in **Remarks** (required — the applicant may see it) before confirming the rejection. The reason is saved as the request's **Admin Remarks**.
+
+Each decision is recorded in [Audit Logs](audit_logs.md) as **Certificate Request Approved** or **Certificate Request Rejected**. Approving or rejecting does not delete the submitted identity document — see [Data Retention → Identity documents](../compliance/data_retention.md#identity-documents).

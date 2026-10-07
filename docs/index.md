@@ -9,6 +9,7 @@ Welcome to the **vScrawl Admin Guide**. This guide will walk you through setting
 
 ### Install vScrawl
 - [Install vScrawl](vscrawl_installation.md)
+- [Uninstall vScrawl](vscrawl_uninstall.md)
   
 ### Start Using vScrawl Admin Console:
 - [Access the vScrawl Admin Console](start_using/access_console.md)
@@ -20,6 +21,7 @@ Welcome to the **vScrawl Admin Guide**. This guide will walk you through setting
 
 ### Add and Configure Connectors:
 - [Add Connectors](connectors/add_connectors.md)
+- [Set Up Cloud Source Providers](connectors/cloud_source_setup.md)
 - [Configure Connectors in Default Settings](connectors/configure_connectors.md)
 
 ### Finance:
@@ -29,7 +31,9 @@ Welcome to the **vScrawl Admin Guide**. This guide will walk you through setting
 - [Credit Details](finance_settings/credit_details.md)
 
 ### Other Administrative Operations:
+- [Security & Trust Infrastructure](other_admin_operations/security_trust.md)
 - [License Manager](other_admin_operations/license_manager.md)
+- [Qualified Certificate Requests](other_admin_operations/qualified_cert_requests.md)
 - [Application](other_admin_operations/application_settings.md)
 - [Authentication](other_admin_operations/authentication_settings.md)
 - [Storage](other_admin_operations/storage_settings.md)
@@ -39,3 +43,11 @@ Welcome to the **vScrawl Admin Guide**. This guide will walk you through setting
 - [Branding](other_admin_operations/branding.md)
 - [Organization](other_admin_operations/organization.md)
 - [Users](other_admin_operations/users.md)
+- [Activity Logs](other_admin_operations/activity_logs.md)
+- [Audit Logs](other_admin_operations/audit_logs.md)
+
+### Compliance:
+- [GDPR Overview](compliance/gdpr_overview.md)
+- [Consent Records](compliance/consent_records.md)
+- [Data Subject Requests](compliance/data_subject_requests.md)
+- [Data Retention](compliance/data_retention.md)

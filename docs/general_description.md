@@ -16,7 +16,7 @@ Administrators will learn how to:
 - Set up and customize the platform for on-premise or cloud-based deployments.
 - Configure external connectors for remote signing and timestamping.
 - Manage application settings, such as authentication, security, and storage.
-- Monitor and control user roles, permissions, and workflows using **Role-Based Access Control (RBAC)**.
+- Control which administrators can view or change each part of the admin console using **Role-Based Access Control (RBAC)**.
 - Optimize branding and customize the user interface to align with organizational standards.
 
 By following this guide, administrators can ensure the smooth operation of vScrawl, enabling users to enjoy a seamless, secure, and efficient document preparation and signing experience.

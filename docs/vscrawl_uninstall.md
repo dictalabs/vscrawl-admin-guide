@@ -1,6 +1,6 @@
 # Uninstall vScrawl
 
-This section provides a step-by-step walkthrough for uninstalling **vScrawl** on an in-house server.  Before uninstalling vScrawl, always consider taking a full backup of the applicaiton files, logs and the database.
+This section provides a step-by-step walkthrough for uninstalling **vScrawl** on an in-house server.  Before uninstalling vScrawl, always consider taking a full backup of the application files, logs and the database.
 
 ## Starting the Script
 Go to the directory **uninstall-scripts** within the extracted deployment package and execute **uninstall.sh** script:
@@ -34,7 +34,7 @@ Please select an option:
  5) Complete Uninstall
 ```
 
-> **Note**: As warned by the wizard, make sure you have taken necessary backups of the applicaiton files, Logs and the database.
+> **Note**: As warned by the wizard, make sure you have taken necessary backups of the application files, logs and the database.
 
 Carefully choose one of the available **uninstall** options. You may choose:
 
@@ -42,7 +42,7 @@ Carefully choose one of the available **uninstall** options. You may choose:
 
 **2) Remove Docker** if it is additionally required to remove Docker installation, and it will remove services as well as Docker.
 
-**3) Remove Certbot and Nginx** to remove Lets Encrypt SSL as needed.
+**3) Remove Certbot and Nginx** to remove Let's Encrypt SSL as needed.
 
 **4) Remove MySQL** to remove MySQL database server as needed.
 

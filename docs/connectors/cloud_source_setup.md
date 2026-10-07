@@ -12,9 +12,9 @@ This is the **signer bringing a file in**, not the platform writing documents ou
 
 | | Cloud Source | Storage |
 | --- | --- | --- |
-| Direction | The signer's own file is copied **into** vScrawl, once | Documents vScrawl holds are written **out** to a provider |
-| Who consents | The signer, in the provider's own window, for that one file | An administrator, once, for the whole installation |
-| Credentials stored | A client id and an API key, or an app key — **public values** | A client secret and a long-lived refresh token |
+| Direction | The signer's own file is copied **into** vScrawl, once | Documents vScrawl holds are written to the platform's **own volume** |
+| Who consents | The signer, in the provider's own window, for that one file | Nobody — no outside account is involved |
+| Credentials stored | A client id and an API key, or an app key — **public values** | None — only a storage location |
 | Available providers | Google Drive, Dropbox | Server Storage only |
 
 Storage no longer offers Google Drive or Dropbox. Documents stay on the platform's own volume; see [Storage](../other_admin_operations/storage_settings.md).
@@ -34,7 +34,7 @@ Neither provider redirects anywhere during import — everything happens in the 
 | Google Drive | HTTP referrer, on the API key | The same origin **plus `/*`**: `https://sign.example.com/*` |
 | Dropbox | Chooser / Saver / Embedder domain | Bare domain, **no scheme and no port**: `sign.example.com` |
 
-The exact strings for your installation are printed inside the connector form itself, under **How to set up the provider account**, with a copy button on each. They are built from the signing app's address as configured in **Configurations**, so they are already correct for the environment you are working in — use those rather than typing them from this page.
+The exact strings for your installation are printed inside the connector form itself, under **How to set up the provider account**, with a copy button on each. They are built from the signing app's address — the **Application URL** on the **Application** tab of **Configurations** — so they are already correct for the environment you are working in — use those rather than typing them from this page.
 
 !!! note "Every environment needs its own entry"
     Staging and production are different origins, so each one has to be added to the provider's application separately. An origin that has not been registered fails at the moment the signer clicks the provider, with an error naming an address they were never told to add.
@@ -84,7 +84,7 @@ In vScrawl, add a connector with Purpose **Cloud Source** and Provider **Google 
 - **Client ID** — from the OAuth client.
 - **API Key** — from the API key.
 
-Both are required. Set **Status** to **Active** and save. There is no consent step and no Test Connection here: nothing is connected until a signer opens the picker themselves.
+Both are required. Set **Status** to **Active** and save. There is no consent step and no **Test connection** button here: nothing is connected until a signer opens the picker themselves.
 
 ---
 
@@ -106,7 +106,7 @@ Enter it exactly as shown: **no scheme, no port**. Dropbox supplies those itself
 
 ### 3. Add the connector
 
-Add a connector with Purpose **Cloud Source** and Provider **Dropbox**, and fill in the **App key** from the app's Settings tab.
+Add a connector with Purpose **Cloud Source** and Provider **Dropbox**, and fill in the **App Key** from the app's Settings tab.
 
 The **app secret is not used and must not be entered.** The app key is public by design and ships in the page source; the secret is not, and would be exposed there too.
 
@@ -116,9 +116,9 @@ The **app secret is not used and must not be entered.** The app key is public by
 
 Adding the connector does not by itself put anything on a signer's screen. A Cloud Source is offered only where a **service plan** grants it, and every plan names **which connector** it uses.
 
-Switch the provider on for a plan under **Finance → Service Plan**, then choose the connector. See [Service Plan](../finance_settings/service_plans.md).
+Open the plan under **Finance → Service Plans**, switch on **Import from Google Drive** or **Import from Dropbox** in its **Cloud Source** section, then choose the **Connector**. Only Active Cloud Source connectors of that provider are listed. See [Service Plan](../finance_settings/service_plans.md).
 
-Both halves must be in place. A plan with the provider switched on but no connector chosen cannot be saved; a connector that is deactivated or repurposed later stops being offered, without the plan itself changing.
+Both halves must be in place. A plan with the provider switched on but no connector chosen cannot be saved; a connector that is deactivated later stops being offered, without the plan itself changing.
 
 ---
 
@@ -130,7 +130,7 @@ Both halves must be in place. A plan with the provider switched on but no connec
 | `The API developer key is invalid` | Three different causes, in the order worth checking. (1) The key stored on the connector is **not the key that exists in the console any more** — it was rotated, deleted and recreated, or copied from another project. (2) The key's website restriction is missing the trailing `/*`. (3) The key is not permitted to call the Picker API. See [Telling those three apart](#telling-those-three-apart) below. |
 | Google sign-in works, then the file window never appears | The **Google Picker API** is not enabled on the project. Enabling the Drive API alone is not enough. |
 | Dropbox shows *"This app is misconfigured"* | The domain under Chooser / Saver / Embedder domains does not match, or was entered with `https://` or a port. Enter the bare hostname. |
-| The provider is not offered on the upload screen at all | Something upstream of the provider: the organization's service plan does not have it switched on, no connector is chosen on the plan, the chosen connector is Inactive, or one of its required fields is empty. Google Drive needs **both** the Client ID and the API Key — with either one missing it is not offered at all, rather than being offered and then failing. |
+| The provider is not offered on the upload screen at all | Something upstream of the provider: the organization's service plan does not have it switched on, no connector is chosen on the plan, the chosen connector is not **Active**, or one of its required fields is empty. Google Drive needs **both** the Client ID and the API Key — with either one missing it is not offered at all, rather than being offered and then failing. |
 | The **API Key** field is empty on a connector that was working before | Expected once, after upgrading to the release that corrected how this key is stored. The old value was unreadable and has been cleared rather than left in place looking like a setting. Paste the key in again and save; it does not recur. |
 
 ### Telling those three apart
@@ -157,10 +157,10 @@ More than one API key in the project is worth ruling out first. Editing the rest
 2. Open every service plan that offers the provider and select the new connector there. Nothing switches by itself; a new connector is ignored until a plan names it.
 3. Only then deactivate or delete the old one.
 
-!!! warning "Deleting first breaks it silently"
-    Nothing stops a Cloud Source connector from being deleted while a service plan still points at it. The delete succeeds, the plan is left holding an id that resolves to nothing, and the provider stops being offered — with no error anywhere, because a missing connector is indistinguishable from one that was never configured.
+!!! note "A connector a plan still names cannot be deleted"
+    While any service plan still names a Cloud Source connector — even a plan on which that provider is currently switched off — the console refuses to delete it. A **Connector can't be deleted** dialog lists the service plans that still use it, and the server enforces the same rule. Point those plans at the new connector first, as in step 2.
 
-    Prefer setting the old connector **Inactive** over deleting it. An inactive connector is neither offered to signers nor listed in the plan's dropdown, and the decision stays reversible.
+    Prefer setting the old connector **Inactive** over deleting it. An inactive connector is not offered to signers or offered as a new choice in a plan's dropdown (a plan that already points at it shows it as *no longer available*), and the decision stays reversible.
 
 ---
 

@@ -21,7 +21,7 @@ Ensure the following before starting the installation:
 - Open ports: **80 (HTTP)** and **443 (HTTPS)** for external communication.
 - Open ports: **9115**, **9092**, **9100**, **7030**,  **7020**, **7010**, **7095**, **7090**, **7080**, **7060**, **7050**, **7040**, **3434**, **2181** ,**8768** for internal communication, only.
 - Static IP address for the server.
-- Have adequate DNS entries created for the application URLs resolving to the **external** static IP of the server For example:
+- Have adequate DNS entries created for the application URLs resolving to the **external** static IP of the server. For example:
 	- app.example.com
 	- admin.example.com
 	- api.example.com
@@ -128,13 +128,13 @@ When prompted, select:
 
 ## Configure Application URLs
 
-- During setup, select **Option 2: Use Let's Encrypt SSL** for HTTPS configurations to use Let's Encrypts SSL.
+- During setup, select **Option 2: Use Let's Encrypt SSL** for HTTPS configurations to use Let's Encrypt SSL.
 - Provide the following application URLs:
 	- **Application** (e.g., `app.example.com`)
 	- **Admin Console** (e.g., `admin.example.com`)
 	- **API Gateway** (e.g., `api.example.com`)
 
-The installation process will get started.  MySQL database server, Docker, Certbot and Nginx will be automatically instlaled.  Docker images will also be loaded from the extracted package and vScrawl services will be started.
+The installation process will get started.  MySQL database server, Docker, Certbot and Nginx will be automatically installed.  Docker images will also be loaded from the extracted package and vScrawl services will be started.
 
 ---
 

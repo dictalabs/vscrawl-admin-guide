@@ -18,7 +18,7 @@ Four headline figures sit at the top of the page:
 - **Suspicious Logins** – the number of distinct accounts with 5 or more failed login attempts in the last 24 hours.
 - **Impossible Travel** – logins from the same account, in the last 7 days, whose implied travel speed between two consecutive locations exceeds normal air travel (over 1,000 km/h). Reads green at 0.
 
-If login events aren't being recorded yet, Login Success Rate and Suspicious Logins show a dash instead of 0% — a genuine all-clear looks different from "nothing has been measured."
+If login events aren't being recorded yet, Login Success Rate and Suspicious Logins show a dash and "Login events are not being collected" instead of 0% — a genuine all-clear looks different from "nothing has been measured." Likewise, without a GeoIP provider Impossible Travel shows a dash and "Requires a GeoIP provider".
 
 ## Infra Health
 
@@ -35,23 +35,25 @@ Connectors are re-checked automatically every 5 minutes. **View System Logs** op
 
 Shows where successful logins are coming from over the last 7 days, as a ranked list of countries by login count.
 
-If no GeoIP provider is configured, this panel shows "Requires a GeoIP provider" instead of an empty chart, so a real all-clear is never confused with a missing dependency.
+If no GeoIP provider is configured, this panel says "IP addresses are recorded, but no GeoIP provider is configured to resolve them to locations." instead of showing an empty chart, so a real all-clear is never confused with a missing dependency.
 
 ## Identity Insights
 
 - **Dormant Accounts** – active users with no recorded activity in the last 90 days, shown as a percentage of all active users.
 - **Privileged Role Changes** – role additions, updates, deletions, or permission changes made by administrators in the last 24 hours.
-- **MFA Adoption Trend** – appears once enough history exists to compare against, showing whether MFA adoption has moved up or down since the last comparison point.
+- **MFA Trend** – appears once enough history exists to compare against, showing whether MFA adoption has moved up or down since the last comparison point.
+
+**Manage Users** at the foot of the panel opens the [Users](users.md) screen.
 
 ## Recent Flags
 
 A combined, most-recent-first list of two kinds of activity that may need a closer look:
 
 - **Impossible Travel** – the same account logging in from two locations too far apart to have been reached by normal travel in the time between them.
-- **Failed Login Burst** – an account with several failed login attempts in a short period.
+- **Failed Logins** – an account with 5 or more failed login attempts.
 
 !!! note ""
-    The **Suspicious Logins** figure in the overview cards looks at the last 24 hours only, while **Failed Login Burst** entries here look back over the last 7 days — so an account flagged here may not always be reflected in that overview count, and vice versa.
+    The **Suspicious Logins** figure in the overview cards looks at the last 24 hours only, while **Failed Logins** entries here look back over the last 7 days — so an account flagged here may not always be reflected in that overview count, and vice versa.
 
 ## PKI Certificate Health
 
@@ -66,16 +68,16 @@ Below the identity section, four cards summarize the health of every signing cer
 
 ### Critical Certificates Table
 
-Lists every expiring, expired, or revoked certificate, with Common Name, Email, Issuer, Expiration, and Status. The table is searchable (across name, email, issuer, and serial number) and sortable by Common Name, Email, Issuer, or Expiration. There is no action column — renewal always happens through the certificate owner signing, never from this screen.
+Lists every expiring, expired, or revoked certificate, with **Common Name** (and the certificate's serial number beneath it), **Email** (and the owner's name), **Issuer**, **Expiration**, **Renewal** and **Status**. **Renewal** reads **Automatic** when the certificate will renew the next time its owner signs, or **Needs attention** when it is not queued to renew — because the organization's package needs attention, or because the certificate must be replaced. The table is searchable (across name, email, issuer, and serial number) and sortable by Common Name, Email, Issuer, or Expiration. There is no action column — renewal always happens through the certificate owner signing, never from this screen.
 
 ## Running an Immediate Audit
 
-Click **Immediate Audit** to force everything on the page to refresh right away, instead of waiting for its normal schedule. This re-checks CA connector reachability, re-parses certificate data, re-queries revocation status for every certificate, and clears the cached MFA count.
+Click **Immediate Audit** to force everything on the page to refresh right away, instead of waiting for its normal schedule. This resolves the locations of recent logins, re-checks CA connector reachability, re-parses certificate data, re-queries revocation status for every certificate, re-evaluates which certificates are due for renewal, and clears the cached MFA count. The button is only shown to administrators whose role may edit this screen; **Export Report** is available to anyone who can open it.
 
-The button shows **Running Audit…** while in progress. A typical audit finishes in a few seconds, but can take longer on a large certificate estate or if a certificate authority is slow to respond. **Last audited** updates once the run finishes, even if nothing changed — so a no-op audit is still visibly a completed check.
+The button shows **Running audit…** while in progress. A typical audit finishes in a few seconds, but can take longer on a large certificate estate or if a certificate authority is slow to respond. **Last audited** updates once the run finishes, even if nothing changed — so a no-op audit is still visibly a completed check.
 
 !!! note ""
-    Immediate Audit does not send renewal notifications to end users. That stays on its own daily schedule so operators can check this page freely without triggering emails to the entire user base.
+    Immediate Audit applies the renewal check straight away, so a certificate that has just come inside the [warning window](security_settings.md#certificate-monitoring) is flagged — and its owner gets the in-app notification — without waiting for the daily run. It never sends email, and each owner is notified only once per certificate and expiry date, so running the audit repeatedly cannot repeat a message.
 
 ## Exporting a Report
 

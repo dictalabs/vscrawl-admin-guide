@@ -1,6 +1,6 @@
 # Storage
 
-The **Storage** screen decides where uploaded documents are kept, and shows how much room is left where they are kept.
+The **Storage** screen — the **Storage** tab of **Configurations** — decides where uploaded documents are kept, and shows how much room is left where they are kept.
 
 ![Storage Settings](../images/storage-settings.png)
 
@@ -10,7 +10,7 @@ The **Storage** screen decides where uploaded documents are kept, and shows how 
 
 Every option in this dropdown is a **Storage connector**, including the platform's own volume, which is seeded as a connector named **Server Storage**. There is no separate storage type or path on this screen: where a place is and how it is reached — its directory — belongs to the connector. See [Add Connectors](../connectors/add_connectors.md#storage-connectors) for how to add one.
 
-Only connectors that are **Active** and whose last health check passed are offered. A connector that has been switched off, or that failed its last check, is not something documents should be sent to.
+Only **Active** connectors are offered. When you save a new default, a connector whose last health check failed is checked again on the spot, and refused if it still fails ("That storage connector cannot be used yet. It has to be active and pass its health check first."). A connector that has been switched off, or that cannot pass its check, is not something documents should be sent to.
 
 ### Only the platform's own volume can be the default
 
@@ -23,7 +23,7 @@ The rule is enforced by the server as well as by the screen, so it cannot be wor
 
 ### Changing the default
 
-A new default applies to **documents written from that point on**. Content already stored stays where it is and stays readable from the connector that holds it — changing this setting never moves, copies or deletes anything.
+Clicking **Save** asks for confirmation first (**Change default storage to …?**, confirmed with **Change default**). A new default applies to **documents written from that point on**. Content already stored stays where it is and stays readable from the connector that holds it — changing this setting never moves, copies or deletes anything.
 
 Adding a second Server Storage connector with a different Storage Location is therefore how you move onto a new volume for new content, not how you empty the old one.
 

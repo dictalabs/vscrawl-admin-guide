@@ -9,7 +9,9 @@ Additionally, connectors are required for email server configurations to manage 
 ---
 
 ## Access the Connectors Page  
-To get started, navigate to the **Connectors** section in the left-hand navigation pane to view the list of existing connectors.
+To get started, navigate to **Connectors** under **Application** in the left-hand navigation pane to view the list of existing connectors.
+
+The **Add Connector** button, and the **Update Connector** and **Delete Connector** entries in each row's three-dot menu, are shown only when your role grants **Add**, **Update** or **Delete** on the **Connectors** module. See [Create a New Role](../configure_rbac/create_role.md).
 
 ![Connectors List](../images/connectors-list.png)
 
@@ -23,28 +25,32 @@ Click on the **Add Connector** button to open the connector creation screen.
 ---
 
 ## Provide Connector Details  
-- **Name**: Enter a unique name for the connector.  
-- **Description**: Provide a brief description to help identify the connector's purpose.  
-- **Status**: Set the status to either **Active** or **Inactive**.  
+- **Name**: Enter a unique name for the connector, 3 to 20 characters long, using only letters and single spaces.  
+- **Description**: Provide a brief description to help identify the connector's purpose (up to 255 characters).  
+- **Status**: Set the status to **Active**, **Inactive** or **Disabled**. Only **Active** connectors are offered wherever a connector is selected, for example on the **Default** tab of **Configurations** or in a service plan.  
 - **Purpose**: Select the purpose from the following options:  
   - **Email**  
-  - **Sign**  
-  - **Certification Authority**
-  - **Auth**
+  - **Signing**  
+  - **Certificate Authority**
+  - **Authentication**
   - **Timestamp**
   - **Storage**
   - **Cloud Source**
 
 ![Purpose Dropdown](../images/connector-purpose-dropdown.png)
 
-The **Provider** dropdown only lists the providers that belong to the purpose you selected, so always choose the Purpose first.
+The **Provider** dropdown only lists the providers that belong to the purpose you selected, so always choose the Purpose first. The configuration fields for the chosen provider then appear below. Click **Add** to save the connector.
+
+The **Name**, **Purpose** and **Provider** cannot be changed after the connector is created.
 
 ---
 
 ## Connector Options  
 
 ### **Sign Connectors**  
-These connectors facilitate digital signing. Choose the appropriate signing method and configure the settings:
+These connectors facilitate digital signing. Select **Signing** as the Purpose, then choose the appropriate signing method and configure the settings.
+
+The **Advanced Electronic Signature** and **Qualified Electronic Signature** switches (the AES and QES signing options below) appear only when your license enables eIDAS signing.
 
 ####eTugra Middleware  
    Use this connector for remote signing with eTugra Middleware as an external TSP.  
@@ -55,6 +61,7 @@ These connectors facilitate digital signing. Choose the appropriate signing meth
      - Enter the server URL for eTugra Middleware.  
      - Select the signing options: **AES**, **QES**, or both.  
      - Optionally toggle **Enable HSM Signing** to sign through a Hardware Security Module. When enabled, the **HSM Identifier** field becomes required.
+     - Optionally enter an **API Key**, only if this middleware instance requires one. Leave it blank otherwise.
 
    - **Example Configuration Screen**:  
 
@@ -106,15 +113,16 @@ These connectors facilitate digital signing. Choose the appropriate signing meth
 ---
 
 ### **Email Connectors**  
-These connectors enable email notifications. Select the email service provider and configure the settings:
+These connectors enable email notifications. Select **Email** as the Purpose, then select the email service provider and configure the settings:
 
 ####SMTP  
    Use this connector to send emails via your organization's mail server.  
 
    - **Configuration**:  
-     - Enter the SMTP Server name and port.  
-     - Choose the authentication mechanism.  
-     - Provide a "From" email address.  
+     - Enter the **SMTP Server** as a host name or IP address only, with no `http://`, port or path, and enter the **Port**.  
+     - Turn on **Use SSL/TLS** if the server requires an encrypted connection.  
+     - Turn on **Authentication** if the server requires credentials, then enter the **User ID** and **Password**. Both fields are hidden while Authentication is off.  
+     - Provide a "From" email address (**Email From**).  
 
    - **Example Configuration Screen**:  
 
@@ -135,7 +143,7 @@ These connectors enable email notifications. Select the email service provider a
    Use this connector for scalable email sending with Amazon SES.  
 
    - **Configuration**:  
-     - Enter the API Key and Access Key.  
+     - Enter the Secret Key and Access Key.  
      - Specify the region for the SES service.  
      - Provide a "From" email address.  
 
@@ -151,7 +159,7 @@ These connectors enable email notifications. Select the email service provider a
      - Provide the Client Secret.
      - Provide the OAuth Scope (defaults to `https://graph.microsoft.com/.default`).
      - Provide the Email From address used as the sender for outgoing emails.
-     - Click **Test Connection** to verify the configuration before saving.
+     - Click **Test connection** to verify the configuration before saving.
 
    - **Example Configuration Screen**:
 
@@ -160,21 +168,21 @@ These connectors enable email notifications. Select the email service provider a
 ---
 
 ### **Certification Authorities**  
-These connectors enable vScrawl to communicate with the configured Certification Authorities to issue vScrawl signing user certificates. Select **Certification Authority** as the Purpose, then choose a Provider: **EJBCA**, **DictaLabs CA** or **Microsoft CA**.
+These connectors enable vScrawl to communicate with the configured Certification Authorities to issue vScrawl signing user certificates. Select **Certificate Authority** as the Purpose, then choose a Provider: **EJBCA**, **DictaLabs CA** or **Microsoft CA**.
 
 ####EJBCA  
    Use this connector to communicate with a pre-deployed EJBCA instance to issue user certificates.  
 
    - **Configuration**:  
      - Enter the EJBCA instance name and its base URI.  
-     - Provide the CCA Profile Name (certificate profile) and Profile Name for End Entity Certificates as configured on EJBCA.  
+     - Provide the CA Profile Name (certificate profile) and Profile Name for End Entity Certificates as configured on EJBCA.  
      - Provide the QES Certificate Profile Name.
-     - Provide the Certificate Authority (Issuing CA) name and corresponding username and password.
-     - Browse for the keystore file to authenticate to the EJBCA and the keystore password.
+     - Provide the Certification Authority Name (the issuing CA) and the corresponding Certification Authority Username and Password.
+     - Use **Upload Keystore File** to add the keystore that authenticates vScrawl to EJBCA, and enter the Keystore Password.
 
    - **Example Configuration Screen**:  
 
-     ![Amazon SES Configuration](../images/ca-ejbca-connector.png)
+     ![EJBCA Configuration](../images/ca-ejbca-connector.png)
 
      ![EJBCA QES Profile Name](../images/connector-ejbca-qes-profile.png)
 
@@ -199,7 +207,7 @@ These connectors enable vScrawl to communicate with the configured Certification
    here when the CA administrator changes that.
 
    - **Configuration**:
-     - Enter a Name and the Enrollment URI of the AD CS host, including the port if it is not the
+     - Enter a Name and the Enrollment URL of the AD CS host, including the port if it is not the
        default. vScrawl appends the `/certsrv` path itself, so entering it is optional.
      - Provide the Certificate Template — the exact internal template name used for the signing
        certificate, for example `AdvancedDocumentSigning`.
@@ -208,8 +216,8 @@ These connectors enable vScrawl to communicate with the configured Certification
        well as an advanced one, and leaving this empty fails the whole onboarding — the user is
        created but receives no certificate. It is genuinely optional only on the **Crypto Engine**
        onboarding path, which issues a single certificate from the Certificate Template above.
-     - Provide the Domain, Username and Password of a domain account that holds **Enroll** permission
-       on the template. The username may be entered on its own, or as `DOMAIN\user` or `user@domain`.
+     - Provide the Domain, and the Certification Authority Username and Password of a domain account
+       that holds **Enroll** permission on the template. The username may be entered on its own, or as `DOMAIN\user` or `user@domain`.
      - Optionally provide the Target CA Name. vScrawl compares it against the CA that the enrollment
        host reports, which catches a host that has been re-pointed at a different CA.
      - Optionally switch on **Include Email as SAN** to add the signer's email address to the request
@@ -220,7 +228,7 @@ These connectors enable vScrawl to communicate with the configured Certification
 
      ![Microsoft CA](../images/connector-microsoft-ca.png)
 
-   - **Verifying the settings**: use **Test Connection** before saving. It authenticates against the
+   - **Verifying the settings**: use **Test connection** before saving. It authenticates against the
      enrollment host without submitting a certificate request, and reports separately whether the host
      was unreachable, the credentials were rejected, or web enrollment is not installed.
 
@@ -238,7 +246,7 @@ These connectors enable vScrawl to communicate with the configured Certification
        qcStatements extension. vScrawl does not add it to the request, and AD CS does not copy
        request extensions unless the CA is explicitly configured to.
 
-   - **Transport security**: prefer an `https://` Enrollment URI. Over plain HTTP the issued
+   - **Transport security**: prefer an `https://` Enrollment URL. Over plain HTTP the issued
      certificate travels unencrypted, and if the host answers with Basic rather than Windows
      authentication the account password is effectively sent in the clear. vScrawl logs a warning
      each time it enrols over HTTP.
@@ -246,10 +254,10 @@ These connectors enable vScrawl to communicate with the configured Certification
 ---
 
 ### **Auth Connectors**
-These connectors let vScrawl delegate authentication to an external identity provider. Select **Auth** as the Purpose, then choose a Provider.
+These connectors let vScrawl delegate authentication to an external identity provider. Select **Authentication** as the Purpose, then choose a Provider.
 
 ####Keycloak
-   Use this connector to enable Single Sign-On via Keycloak. This connector must be configured before enabling Keycloak in [Authentication Settings](../other_admin_operations/authentication_settings.md).
+   This connector holds the Keycloak server details (server URL, realm, client and admin credentials) that the platform's own services can read when they start, alongside the deployment's own configuration. It does not add a separate Keycloak button to the sign-in page.
 
    - **Configuration**:
      - Enter the Keycloak URL (base URL of the Keycloak server) and Realm name.
@@ -284,7 +292,9 @@ These connectors decide **where document content is kept**. Select **Storage** a
 
 Storage is the platform's own volume. Google Drive and Dropbox are **not** storage providers: the documents vScrawl holds are never written out to an account outside the installation. Those two appear under the **Cloud Source** purpose below, which is the opposite direction — a signer bringing one of their own files in.
 
-After adding a Storage connector here, select it as the **Default Storage** on the [Storage](../other_admin_operations/storage_settings.md) page. Only connectors that are **Active** and whose last health check passed are offered there, and the same rule is enforced by the API, not only by the screen.
+After adding a Storage connector here, select it as the **Default Storage** on the [Storage](../other_admin_operations/storage_settings.md) page. Only **Active** Server Storage connectors are offered there, and a connector whose last health check failed is checked again and refused if it still fails. The same rules are enforced by the API, not only by the screen.
+
+Changing the Default Storage moves nothing. New documents and templates are written to the newly selected connector, while everything already stored stays where it is and remains readable.
 
 ####Server Storage
    Documents are kept on the volume the platform itself runs on. This connector is created for you when vScrawl is installed, and is the default until you choose otherwise.
@@ -325,7 +335,7 @@ No account is connected here. The signer consents in the provider's own window, 
    A signer picks a file from their own Dropbox, through the Dropbox Chooser.
 
    - **Configuration**:
-     - **App key** — from a scoped app in the Dropbox App Console. Each environment's address is added under the app's *Chooser / Saver / Embedder domains*, as a bare domain with no scheme and no port.
+     - **App Key** — from a scoped app in the Dropbox App Console. Each environment's address is added under the app's *Chooser / Saver / Embedder domains*, as a bare domain with no scheme and no port.
 
    The app secret is not used and must not be entered. No Dropbox permissions need to be enabled either: the Chooser returns a link to the one file selected, and the application is never granted the account.
 
@@ -333,9 +343,20 @@ No account is connected here. The signer consents in the provider's own window, 
 
 ### How to set up the provider account
 
-Above the credential fields, the connector form carries a collapsible **How to set up the provider account** panel. It lists the steps for the provider you chose and prints the exact values to register — the JavaScript origin, the API-key referrer, or the Dropbox domain — built from this installation's own configured addresses, each with a copy button.
+Above the credential fields, the connector form carries a collapsible **How to set up the provider account** panel. It lists the steps for the provider you chose and prints the exact values to register — the JavaScript origin, the API-key referrer, or the Dropbox domain — built from the signing app's address (the **Application URL** on the **Application** tab of **Configurations**), each with a copy button. If that address has not been set, the panel asks you to set it instead of showing a value.
 
 Use those rather than typing the values from a document. They are the two things that cannot be guessed, and the mistake they invite is invisible: the connector saves cleanly, and the failure only appears later, in the signer's browser.
+
+---
+
+## Update or Delete a Connector
+
+Open the three-dot menu in the **Actions** column of a connector:
+
+- **Update Connector** opens the same form. The **Name**, **Purpose** and **Provider** stay fixed; the status, description and configuration can be changed. Click **Update** to save.
+- A connector currently selected as the **Default Email Connector** or the **Default Onboarding (Sign) Connector** (see [Configure Connectors in Default Settings](configure_connectors.md)) is marked **Preset**. Its status and description are locked, but its configuration can still be updated.
+- **Delete Connector** first checks whether the connector is still in use. If a service plan still refers to it — as a signing connector, as an email connector the plan offers, or as a Cloud Source connector, even when that option is currently switched off on the plan — or if it is a storage connector that is the Default Storage or still holds documents or templates, a **Connector can't be deleted** dialog explains why and lists the service plans concerned. Otherwise you are asked to confirm the deletion.
+- The server also refuses to delete the connector currently selected as the default email, onboarding (sign) or CA connector, and an email connector that an organization has selected as its own email provider. Choose another default, or have the organization switch provider, first.
 
 ---
 

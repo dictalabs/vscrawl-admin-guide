@@ -7,21 +7,22 @@
 1. Log in to the admin console.
 2. From the left navigation menu, under **Audit**, click **Activity Logs**.
 
-Each row shows: **ID**, **User**, **Organization**, **Module**, **Action**, **Performed By**, and **Date and time**. Use the search box to filter entries, and the pagination controls at the bottom to page through results.
+Each row shows: **ID**, **Organization**, **Module**, **Action**, **Performed By** (name and email), and **Date & Time**. Use the search box to filter entries — it matches the person's name or email, the organization, the module, the action, the IP address and the browser user agent — and the pagination controls at the bottom to page through results.
 
 ![admin-activity-logs-list.png](../images/admin-activity-logs-list.png)
 
 ## Viewing a Change
 
-Click the **eye icon** in the **View Changes** column on any row to see exactly what changed:
+Click the **eye icon** in the **Changes** column on any row to open **View Details** and see exactly what changed:
 
-- **Browser Agent** and **IP Address** the action was performed from.
+- **ID** and **Date & Time** of the entry.
+- **User** – the person the entry is about, with their email address.
+- **Organization**, **Module** and **Action** – where the change occurred and what action was performed.
+- **IP Address** and **User Agent** the action was performed from.
+- **Trace ID** - The Id that can be used to trace the activity.
 - **Previous** – the record's state before the action.
 - **Current** – the record's state after the action.
-- **Action** - what action was performed.
-- **Module** - In which module the change was occured.
-- **Trace ID** - The Id that can be used to trace the activity.
-- **Date & Time** - Shows the date and time of the action.
+- **Activity** – for entries that record something being created or deleted rather than changed, the stored record itself.
 
 ![admin-activity-logs-view-changes.png](../images/admin-activity-logs-view-changes.png)
 

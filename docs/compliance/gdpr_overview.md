@@ -22,7 +22,7 @@ These need no configuration — they are always on.
 
 - **Records electronic signature consent.** Every time a recipient consents to sign electronically, the platform stores the exact wording shown to them, a cryptographic digest of it, the time, their IP address and their browser user agent. See [Consent Records](consent_records.md).
 - **Logs every action.** End-user actions go to [Activity Logs](../other_admin_operations/activity_logs.md), administrator actions to [Audit Logs](../other_admin_operations/audit_logs.md). Both record the actor, the action, the IP address, the browser user agent and a trace ID.
-- **Asks before collecting anything optional.** The web application shows a storage consent banner, and the mobile app asks before enabling crash reporting or analytics. Both default to off.
+- **Asks before collecting anything optional.** The web application sets only strictly necessary storage and shows a notice saying so on first sign-in; the mobile app asks before enabling crash reporting or analytics, and both start off. See [Consent Records](consent_records.md).
 - **Keeps credentials out of the application database.** Passwords live only in Keycloak, and only as hashes.
 - **Never exposes session tokens to the browser.** The gateway holds them server-side and issues the browser only an opaque session identifier.
 
@@ -32,10 +32,10 @@ These ship blank or disabled. The platform cannot fill them in for you.
 
 | Setting | Where | Why it matters |
 | --- | --- | --- |
-| **Privacy Policy** | Configurations → [Privacy Policy](../other_admin_operations/privacy_policy.md) | **Ships empty.** Until you paste your policy, users see "Privacy policy content is not available right now." Articles 13 and 14 require you to tell people what you collect and why. |
+| **Privacy Policy** | Configurations → [Privacy](../other_admin_operations/privacy_policy.md) | **Ships empty.** Until you paste your policy, users see "Privacy policy content is not available right now." Articles 13 and 14 require you to tell people what you collect and why. |
 | **Terms of Service** | Same screen | Ships empty. |
 | **Encryption at rest** | Configurations → [Security](../other_admin_operations/security_settings.md) | **On by default for new installations only.** A deployment set up before this default changed still has it off and must be switched on by hand. Check it. The database holds identity documents and signature images. |
-| **Email connector** | [Connectors](../connectors/add_connectors.md) | Whichever provider you choose receives your recipients' names and email addresses. You need your own agreement with them. |
+| **Email connector** | [Connectors](../connectors/add_connectors.md) | Whichever provider you choose receives your recipients' names and email addresses. You need your own agreement with them. If a service plan allows a [Custom Email Connector](../finance_settings/service_plans.md#custom-email-connector), organizations on it may send through a connector you offer them or through their own provider. |
 | **Storage connector** | [Storage](../other_admin_operations/storage_settings.md) | Documents are kept on the platform's own volume, and only a **Server Storage** connector can be the default. Nothing this platform holds is written out to a third-party account. |
 | **Cloud Source connector** | [Connectors](../connectors/cloud_source_setup.md) | Lets a signer import one of *their own* files from Google Drive or Dropbox. The provider is not a processor of your data: it holds the signer's file, the signer consents in the provider's own window, and vScrawl receives a copy of the one file they pick. |
 
@@ -46,7 +46,7 @@ These ship blank or disabled. The platform cannot fill them in for you.
 
 The platform cannot do these for you.
 
-- **Deleting old data.** There is no automatic deletion. See [Data Retention](data_retention.md) — this is the most commonly missed item.
+- **Deleting old data.** Automatic deletion ships switched off — turn it on under **Configurations → Retention** and set windows that match your published policy. See [Data Retention](data_retention.md) — this is the most commonly missed item.
 - **Answering data subject requests** within one month. See [Data Subject Requests](data_subject_requests.md).
 - **Signing agreements** with every third-party provider you configure.
 - **Reporting a breach** to your supervisory authority within 72 hours of becoming aware of it.
@@ -60,7 +60,7 @@ Ask your implementation contact for a copy if you do not have repository access.
 
 ## The qualified certificate feature
 
-If you enable qualified electronic signatures (`ENABLE_RSS_ONBOARD`), the platform begins collecting identity verification data: date and place of birth, gender, nationality, national identifier or passport number, mother's maiden name, and a scan of an identity document.
+If you switch on **Onboard Users for Remote Signature Service** and, under it, **Admin Approval is Required for Onboarding** (**Configurations → Authentication → User Onboarding**, settings `ENABLE_RSS_ONBOARD` and `REQUIRE_ADMIN_APPROVAL_ONBOARD`), users can request a qualified certificate and the platform begins collecting identity verification data: date and place of birth, gender, nationality, national identifier or passport number, mother's maiden name, and a scan of an identity document.
 
 !!! warning ""
     This is the highest-risk data the platform holds. Before enabling it at scale you will normally need a **Data Protection Impact Assessment** under Article 35, and the transfer of that data to the certificate provider needs its own legal basis. Take advice before switching it on.

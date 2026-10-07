@@ -56,17 +56,17 @@ Three things are deliberate, and worth knowing if you are asked to justify it:
 !!! warning ""
     **If an optional purpose is ever added — analytics above all — the choice has to come back with it.** Consent must be specific to processing that actually happens, so a single Accept stops being lawful the moment anything non-essential is stored. That means a real Accept/Reject of equal prominence, with every optional toggle starting off (CJEU C-673/17, *Planet49*). The category machinery is still in the code for exactly that.
 
-Records written by the earlier three-button banner are kept and still displayed as they were, so a visitor who chose "Reject all" or a custom selection still sees that answer.
+Records written by the earlier three-button banner, including a "Reject all" or a custom selection, are kept as they were.
 
 ### Retrieving it
 
 The decision is kept in the visitor's own browser, which is what the banner reads to know whether to appear again.
 
-**For a signed-in user it is also recorded on the server**, as a `COOKIE_CONSENT_RECORDED` entry in [Activity Logs](../other_admin_operations/activity_logs.md) naming the categories allowed, the method and the time. That is the copy you can produce: a record only the visitor can clear demonstrates nothing under Article 7(1).
+**For a signed-in user it is also recorded on the server**, as a **Cookie Consent Recorded** (`COOKIE_CONSENT_RECORDED`) entry in [Activity Logs](../other_admin_operations/activity_logs.md) naming the categories allowed, the method and the time. That is the copy you can produce: a record only the visitor can clear demonstrates nothing under Article 7(1).
 
 For a visitor who never signs in there is no server-side record, and nothing identifies them to hold one against. If you are challenged about that case, what you produce is the banner itself and its disclosure text.
 
-A user reviews their choice under **Settings → Privacy**, which shows what they chose and when. To answer differently they clear the site's stored data in their browser, which brings the banner back on their next visit.
+The web application has no settings screen for this choice. To answer differently a user clears the site's stored data in their browser, which brings the banner back on their next visit.
 
 !!! note ""
     If you change the categories or materially change the banner wording, the policy version must be increased so that everyone is asked again. Consent given under an older version does not carry over.
@@ -144,9 +144,9 @@ Every acceptance writes a row into [Activity Logs](../other_admin_operations/act
 The row carries these values itself rather than looking them up, so it still answers the question after the account has been deleted and its Keycloak user removed — which is usually when the question arrives.
 
 !!! note ""
-    A mark shown as **—** with "not captured" beneath it means that document had not been published when the person accepted. It is not a fault in the record.
+    A mark shown as **—** with "Not captured — the document was empty at the time." beneath it means that document had not been published when the person accepted. It is not a fault in the record.
 
-    Only rows of this one type show the panel. Every other log row is unchanged.
+    Only these two row types — **Signup** and **Terms and Privacy Policy Accepted** — show the panel. Every other log row is unchanged.
 
 #### The copy held in Keycloak
 

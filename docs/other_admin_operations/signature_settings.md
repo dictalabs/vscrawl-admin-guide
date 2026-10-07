@@ -1,6 +1,6 @@
 # Signature 
 
-Use the **Signature** screen to configure how vScrawl signs documents and the evidence reports that go with them.  
+Use the **Signature** screen — the **Signature** tab of **Configurations** — to configure how vScrawl signs documents and the evidence reports that go with them.  
 
 ![Signature Settings](../images/signature-settings.png)
 
@@ -8,15 +8,20 @@ The screen is divided into the following sections.
 
 ## Digital Signatures  
 
-- **Enable Digital Signatures in the Application** – Enables digital signatures for document authenticity and integrity. This option is only shown when the installed license includes advanced or qualified electronic signatures.  
-- **Enable Sealing Signature** – Applies a post-sign company seal on user documents for added security. Turning it on reveals the engine that produces the seal.  
+- **Enable Digital Signatures in the Application** – Enables eIDAS digital (AES/QES) signatures for document authenticity and integrity. This option is only shown when the installed license enables **eIDAS** mode; without it, it is saved as off.  
+- **Enable Sealing Signatures** – Applies a post-sign organization seal on signed documents for added security. Turning it on reveals the engine that produces the seal.  
+
+!!! warning ""
+    **Enable Digital Signatures in the Application** is a platform-wide switch. While it is off, AES and QES are not offered to any user and any attempt to sign with them is refused — whatever their [service plan](../finance_settings/service_plans.md) allows. Only simple electronic signatures (SES) remain available.
 
 ### Sealing Signature Engine  
 Choose the engine used to apply the sealing signature. The fields underneath change with the engine you pick:
 
 - **Keystore File** – Upload the **Sealing Certificate** (a PFX file) and enter its **Sealing Certificate Password**.  
-- **Signing Middleware** – Select the **Signing Middleware Connector**, then provide the **Signing Middleware Certificate Alias**, its **Password** and the **Algorithm**.  
-- **Crypto Engine** – Select the **Crypto Engine Connector**, then provide the **Sealing Certificate Alias**, its **Password**, the **Algorithm** and upload the **Sealing Certificate Chain** (a `.p7b` file).  
+- **Signing Middleware** – Select the **Signing Middleware Connector**, then provide the **Certificate Alias**, the **Certificate Password** and the **Algorithm** (for example `SHA256withRSA`).  
+- **Crypto Engine** – Select the **Crypto Engine Connector**, then provide the **Certificate Alias**, the **Certificate Password**, the **Algorithm** and upload the **Sealing Certificate Chain (.p7b)**.  
+
+For **Signing Middleware** and **Crypto Engine** the connector, alias, password and algorithm are required, and the tab is not saved until they are filled in. For **Keystore File** the file must be a PFX or P12 certificate, and its password is required whenever a new file is selected. The same rules apply to the evidence report's engine below.
 
 The Signing Middleware and Crypto Engine options read their server details from a **Sign** connector, so the connector has to exist first — see [Add Connectors](../connectors/add_connectors.md#sign-connectors).
 
@@ -35,7 +40,7 @@ The TSA server address and its credentials are configured on the connector itsel
 
 ![Evidence Report](../images/signature-settings-evidence-report.png)
 
-- **Generate Evidence Reports on the Completion of Workflows** – Generates a digitally signed evidence report that records who shared the document, who signed it, the time of signing, and the signing method used. Turning it on reveals the engine that signs the report.  
+- **Generate Evidence Report** – Attaches a digitally signed evidence report to completed documents, recording who shared the document, who signed it, the time of signing, and the signing method used. Turning it on reveals the engine that signs the report.  
 - **Signature Engine** – The engine used to sign the evidence report. The same three options are available as for the sealing signature — **Keystore File**, **Signing Middleware** and **Crypto Engine** — each with its own set of certificate fields.  
 
 ## Saved Signature Limits

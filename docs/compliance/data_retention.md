@@ -13,14 +13,20 @@ Turn it on at **Configurations → Retention**. The rest of this page explains w
 
 ## What is deleted, and when
 
-Deletion happens only when a person or an administrator triggers it.
+Apart from the scheduled jobs described further down this page — which only run once you turn them on — deletion happens when a person or an administrator triggers it.
 
 | Trigger | What is removed |
 | --- | --- |
-| **A user deletes their account** (Settings → Delete Account) | Their Keycloak login, draft documents, incomplete self-signed documents, their recipient entries, form fields, inbox items, invitations, signature certificates and signing keys. Documents already sent are set to **Void**. |
+| **A user deletes their account** (Settings → Account Settings → Delete My Account) | Their Keycloak login, draft documents, incomplete self-signed documents, their recipient entries, form fields, inbox items, invitations, signature certificates and signing keys. Documents already sent are set to **Void**. |
 | **An administrator deletes a user** (Customers → Users) | The same path. |
 | **The last member of an organization leaves** | The organization itself, its templates, its documents and its credit history. |
 | **A user deletes a signature or stamp** | That image only. |
+
+!!! note ""
+    The two account rows above describe the default. With **Erase personal data on deletion**
+    switched off (**Configurations → Application → Account deletion**), deleting an account only
+    removes the Keycloak login and closes the account — nothing else in this section is removed.
+    See [Application → Account deletion](../other_admin_operations/application_settings.md#account-deletion).
 
 ### What survives a deletion
 
@@ -29,18 +35,17 @@ Deletion happens only when a person or an administrator triggers it.
 | Their name on documents they have already signed | **Correct and deliberate.** Signed documents are evidence; other parties rely on them, and the law requires them kept. |
 | The consent record for those signatures | **Correct.** Evidence of a signature is worthless without it. |
 | The record that an identity check happened, for an issued certificate | **Correct.** It sits behind every signature made with that certificate — the identifiers themselves are removed. |
+| Their name and email address in **Activity Logs** and **Audit Logs** | **Deliberate.** The logs are the record of what happened, and an entry nobody can be attributed to answers nothing. If an erasure request has to reach them, that part is handled by hand. |
 
 Everything else is now handled automatically. Deleting an account:
 
 - Replaces the name, username and email on their platform record with anonymized values
-- Removes their name from activity and audit entries, and replaces the email with a code that still shows two entries were the same person without saying who
-- Masks the IP addresses, and clears the city and coordinates while keeping the country
-- Deletes qualified certificate requests that never produced a certificate, and strips the passport number, date and place of birth and mother's maiden name from ones that did
+- Empties their signature and initials images, two-factor seed and security answer, and removes their saved-signature library
+- Removes their session tokens, link codes, notifications and passkeys
+- Deletes qualified certificate requests that never produced a certificate, and strips the identity details — name, nationality, country of residence, passport or national ID number, date and place of birth, gender, mother's maiden name, mobile number, email and the identity document scan — from ones that did
 
 !!! note ""
-    Log rows are **anonymized rather than removed**. Deleting them outright would leave holes in the audit trail, and a missing entry cannot be told apart from one that was never written. Taking the person out of the row keeps the trail continuous.
-
-    Entries recording an **administrator's** action keep that administrator's own name and address. They are a different person, and that is the accountability record for privileged actions.
+    Log rows are **neither removed nor rewritten**. Deleting them outright would leave holes in the audit trail, and a missing entry cannot be told apart from one that was never written; rewriting the person out of them would leave entries nobody can attribute. Both log tables keep each entry as it was recorded.
 
 ### Identity documents
 
@@ -91,7 +96,7 @@ once it is on, because while it is off they have no effect.
 
     Do it outside working hours, and take a database backup first.
 
-The sweep then runs once a day at 02:30 UTC — see [Changing when the jobs run](#changing-when-the-jobs-run). Each run writes a summary to the [Audit Logs](../other_admin_operations/audit_logs.md) — the entry type is `RETENTION_PURGE` — including runs that deleted nothing, so you can always confirm the job is still alive.
+The sweep then runs once a day at 02:30 UTC — see [Changing when the jobs run](#changing-when-the-jobs-run). Each run writes a summary to the [Audit Logs](../other_admin_operations/audit_logs.md) — the **Action** column reads **Retention Purge** (`RETENTION_PURGE`) — including runs that deleted nothing, so you can always confirm the job is still alive.
 
 ## What it covers
 
@@ -135,7 +140,9 @@ The **Sign in** button points at the address in `FRONTEND_HOST_URL`, the same se
 !!! note ""
     **The logo needs one deployment setting.** An organization's uploaded logo is served from `{api.host}user/v1/logo?orgId={id}`, so admin-service needs `api.host` (environment variable `API_HOST`) pointing at the API gateway — the same value workflow-service uses. Without it the header falls back to the product name set as a wordmark, which is tidy but not your customer's brand.
 
-Closing an account runs the same path as a user deleting their own account: the login, drafts, saved signatures and keys go; **documents they have already signed stay**. Every closure is recorded in the [Audit Logs](../other_admin_operations/audit_logs.md) as `ACCOUNT_CLOSED_INACTIVE`.
+Closing an account runs the same path as a user deleting their own account: the login, drafts, saved signatures and keys go; **documents they have already signed stay**. Every closure is recorded in the [Audit Logs](../other_admin_operations/audit_logs.md) as **Account Closed Inactive** (`ACCOUNT_CLOSED_INACTIVE`).
+
+Whether closing also erases the account's documents, organization and signing material follows the **Erase personal data on deletion** switch, exactly as for any other deletion — see [Application → Account deletion](../other_admin_operations/application_settings.md#account-deletion).
 
 !!! note ""
     Two cases are skipped on purpose, and both appear in the log rather than failing silently:
@@ -148,7 +155,7 @@ Closing an account runs the same path as a user deleting their own account: the 
 
     Switch this on for the first time and the first night's result is `warned=N, closed=0`, even for accounts untouched for years. That is correct, not a fault.
 
-Windows must be between **7 and 3650 days**. Anything shorter is refused: a window of zero would mean "delete everything older than right now", which on the activity log is every row you have. **Warn after must also be strictly less than Close after** — the console will not save them equal, and the service refuses the job if they ever end up that way (see [Two windows the job refuses to work with](#two-windows-the-job-refuses-to-work-with)).
+Windows must be between **7 and 3650 days**. Anything shorter is refused: a window of zero would mean "delete everything older than right now", which on the activity log is every row you have. **Warn after must also be strictly less than Close after** — the console will not save them equal, and the service refuses the job if they ever end up that way (see [Two windows the job refuses to work with](#two-windows-the-job-refuses-to-work-with)). For the same reason the console will not save a **Notifications** window that is not longer than the gap between the two.
 
 If a setting is somehow missing or unreadable, the platform keeps the data for ten years rather than deleting it. Every failure mode errs towards keeping.
 
@@ -296,7 +303,7 @@ A restart is needed for the change to take effect.
 This page covers data deleted **by age, on a schedule**. How much is erased when somebody deletes
 their own account is a different switch, on a different screen:
 **Configurations → Application → Account deletion**. See
-[Privacy Policy](../other_admin_operations/privacy_policy.md#account-deletion).
+[Application → Account deletion](../other_admin_operations/application_settings.md#account-deletion).
 
 ## Related
 

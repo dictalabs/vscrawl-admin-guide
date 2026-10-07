@@ -1,15 +1,18 @@
 # Application   
 
-The **Application** screen allows administrators to configure various aspects of the deployed application, including:  
+The **Application** screen — the **Application** tab of **Configurations** — allows administrators to configure various aspects of the deployed application, including:  
 
 ![Application Settings](../images/application-settings.png)
 
+- Assigning an **Application Name**.  
 - Assigning a **Company Name**.  
-- Configuring the **Application URI**.  
-- Setting the **Admin URI** for the admin interface.  
-- Selecting the default **Language** for the application. This sets the language the application starts in for every user; each user can still switch to another language from the language selector.
-- Enabling registration of new users through Sign Up.
-- Configuring the **Global Date Format** to define how dates are displayed across the application (e.g., `MM/DD/YYYY`, `DD/MM/YYYY`, `YYYY-MM-DD`, etc.).
+- Configuring the **Application URL** — the public address where the end-user application is hosted.  
+- Setting the **Admin URL** where this admin console is hosted.  
+- Selecting the default **Language** for the application (English, Español or Türkçe). This sets the language the application starts in for every user; each user can still switch to another language from the language selector.
+- **Enable Registration** – allows new users to self-register through Sign Up.
+- Configuring the **Date Format** to define how dates are displayed across the application (e.g., `MM/DD/YYYY`, `DD/MM/YYYY`, `YYYY-MM-DD`, etc.).
+
+Both names and both URLs are required. A name can be up to 100 characters, and each URL must be a full `http://` or `https://` address of up to 255 characters. Click **Save** to apply the changes.
 
 ## Account deletion
 
@@ -34,5 +37,6 @@ Activity and audit entries keep the name and address under **either** setting. T
     asked for, it does to one the schedule performs — see
     [Data Retention → Inactive accounts](../compliance/data_retention.md#inactive-accounts).
 
-    Unlike the retention windows, this value is read **once when the service starts**. Change it and
-    the scheduled job keeps using the old setting until admin-service is restarted.
+    The scheduled job reads this value from admin-service's in-memory copy of the settings. Saving it
+    on this screen updates that copy straight away; a value changed directly in the database is only
+    picked up when admin-service is restarted.
