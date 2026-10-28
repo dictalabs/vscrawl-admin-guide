@@ -36,6 +36,7 @@ Click on the **Add Connector** button to open the connector creation screen.
   - **Timestamp**
   - **Storage**
   - **Cloud Source**
+  - **AI**
 
 ![Purpose Dropdown](../images/connector-purpose-dropdown.png)
 
@@ -346,6 +347,32 @@ No account is connected here. The signer consents in the provider's own window, 
 Above the credential fields, the connector form carries a collapsible **How to set up the provider account** panel. It lists the steps for the provider you chose and prints the exact values to register — the JavaScript origin, the API-key referrer, or the Dropbox domain — built from the signing app's address (the **Application URL** on the **Application** tab of **Configurations**), each with a copy button. If that address has not been set, the panel asks you to set it instead of showing a value.
 
 Use those rather than typing the values from a document. They are the two things that cannot be guessed, and the mistake they invite is invisible: the connector saves cleanly, and the failure only appears later, in the signer's browser.
+
+### **AI Connectors**
+These connectors point vScrawl at the **language model** that drafts documents when users choose **Create with AI** on the upload screen. Select **AI** as the Purpose, then choose a Provider.
+
+Adding the connector alone changes nothing for users. The feature is switched on, and the connector chosen, on the **AI Documents** tab of **Configurations** — see [AI Documents](../other_admin_operations/ai_documents.md).
+
+!!! warning "Where the text goes"
+    Whatever the provider, the text users type in the chat and the documents drafted from it are sent to the **Server address** below. For a hosted provider that is a third party. Check that this is acceptable for your data before turning the feature on.
+
+####OpenAI-compatible (Ollama, vLLM, OpenAI…)
+   One provider for every server that speaks the OpenAI chat protocol: a model server you run yourself (Ollama, vLLM, llama.cpp) or a hosted service that copies the protocol (OpenAI, Azure OpenAI, OpenRouter). Only the address, model and key differ.
+
+####Anthropic
+   Anthropic's own API.
+
+   - **Configuration** (the same fields for both providers):
+     - **Server address** — where the model is served, for example `http://localhost:11434` (Ollama), `https://api.openai.com` or `https://api.anthropic.com`. Required. A plain `http://` address works only for a server on the same machine or your private network, because the API key is sent with every request; use `https://` for anything else. **Test connection** (on the AI Documents tab) reports such an address as a problem.
+     - **Model** — the model name the server knows, for example `qwen2.5:7b-instruct` or `gpt-4o-mini`. Required, no spaces.
+     - **API key** — leave it empty for a local server that needs none. It is stored encrypted and never shown again: when you edit the connector the box shows `********`, and leaving it untouched — or clearing it — keeps the stored key.
+     - **Timeout (seconds)** — the longest one request may take (default 120). Local models running on a CPU can need a few minutes.
+     - **Maximum document length (tokens)** — caps how long one generated document can be (default 2048).
+     - **Temperature** — from 0 to 2; lower is more predictable (default 0.3, which suits documents).
+
+   Values outside the allowed ranges are brought back into them when the connector is used: timeout 5–900 seconds, document length 64–16000 tokens, temperature 0–2. A document length that is too low cuts documents off part-way.
+
+   Moving between a local server and a hosted provider is a matter of choosing a different AI connector on the AI Documents tab. No restart is needed.
 
 ---
 
